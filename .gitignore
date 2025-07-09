@@ -1,0 +1,24 @@
+# Recommended base template for web projects
+.DS_Store
+Thumbs.db
+__MACOSX/
+node_modules/
+dist/
+build/
+*.log
+*.tmp
+*.bak
+.env
+.env.local
+.cache/
+
+# Max/MSP specific ignores
+*.maxpat
+*.maxhelp
+*.maxproj
+*.mxf
+*.mxt
+*.maxpresets
+/Cache/
+/patchers/
+/support/
