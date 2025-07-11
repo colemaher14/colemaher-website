@@ -1,8 +1,8 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #ffffff; /* White text */
-    background-color: #121212; /* Dark dark grey */
+    color: #ffffff;
+    background-color: #121212;
     margin: 0;
     padding: 20px;
     min-height: 100vh;
@@ -11,7 +11,7 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background: #1e1e1e; /* Slightly lighter dark container */
+    background: #1e1e1e;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -23,27 +23,28 @@ header {
 }
 
 h1 {
-    color: #ffffff; /* Light blue for headers */
+    color: #64b5f6;
 }
 
 h2 {
-    color: #4fc3f7; /* Lighter blue for subheaders */
+    color: #4fc3f7;
 }
 
 .intro {
-    background: #2d2d2d; /* Dark grey background */
+    background: #2d2d2d;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
     font-style: italic;
-    border-left: 4px solid #64b5f6; /* Matching header color */
-    color: #e0e0e0; /* Light grey text */
+    border-left: 4px solid #64b5f6;
+    color: #e0e0e0;
 }
 
 .project {
     margin-bottom: 30px;
 }
 
+/* GIF Container Styles */
 .gif-container {
   max-width: 800px;
   margin: 0 auto 30px;
@@ -55,13 +56,12 @@ h2 {
 .gif-container img {
   width: 100%;
   display: block;
-
 }
 
 footer {
     text-align: center;
     margin-top: 40px;
-    color: #b0bec5; /* Light grey-blue text */
+    color: #b0bec5;
     font-size: 0.9em;
 }
 
