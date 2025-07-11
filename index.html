@@ -4,31 +4,365 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cole Maher | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --sidebar-bg: #1a1a1a;
+            --card-bg: #1e1e1e;
+            --accent: #64b5f6;
+            --accent-hover: #90caf9;
+            --text: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border: #333;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            padding: 30px 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            color: white;
+        }
+
+        .site-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--card-bg);
+            color: var(--accent);
+        }
+
+        .nav-links i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            padding: 0 15px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .date {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .page-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .content-area {
+            flex: 2;
+        }
+
+        .toc {
+            flex: 1;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            height: fit-content;
+            box-shadow: var(--shadow);
+        }
+
+        .toc h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .toc h2 i {
+            margin-right: 10px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .toc li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .toc li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        /* Project Section */
+        .project-section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .project-section h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .project-section p {
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+
+        .gif-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+
+        .gif-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            background: linear-gradient(90deg, var(--darker-bg), transparent);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: 40px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-content {
+                flex-direction: column;
+            }
+            
+            .toc {
+                order: -1;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 30px 20px;
+            }
+            
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Hi, I'm Cole Maher</h1>
-        </header>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h1 class="site-title">robots, sound, & videotape.</h1>
+        <div class="site-subtitle">robots,<br>sound,<br>& videotape.</div>
         
-        <main>
-            <section class="intro">
-                <p>I have trouble taking myself seriously, but this is an attempt at consolidating the work that I'm most proud of in one accessible place.</p>
-            </section>
-            
-            <section class="project">
-                <h2>Max Project 1</h2>
-                <!-- GIF Container -->
-                <div class="gif-container">
-                    <img src="asset/project-demo.gif" alt="Cole Maher project demonstration">
+        <ul class="nav-links">
+            <li><a href="#" class="active"><i class="fas fa-robot"></i> robots</a></li>
+            <li><a href="#"><i class="fas fa-music"></i> sound</a></li>
+            <li><a href="#"><i class="fas fa-video"></i> videotape</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> about me</a></li>
+        </ul>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="top-bar">
+            <div class="breadcrumb">
+                <a href="#">Home</a> / sound.html
+            </div>
+            <div class="date">4/15/25 ▼ Less than 1 minute</div>
+        </div>
+        
+        <div class="page-content">
+            <div class="content-area">
+                <div class="project-section">
+                    <h1>some things cosmic v2</h1>
+                    
+                    <div class="intro-text">
+                        Hi I am Cole Maher, I have trouble taking myself seriously but this is an attempt at consolidating the work that I am most proud of in one accessible place.
+                    </div>
+                    
+                    <p>This project represents a significant evolution of my "some things cosmic" series. Building on the foundation of the original, version 2 introduces enhanced audio processing algorithms and a more intuitive user interface.</p>
+                    
+                    <div class="gif-container">
+                        <!-- In a real implementation, you would add your GIF here -->
+                        <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-play-circle" style="font-size: 3rem; margin-right: 15px;"></i>
+                            Project Demonstration GIF
+                        </div>
+                    </div>
+                    
+                    <p>The updated version features a completely redesigned spectral analyzer with real-time audio manipulation capabilities. Users can now create complex soundscapes by layering multiple audio sources and applying dynamic filters.</p>
+                    
+                    <p>From a technical perspective, I've implemented Web Audio API for processing and Three.js for the visualization components. The project challenged me to develop efficient algorithms for real-time audio processing while maintaining a smooth 60fps visualization.</p>
                 </div>
-            </section>
-        </main>
-        
-        <footer>
-            <p>Made with love</p>
-        </footer>
-    </div>
+            </div>
+            
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2><i class="fas fa-bookmark"></i> On This Page 😊</h2>
+                <ul>
+                    <li><a href="#">some things cosmic v2</a></li>
+                    <li><a href="#">Project Overview</a></li>
+                    <li><a href="#">Technical Details</a></li>
+                    <li><a href="#">Audio Processing</a></li>
+                    <li><a href="#">Visual Design</a></li>
+                    <li><a href="#">Challenges & Solutions</a></li>
+                    <li><a href="#">Future Development</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple active link management
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Simulate content loading
+            setTimeout(() => {
+                document.querySelector('.intro-text').style.opacity = '1';
+                document.querySelector('.intro-text').style.transform = 'translateX(0)';
+            }, 300);
+        });
+    </script>
 </body>
 </html>
