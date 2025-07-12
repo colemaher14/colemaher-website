@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cole Maher | Portfolio</title>
+    <title>XXXXX XXXXX, & XXXXXXXX.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -24,6 +24,7 @@
             --text-light: #b0b0b0;
             --border: #333;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease;
         }
 
         body {
@@ -32,6 +33,7 @@
             display: flex;
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Sidebar Styles */
@@ -43,21 +45,24 @@
             position: fixed;
             overflow-y: auto;
             border-right: 1px solid var(--border);
+            transition: var(--transition);
         }
 
         .site-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 40px;
-            line-height: 1.3;
+            margin-bottom: 30px;
+            line-height: 1.2;
             color: white;
+            letter-spacing: -0.5px;
         }
 
         .site-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 40px;
-            line-height: 1.6;
+            line-height: 1.5;
             color: var(--text-light);
+            font-weight: 300;
         }
 
         .nav-links {
@@ -66,7 +71,7 @@
         }
 
         .nav-links li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .nav-links a {
@@ -75,36 +80,54 @@
             font-size: 1.1rem;
             display: flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border-radius: 6px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            background-color: var(--card-bg);
+        .nav-links a:hover {
+            background-color: rgba(100, 181, 246, 0.1);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(90deg, rgba(100, 181, 246, 0.2), transparent);
             color: var(--accent);
+            border-left: 3px solid var(--accent);
         }
 
         .nav-links i {
             margin-right: 12px;
-            width: 20px;
+            width: 24px;
             text-align: center;
+            font-size: 1.2rem;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 18px;
             padding: 0 15px;
+            margin-top: 30px;
         }
 
         .social-links a {
             color: var(--text-light);
-            font-size: 1.3rem;
-            transition: color 0.3s ease;
+            font-size: 1.4rem;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .social-links a:hover {
             color: var(--accent);
+            background: rgba(100, 181, 246, 0.15);
+            transform: translateY(-3px);
         }
 
         /* Main Content Styles */
@@ -112,6 +135,7 @@
             flex: 1;
             margin-left: 280px;
             padding: 40px;
+            transition: var(--transition);
         }
 
         .top-bar {
@@ -120,16 +144,18 @@
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--border);
+            align-items: flex-end;
         }
 
         .breadcrumb {
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .breadcrumb a {
             color: var(--accent);
             text-decoration: none;
+            transition: var(--transition);
         }
 
         .breadcrumb a:hover {
@@ -139,11 +165,14 @@
         .date {
             color: var(--text-light);
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .page-content {
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
 
         .content-area {
@@ -153,10 +182,12 @@
         .toc {
             flex: 1;
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 25px;
             height: fit-content;
             box-shadow: var(--shadow);
+            position: sticky;
+            top: 30px;
         }
 
         .toc h2 {
@@ -165,10 +196,11 @@
             color: var(--accent);
             display: flex;
             align-items: center;
+            gap: 12px;
         }
 
         .toc h2 i {
-            margin-right: 10px;
+            font-size: 1.4rem;
         }
 
         .toc ul {
@@ -177,9 +209,14 @@
         }
 
         .toc li {
-            margin-bottom: 12px;
-            padding-left: 20px;
+            margin-bottom: 14px;
+            padding-left: 24px;
             position: relative;
+            transition: var(--transition);
+        }
+
+        .toc li:hover {
+            transform: translateX(5px);
         }
 
         .toc li:before {
@@ -187,12 +224,16 @@
             position: absolute;
             left: 0;
             color: var(--accent);
+            font-size: 1.3rem;
+            top: -2px;
         }
 
         .toc a {
             color: var(--text);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            display: block;
+            padding: 4px 0;
         }
 
         .toc a:hover {
@@ -202,64 +243,138 @@
         /* Project Section */
         .project-section {
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 30px;
+            border-radius: 12px;
+            padding: 40px;
             margin-bottom: 30px;
             box-shadow: var(--shadow);
         }
 
         .project-section h1 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
             color: white;
+            line-height: 1.2;
         }
 
         .project-section p {
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 25px;
             color: var(--text-light);
+            font-size: 1.1rem;
         }
 
         .gif-container {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            margin: 30px 0;
+            margin: 40px 0;
+            background: #000;
+            position: relative;
         }
 
         .gif-container img {
             width: 100%;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gif-container:hover img {
+            transform: scale(1.02);
         }
 
         .intro-text {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             line-height: 1.8;
             background: linear-gradient(90deg, var(--darker-bg), transparent);
-            padding: 25px;
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 10px;
             border-left: 4px solid var(--accent);
             margin: 40px 0;
+            color: var(--text);
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-text:before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(100, 181, 246, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .tech-item {
+            background: rgba(100, 181, 246, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .placeholder {
+            color: #999;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed #444;
+        }
+
+        /* Mobile Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 1100px) {
             .page-content {
                 flex-direction: column;
             }
             
             .toc {
                 order: -1;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
+                max-width: 400px;
             }
         }
 
         @media (max-width: 768px) {
             .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 20px;
+                transform: translateX(-100%);
+                z-index: 900;
+                width: 280px;
+                box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
             }
             
             .main-content {
@@ -269,22 +384,54 @@
             
             .top-bar {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
+                align-items: flex-start;
+                margin-top: 70px;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-section {
+                padding: 25px 20px;
+            }
+            
+            .toc {
+                padding: 20px;
+            }
+            
+            .project-section h1 {
+                font-size: 2rem;
+            }
+            
+            .intro-text {
+                padding: 20px;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Toggle Button -->
+    <div class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
     <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-        <h1 class="site-title">, Written work, visual work, audible work, other work</h1>
-        <div class="site-subtitle"> written ,<br>visual,<br>& audible</div>
+    <aside class="sidebar" id="sidebar">
+        <h1 class="site-title">XXXXX, XXXXX, & XXXXXXXX.</h1>
+        <div class="site-subtitle">XXXXX,<br>XXXXX,<br>& XXXXXXXX.</div>
         
         <ul class="nav-links">
-            <li><a href="#" class="active"><i class="fas fa-robot"></i> fart</a></li>
-            <li><a href="#"><i class="fas fa-music"></i> written </a></li>
-            <li><a href="#"><i class="fas fa-video"></i> visual</a></li>
-            <li><a href="#"><i class="fas fa-user"></i> other </a></li>
+            <li><a href="#" class="active"><i class="fas fa-robot"></i> XXXXX</a></li>
+            <li><a href="#"><i class="fas fa-music"></i> XXXXX</a></li>
+            <li><a href="#"><i class="fas fa-video"></i> XXXXXXXX</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> XXXXX XXX</a></li>
+            <li><a href="#"><i class="fas fa-folder"></i> XXXXXXXX</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> XXXXXXX</a></li>
         </ul>
         
         <div class="social-links">
@@ -299,31 +446,24 @@
     <main class="main-content">
         <div class="top-bar">
             <div class="breadcrumb">
-                <a href="#">Home</a> / Stinkydoodie3000
+                <a href="#"><i class="fas fa-home"></i> XXXXX</a> / XXXXX.XXXX
             </div>
-            <div class="date">7.11.25 ▼ Less than 1 minute</div>
+            <div class="date">
+                <i class="far fa-calendar"></i> X/X/XX 
+                <i class="fas fa-caret-down"></i> XXXX XXXXX XXX XXXXXXX
+            </div>
         </div>
         
         <div class="page-content">
             <div class="content-area">
                 <div class="project-section">
-                    <h1>RANDOM THING</h1>
+                    <h1>XXXXX XXXXXXX XX</h1>
                     
-                    <div class="intro-text">
-                        Hi I am Cole Maher, I have trouble taking myself seriously but this is an attempt at consolidating the work that I am most proud of in one accessible place.
+                    <div class="intro-text placeholder">
+                        YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY YYYYY 
                     </div>
                     
-                    <p>XXYYXXYY</p>
-                    
-                    <div class="gif-container">
-                        <!-- In a real implementation, you would add your GIF here -->
-                        <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                            <i class="fas fa-play-circle" style="font-size: 3rem; margin-right: 15px;"></i>
-                            Project Demonstration GIF
-                        </div>
-                    </div>
-                    
-                    <p> written work ://////////////</p>
+                    <p class="placeholder">
                     
                     <p> XXPPPPP IN MAAAXXX </p>
                 </div>
