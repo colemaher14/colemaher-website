@@ -147,6 +147,109 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
 
+        /* Written Work Section */
+        .paper-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border-color: var(--primary-orange);
+        }
+
+        .paper-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-orange), var(--accent-orange));
+        }
+
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .paper-title {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .paper-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .keyword {
+            background: rgba(255, 140, 0, 0.15);
+            color: var(--accent-orange);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .paper-summary {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 3px solid var(--primary-orange);
+        }
+
+        .paper-quote {
+            font-style: italic;
+            padding: 15px;
+            margin: 20px 0;
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 3px solid var(--secondary-orange);
+        }
+
+        .paper-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 140, 0, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
         /* Timeline for experience */
         .timeline {
             position: relative;
@@ -412,6 +515,85 @@
             animation-delay: 0.5s;
         }
 
+        /* Award badge */
+        .award-badge {
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Enhanced Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--primary-orange);
+            font-size: 1.8rem;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--container-bg);
+            z-index: 99;
+            transition: all 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            padding: 70px 20px 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 15px;
+            border-radius: 5px;
+            background: rgba(255, 140, 0, 0.1);
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover, .mobile-menu a.active {
+            background: rgba(255, 140, 0, 0.2);
+            color: var(--accent-orange);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 98;
+            display: none;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .container {
@@ -442,14 +624,11 @@
             }
             
             nav ul {
-                flex-direction: column;
-                gap: 8px;
-                align-items: stretch;
+                display: none;
             }
             
-            nav a {
-                text-align: center;
-                padding: 12px;
+            .mobile-menu-toggle {
+                display: block;
             }
             
             .projects-grid {
@@ -484,6 +663,10 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .paper-stats {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -503,27 +686,48 @@
             .tagline {
                 font-size: 0.95rem;
             }
-            
-            nav a {
-                font-size: 0.9rem;
-                padding: 10px;
-            }
         }
 
-        /* Award badge */
-        .award-badge {
+        /* Download button */
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
             background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
             color: #000;
-            padding: 5px 10px;
-            border-radius: 4px;
+            text-decoration: none;
+            border-radius: 30px;
             font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <button class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="menu-overlay"></div>
+        
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
+                <li><a href="#" class="nav-link" data-page="projects">Projects</a></li>
+                <li><a href="#" class="nav-link" data-page="research">Research</a></li>
+                <li><a href="#" class="nav-link" data-page="writing">Written Work</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About Me</a></li>
+            </ul>
+        </div>
+        
         <header>
             <!-- GIFs on either side of the name -->
             <div class="header-flex">
@@ -547,6 +751,7 @@
                     <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
                     <li><a href="#" class="nav-link" data-page="projects">Projects</a></li>
                     <li><a href="#" class="nav-link" data-page="research">Research</a></li>
+                    <li><a href="#" class="nav-link" data-page="writing">Written Work</a></li>
                     <li><a href="#" class="nav-link" data-page="about">About Me</a></li>
                 </ul>
             </nav>
@@ -712,6 +917,66 @@
                 </ul>
             </div>
         </section>
+        
+        <!-- Written Work Page -->
+        <section id="writing" class="page-content">
+            <h2>Written Work</h2>
+            <p>Selected publications and policy analyses on public health topics:</p>
+            
+            <div class="paper-card">
+                <div class="paper-header">
+                    <h3 class="paper-title">How Prescription Importation Expansion Can Improve Price Negotiation and the Cost of Medication</h3>
+                    <div class="paper-meta">May 7, 2025</div>
+                </div>
+                
+                <div class="paper-keywords">
+                    <span class="keyword">Public Health</span>
+                    <span class="keyword">Policy</span>
+                    <span class="keyword">Pharmaceutical Policy</span>
+                    <span class="keyword">Healthcare Economics</span>
+                </div>
+                
+                <div class="paper-summary">
+                    <p>This policy analysis examines how expanding prescription drug importation from countries with lower medication costs could reduce pharmaceutical prices in the United States, particularly benefiting vulnerable populations disproportionately affected by high drug costs.</p>
+                </div>
+                
+                <div class="paper-quote">
+                    <p>"Many elderly adults are on Medicare, so the uninsured population of elderly people is comparably lower than people under the age of 65. Despite that, elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</p>
+                </div>
+                
+                <div class="paper-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">43%</div>
+                        <div class="stat-label">Uninsured seniors concerned about medication costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">$164</div>
+                        <div class="stat-label">US per capita out-of-pocket drug costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">$12</div>
+                        <div class="stat-label">UK per capita out-of-pocket drug costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">70%</div>
+                        <div class="stat-label">Republican support for insulin price caps</div>
+                    </div>
+                </div>
+                
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li>High prescription drug costs disproportionately affect seniors, low-income individuals, and racial minorities</li>
+                    <li>Current importation policies exclude critical medications like insulin and biological products</li>
+                    <li>Expanded importation could serve as a bargaining chip in price negotiations</li>
+                    <li>Potential benefits include reduced Medicare/Medicaid spending and increased access</li>
+                    <li>Unintended consequences may include price increases in exporting countries</li>
+                </ul>
+                
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i> Download Full Paper (PDF)
+                </a>
+            </div>
+        </section>
 
         <!-- About Me Page -->
         <section id="about" class="page-content">
@@ -786,7 +1051,25 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page-content');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.menu-overlay');
             
+            // Mobile menu toggle
+            mobileToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+            
+            // Navigation functionality
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -802,35 +1085,43 @@
                     const pageId = this.getAttribute('data-page');
                     document.getElementById(pageId).classList.add('active');
                     
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    
                     // Scroll to top of the page
                     window.scrollTo(0, 0);
                 });
             });
             
-            // Mobile menu toggle
-            const menuToggle = document.createElement('button');
-            menuToggle.innerHTML = '☰ Menu';
-            menuToggle.classList.add('mobile-menu-toggle');
-            menuToggle.style.display = 'none';
-            document.querySelector('nav').prepend(menuToggle);
-            
-            function checkMobileMenu() {
-                if (window.innerWidth <= 768) {
-                    menuToggle.style.display = 'block';
-                    document.querySelector('nav ul').style.display = 'none';
-                } else {
-                    menuToggle.style.display = 'none';
-                    document.querySelector('nav ul').style.display = 'flex';
-                }
-            }
-            
-            menuToggle.addEventListener('click', function() {
-                const menu = document.querySelector('nav ul');
-                menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+            // Mobile menu navigation
+            const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and pages
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    mobileNavLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(page => page.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding page
+                    const pageId = this.getAttribute('data-page');
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // Close mobile menu
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    
+                    // Scroll to top of the page
+                    window.scrollTo(0, 0);
+                });
             });
-            
-            checkMobileMenu();
-            window.addEventListener('resize', checkMobileMenu);
         });
     </script>
 </body>
