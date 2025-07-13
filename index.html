@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cole Maher Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #64b5f6;
-            --secondary-color: #4fc3f7;
-            --accent-color: #81d4fa;
+            --primary-orange: #FF8C00;
+            --secondary-orange: #FFA500;
+            --accent-orange: #FFD700;
             --dark-bg: #121212;
             --container-bg: #1e1e1e;
             --card-bg: #2a2a2a;
@@ -26,17 +27,17 @@
             padding: 0;
             min-height: 100vh;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(40, 40, 80, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(60, 60, 120, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(50, 30, 10, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(70, 40, 10, 0.1) 0%, transparent 20%);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: var(--container-bg);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
             position: relative;
             z-index: 1;
         }
@@ -64,7 +65,7 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             flex-shrink: 0;
-            border: 2px solid var(--primary-color);
+            border: 2px solid var(--primary-orange);
             transition: transform 0.3s ease;
         }
 
@@ -84,10 +85,10 @@
         }
 
         h1 {
-            color: var(--primary-color);
+            color: var(--primary-orange);
             margin: 0;
             font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         .tagline {
@@ -98,15 +99,15 @@
         }
 
         h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid #2d2d2d;
+            color: var(--secondary-orange);
+            border-bottom: 2px solid #333;
             padding-bottom: 10px;
             margin-top: 30px;
             font-size: 1.8rem;
         }
 
         h3 {
-            color: var(--accent-color);
+            color: var(--accent-orange);
             font-size: 1.4rem;
         }
 
@@ -116,7 +117,7 @@
             border-radius: 8px;
             margin-bottom: 30px;
             font-style: italic;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--primary-orange);
             color: var(--text-light);
             position: relative;
             overflow: hidden;
@@ -129,7 +130,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
         }
 
         .project {
@@ -144,6 +145,53 @@
         .project:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Timeline for experience */
+        .timeline {
+            position: relative;
+            margin: 40px 0 0 20px;
+            padding-left: 30px;
+            border-left: 2px solid var(--primary-orange);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: -38px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .timeline-date {
+            color: var(--secondary-orange);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            background: rgba(255, 140, 0, 0.1);
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary-orange);
         }
 
         /* GIF Container Styles */
@@ -163,7 +211,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
         }
 
         .gif-container img {
@@ -194,6 +242,25 @@
             border-top: 1px solid #333;
         }
 
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-icon {
+            color: var(--primary-orange);
+            font-size: 1.2rem;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -216,26 +283,26 @@
 
         nav a {
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--primary-orange);
             font-weight: 600;
             padding: 10px 18px;
             border-radius: 30px;
             transition: all 0.3s ease;
             border: 1px solid transparent;
             display: block;
-            background: rgba(40, 40, 60, 0.5);
+            background: rgba(40, 30, 10, 0.5);
             font-size: 1rem;
         }
 
         nav a:hover {
-            background-color: rgba(100, 181, 246, 0.2);
-            border-color: var(--primary-color);
+            background-color: rgba(255, 140, 0, 0.2);
+            border-color: var(--primary-orange);
         }
 
         nav a.active {
-            background-color: rgba(100, 181, 246, 0.2);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+            background-color: rgba(255, 140, 0, 0.2);
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         /* Content sections */
@@ -274,11 +341,13 @@
         .project-card:hover {
             transform: translateY(-5px);
             background: #333;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.2);
         }
 
         .project-card h3 {
             margin-top: 0;
             flex-grow: 1;
+            color: var(--accent-orange);
         }
 
         /* Code snippet styling */
@@ -299,11 +368,12 @@
             position: absolute;
             top: 0;
             right: 0;
-            background: var(--primary-color);
+            background: var(--primary-orange);
             color: #000;
             padding: 2px 10px;
             font-size: 0.8rem;
             border-bottom-left-radius: 5px;
+            font-weight: bold;
         }
 
         .code-snippet pre {
@@ -317,6 +387,29 @@
 
         li {
             margin-bottom: 8px;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: var(--primary-orange);
+            position: absolute;
+            left: -15px;
+        }
+
+        /* Floating animation for GIFs */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .header-gif {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .header-gif:last-child {
+            animation-delay: 0.5s;
         }
 
         /* Mobile responsiveness */
@@ -382,6 +475,15 @@
             .project {
                 padding: 15px;
             }
+            
+            .timeline {
+                margin-left: 10px;
+                padding-left: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -408,19 +510,15 @@
             }
         }
 
-        /* Floating animation for GIFs */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .header-gif {
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        .header-gif:last-child {
-            animation-delay: 0.5s;
+        /* Award badge */
+        .award-badge {
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -435,7 +533,7 @@
                 
                 <div class="name-container">
                     <h1>Cole Maher</h1>
-                    <p class="tagline">public health, computer art, music, and all sorts of other things</p>
+                    <p class="tagline">Public Health Professional | Researcher | Creative Technologist</p>
                 </div>
                 
                 <div class="header-gif">
@@ -446,9 +544,9 @@
             <nav>
                 <ul>
                     <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="code">My Code</a></li>
-                    <li><a href="#" class="nav-link" data-page="projects">My Projects</a></li>
-                    <li><a href="#" class="nav-link" data-page="health">Public Health</a></li>
+                    <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
+                    <li><a href="#" class="nav-link" data-page="projects">Projects</a></li>
+                    <li><a href="#" class="nav-link" data-page="research">Research</a></li>
                     <li><a href="#" class="nav-link" data-page="about">About Me</a></li>
                 </ul>
             </nav>
@@ -460,17 +558,28 @@
                 <p>Welcome to my portfolio! I am a current student studying public health with a background in qualitative and quantitative public health and sociology research. In addition to my work in public health, I studied Jazz composition, Digital signal processing, and took on 3D visual art as a hobby.</p>
             </div>
 
-            <h2>Featured Project</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>maher.cole.23@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span>603-738-7643</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <span>linkedin.com/in/cole-maher</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <span>St. Louis, MO</span>
+                </div>
+            </div>
+
+            <h2>Professional Objective</h2>
             <div class="project">
-                <h3>Health Tracker App</h3>
-                <p>A comprehensive application that helps users monitor their health metrics, set fitness goals, and connect with healthcare providers. Built with React, Node.js, and MongoDB.</p>
-                <p>Key features:</p>
-                <ul>
-                    <li>Real-time health data visualization</li>
-                    <li>Personalized health insights</li>
-                    <li>Secure messaging with healthcare providers</li>
-                    <li>Medication reminders</li>
-                </ul>
+                <p>To further my experience in Public Health Policy research and leverage my interdisciplinary background in mathematics, sociology, and creative technology to develop innovative solutions for public health challenges.</p>
             </div>
             
             <div class="gif-container2">
@@ -478,123 +587,128 @@
             </div>
         </section>
 
-        <!-- My Code Page -->
-        <section id="code" class="page-content">
-            <h2>My Code Projects</h2>
-            <p>Here are some code samples and projects I've worked on:</p>
+        <!-- Experience Page -->
+        <section id="experience" class="page-content">
+            <h2>Work Experience</h2>
             
-            <div class="project">
-                <h3>Algorithm Visualization Tool</h3>
-                <p>A JavaScript application that visually demonstrates how sorting algorithms work.</p>
-                <div class="code-snippet">
-                    <pre>function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
-  
-  const mid = Math.floor(arr.length / 2);
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid));
-  
-  return merge(left, right);
-}
-
-function merge(left, right) {
-  let result = [];
-  let i = 0, j = 0;
-  
-  while (i < left.length && j < right.length) {
-    if (left[i] < right[j]) {
-      result.push(left[i]);
-      i++;
-    } else {
-      result.push(right[j]);
-      j++;
-    }
-  }
-  
-  return result.concat(left.slice(i)).concat(right.slice(j));
-}</pre>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">Feb 2025 – Present</span>
+                    <h3>The SPOT, Youth Community Health Clinic</h3>
+                    <p><em>Administrative Employee and Epidemiology Intern</em></p>
+                    <ul>
+                        <li>Checked in clients, evaluated public health communications, and program evaluation</li>
+                        <li>Assisted in epidemiological data collection and analysis</li>
+                    </ul>
                 </div>
-            </div>
-            
-            <div class="project">
-                <h3>API Integration Library</h3>
-                <p>A Python library that simplifies integration with various health data APIs.</p>
-                <div class="code-snippet">
-                    <pre>class HealthAPI:
-    def __init__(self, api_key):
-        self.api_key = api_key
-        self.base_url = "https://api.healthdata.org/v1/"
-        
-    def get_patient_data(self, patient_id):
-        endpoint = f"patients/{patient_id}"
-        headers = {"Authorization": f"Bearer {self.api_key}"}
-        
-        response = requests.get(self.base_url + endpoint, headers=headers)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            raise Exception(f"API request failed: {response.status_code}")</pre>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Feb 2024 – Dec 2024</span>
+                    <h3>Whole Life Healthcare</h3>
+                    <p><em>Medical Records Administrator</em></p>
+                    <ul>
+                        <li>Managed all outgoing medical records and scheduling</li>
+                        <li>Answered phones and redesigned the company website</li>
+                        <li>Utilized Athenanet Electronic Medical Records system</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Oct 2022 – Jun 2023</span>
+                    <h3>New York State Energy and Resource Development Authority</h3>
+                    <p><em>Climate Equity Internship</em></p>
+                    <ul>
+                        <li>Assisted project managers in the management and operations of NYSERDA's $53M Regional Clean Energy Hubs initiative</li>
+                        <li>Co-managed the development of a Salesforce CRM User Guide for contractors in 12 regions of New York</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Feb 2022 – Jun 2022</span>
+                    <h3>Department of Economic Planning and Development</h3>
+                    <p><em>Community Outreach Intern</em></p>
+                    <ul>
+                        <li>Worked in a team environment evaluating green spaces in Glenville</li>
+                        <li>Assessed effectiveness and ADA accessibility of community spaces</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- My Projects Page -->
+        <!-- Projects Page -->
         <section id="projects" class="page-content">
-            <h2>My Projects</h2>
-            <p>A collection of my recent work and contributions:</p>
+            <h2>Key Projects</h2>
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>Community Health Dashboard</h3>
-                    <p>Interactive dashboard visualizing public health metrics for local communities.</p>
-                    <p><strong>Tech:</strong> React, D3.js, Python</p>
+                    <h3>Green Fee Sustainability Project</h3>
+                    <div class="award-badge">Awarded $25,000</div>
+                    <p>Led a sustainably driven project to solve lighting and energy issues in campus facilities, reducing energy costs while promoting sustainability.</p>
+                    <p><strong>Impact:</strong> Reduced campus energy consumption by 15% in targeted areas</p>
                 </div>
                 
                 <div class="project-card">
-                    <h3>Medication Tracker</h3>
-                    <p>Mobile app for medication adherence with reminders and tracking.</p>
-                    <p><strong>Tech:</strong> Flutter, Firebase</p>
+                    <h3>Medical Records System Redesign</h3>
+                    <p>Redesigned and optimized medical records system for Whole Life Healthcare, improving efficiency and accessibility.</p>
+                    <p><strong>Tech:</strong> Athenanet EMR, HTML/CSS</p>
                 </div>
                 
                 <div class="project-card">
-                    <h3>Epidemic Simulation</h3>
-                    <p>Agent-based model simulating disease spread in populations.</p>
-                    <p><strong>Tech:</strong> Python, Pandas, Matplotlib</p>
+                    <h3>Salesforce CRM User Guide</h3>
+                    <p>Co-developed comprehensive user guide for Salesforce CRM implementation across 12 regions in New York.</p>
+                    <p><strong>Scope:</strong> 50+ page manual for contractors and stakeholders</p>
                 </div>
                 
                 <div class="project-card">
-                    <h3>Telehealth Platform</h3>
-                    <p>Secure video consultation platform for healthcare providers.</p>
-                    <p><strong>Tech:</strong> WebRTC, Node.js, MongoDB</p>
+                    <h3>Community Green Space Assessment</h3>
+                    <p>Evaluated and assessed the effectiveness and ADA accessibility of green spaces in Glenville, NY.</p>
+                    <p><strong>Methods:</strong> Field surveys, accessibility audits, community feedback</p>
                 </div>
             </div>
         </section>
 
-        <!-- Public Health Page -->
-        <section id="health" class="page-content">
-            <h2>Public Health Initiatives</h2>
-            <p>Combining technology and public health expertise:</p>
+        <!-- Research Page -->
+        <section id="research" class="page-content">
+            <h2>Research Experience</h2>
             
             <div class="project">
-                <h3>Vaccination Awareness Campaign</h3>
-                <p>Developed an educational platform that increased vaccination rates by 23% in target communities.</p>
-                <p>The platform featured:</p>
+                <h3>Senior Thesis: Transportation Noise & Health</h3>
+                <p><em>Union College, 2022-2023</em></p>
                 <ul>
-                    <li>Interactive vaccine information resources</li>
-                    <li>Local clinic finder with appointment scheduling</li>
-                    <li>Myth-busting quiz game</li>
-                    <li>Community discussion forums</li>
+                    <li>Focused on transportation-related noise and its impacts on human health</li>
+                    <li>Conducted interviews with environmental noise professionals and community leaders</li>
+                    <li>Contextualized existing literature using community perspectives on noise pollution</li>
                 </ul>
             </div>
             
             <div class="project">
-                <h3>Nutrition Education App</h3>
-                <p>Mobile application that helps low-income families make healthy food choices on a budget.</p>
-                <p>Key outcomes:</p>
+                <h3>Workers' Compensation Data in Public Health</h3>
+                <p><em>Washington University, 2024-2025</em></p>
                 <ul>
-                    <li>15,000+ downloads in the first 6 months</li>
-                    <li>87% of users reported improved eating habits</li>
-                    <li>Featured in CDC's innovation showcase</li>
+                    <li>Researched existing gaps in workers' compensation data for public health professionals</li>
+                    <li>Developed a guide for public health practitioners to better understand limitations in assessing claimant health data</li>
+                    <li>Analyzed systemic barriers to comprehensive workers' health data collection</li>
+                </ul>
+            </div>
+            
+            <h2>Education</h2>
+            <div class="project">
+                <h3>Washington University, St. Louis</h3>
+                <p><strong>Masters in Public Health (MPH), Epidemiology and Biostatistics</strong></p>
+                <p><em>August 2024 – Present</em></p>
+                <ul>
+                    <li>4.00 GPA after first year</li>
+                    <li>Relevant Coursework: Biostatistics, Epidemiology, Research Methods, Basic Human Biology, Applied Linear Modeling, Health Policy, Environmental Health</li>
+                </ul>
+            </div>
+            
+            <div class="project">
+                <h3>Union College, Schenectady, NY</h3>
+                <p><strong>Bachelor of Science (BS), Mathematics and Sociology</strong></p>
+                <p><em>September 2019 – June 2023</em></p>
+                <ul>
+                    <li>3.37 GPA, Two Years on Dean's List</li>
+                    <li>Relevant Coursework: Chemistry, Physics, Economics, Calculus 1–5, Probability, Advanced Geometry, Cryptology, Linear Algebra, Quantitative Social Research Methods</li>
                 </ul>
             </div>
         </section>
@@ -604,40 +718,57 @@ function merge(left, right) {
             <h2>About Me</h2>
             
             <div class="intro">
-                <p>I'm a public health student with diverse interests in technology, art, and music, passionate about creating solutions that improve health outcomes and accessibility.</p>
+                <p>I'm a public health professional with diverse interests in technology, art, and music, passionate about creating solutions that improve health outcomes and accessibility.</p>
             </div>
-            
-            <h3>Background</h3>
-            <p>With a background in both mathematics and sociology, I bridge the gap between quantitative analysis and qualitative understanding of public health issues. My journey began in healthcare research, where I saw firsthand how interdisciplinary approaches can transform community health initiatives.</p>
             
             <h3>Skills</h3>
             <div class="project">
-                <h4>Technical Expertise</h4>
-                <ul>
-                    <li>Data Analysis (R, Python)</li>
-                    <li>3D Visualization (Blender, Three.js)</li>
-                    <li>Digital Signal Processing</li>
-                    <li>Research Methodologies</li>
-                </ul>
+                <h4>Technical Skills</h4>
+                <div class="skills-grid">
+                    <div class="skill-item">SPSS Statistics</div>
+                    <div class="skill-item">R Studio</div>
+                    <div class="skill-item">Excel & Data Analysis</div>
+                    <div class="skill-item">Athenanet EMR System</div>
+                    <div class="skill-item">Salesforce CRM</div>
+                    <div class="skill-item">Secondary Data Analysis</div>
+                    <div class="skill-item">Public Health Research</div>
+                    <div class="skill-item">Medical Records Management</div>
+                </div>
                 
-                <h4>Public Health</h4>
+                <h4>Soft Skills</h4>
+                <div class="skills-grid">
+                    <div class="skill-item">Customer Service</div>
+                    <div class="skill-item">Written Communication</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Community Outreach</div>
+                    <div class="skill-item">Website Design</div>
+                    <div class="skill-item">Social Media Management</div>
+                    <div class="skill-item">Environmental Literacy</div>
+                    <div class="skill-item">Research Ethics</div>
+                </div>
+            </div>
+            
+            <h3>Licenses & Certifications</h3>
+            <div class="project">
+                <p><strong>American Red Cross Lifeguard Certification</strong> (Sep 2024 - Sep 2026)</p>
+                <p><strong>CITI Program, Research Ethics Certified</strong> (Sep 2024)</p>
+            </div>
+            
+            <h3>Extracurricular Activities</h3>
+            <div class="project">
                 <ul>
-                    <li>Epidemiological research methods</li>
-                    <li>Health data analysis</li>
-                    <li>Qualitative research</li>
-                    <li>Community health assessment</li>
+                    <li>Union College Facilities, Student Liaison (Sep 2022 - Jun 2023)</li>
+                    <li>Union College LGBTQ+ Pride, Treasurer (Sep 2022 - Jun 2023)</li>
+                    <li>Union College Honor Council (Sep 2021 - Jun 2022)</li>
+                    <li>U-Sustain, Union College Sustainability (Sep 2021 - Jun 2023)</li>
+                    <li>Union College Green Team Volunteer (Sep 2022 - Jun 2023)</li>
+                    <li>Harlem Children's Zone Fundraising (Oct 2015 - May 2019)</li>
                 </ul>
             </div>
             
-            <h3>Education</h3>
+            <h3>Personal Interests</h3>
             <div class="project">
-                <p><strong>MPH Epidemiology and Biostatistics</strong> - Washington University, St. Louis, Brown School of Public Health (2024-2026)</p>
-                <p><strong>BS Mathematics and Sociology</strong> - Union College (2019-2023)</p>
-            </div>
-            
-            <h3>Art & Music</h3>
-            <div class="project">
-                <p>Outside of public health, I enjoy creating 3D visual art and composing music. My work blends technical skills with artistic expression, exploring the intersection of technology and creativity.</p>
+                <p>Jazz Composition, Music Production, Jazz Guitar, Computer Audio-Visual Art, Sustainable Design, Community Health Initiatives</p>
                 <div class="gif-container2">
                     <img src="asset/project-demo.gif" alt="Art Project">
                 </div>
@@ -676,7 +807,7 @@ function merge(left, right) {
                 });
             });
             
-            // Mobile menu toggle (optional enhancement)
+            // Mobile menu toggle
             const menuToggle = document.createElement('button');
             menuToggle.innerHTML = '☰ Menu';
             menuToggle.classList.add('mobile-menu-toggle');
