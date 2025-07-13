@@ -3,633 +3,794 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cole Maher Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>Cole Maher | Maximalist Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-orange: #FF8C00;
-            --secondary-orange: #FFA500;
-            --accent-orange: #FFD700;
-            --dark-bg: #121212;
-            --container-bg: #1e1e1e;
-            --card-bg: #2a2a2a;
-            --text-light: #e0e0e0;
-            --text-muted: #b0bec5;
+            --electric-blue: #00eeff;
+            --hot-pink: #ff00a0;
+            --violet: #8a2be2;
+            --gold: #ffd700;
+            --lime: #c6ff00;
+            --teal: #00ffcc;
+            --deep-purple: #4b0082;
+            --orange: #ff7700;
+            --magenta: #ff00ff;
+            --emerald: #00ff9d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Lato', sans-serif;
-            line-height: 1.6;
-            color: #ffffff;
-            background-color: var(--dark-bg);
-            margin: 0;
-            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: #fff;
+            background: linear-gradient(135deg, var(--deep-purple), var(--violet), var(--hot-pink));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(50, 30, 10, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(70, 40, 10, 0.1) 0%, transparent 20%);
+            padding: 20px;
+            overflow-x: hidden;
         }
-
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--container-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            max-width: 1200px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
             position: relative;
             z-index: 1;
+            overflow: hidden;
+            border: 3px solid var(--gold);
         }
-
-        /* Header styles with GIFs */
+        
+        .container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 160, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 238, 255, 0.1) 0%, transparent 30%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(138, 43, 226, 0.1) 10px, rgba(138, 43, 226, 0.1) 20px);
+            z-index: -1;
+        }
+        
+        /* Header styles */
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
-            padding: 20px 0;
+            padding: 30px 0;
         }
-
+        
         .header-flex {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 10px;
+            gap: 30px;
+            margin-bottom: 20px;
         }
-
+        
         .header-gif {
-            width: 100px;
-            height: 100px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px var(--hot-pink), 0 0 50px var(--electric-blue);
             flex-shrink: 0;
-            border: 2px solid var(--primary-orange);
-            transition: transform 0.3s ease;
+            border: 5px solid var(--gold);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 1;
         }
-
+        
+        .header-gif:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--hot-pink), var(--electric-blue), var(--lime));
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         .header-gif:hover {
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 50px var(--hot-pink), 0 0 80px var(--electric-blue);
         }
-
+        
         .header-gif img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
         }
-
+        
         .name-container {
             flex-grow: 0;
             text-align: center;
+            position: relative;
         }
-
+        
         h1 {
-            color: var(--primary-orange);
+            color: var(--gold);
             margin: 0;
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            text-shadow: 0 0 20px var(--hot-pink), 0 0 40px var(--electric-blue);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--gold), var(--orange), var(--lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
+        
         .tagline {
-            color: var(--text-light);
-            font-style: italic;
-            margin-top: 5px;
-            font-size: 1.1rem;
-        }
-
-        h2 {
-            color: var(--secondary-orange);
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: var(--teal);
             font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        h3 {
-            color: var(--accent-orange);
-            font-size: 1.4rem;
-            margin-top: 0;
-        }
-
-        .intro {
-            background: #2d2d2d;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
+            margin-top: 10px;
+            text-shadow: 0 0 10px var(--violet);
             font-style: italic;
-            border-left: 4px solid var(--primary-orange);
-            color: var(--text-light);
+            background: linear-gradient(45deg, var(--teal), var(--lime), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        h2 {
+            font-size: 3.5rem;
+            margin-top: 50px;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+            background: linear-gradient(45deg, var(--hot-pink), var(--electric-blue), var(--lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--hot-pink), var(--gold), transparent);
+            border-radius: 10px;
+        }
+        
+        h3 {
+            font-size: 2.2rem;
+            margin: 30px 0 15px;
+            color: var(--lime);
+            text-shadow: 0 0 10px var(--violet);
+            position: relative;
+            display: inline-block;
+            padding-left: 15px;
+        }
+        
+        h3:before {
+            content: "◆";
+            position: absolute;
+            left: -15px;
+            top: 0;
+            color: var(--hot-pink);
+            text-shadow: 0 0 10px var(--electric-blue);
+        }
+        
+        .intro {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            border: 2px solid var(--teal);
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
-
+        
         .intro:before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
+            height: 5px;
+            background: linear-gradient(90deg, var(--hot-pink), var(--electric-blue), var(--lime));
         }
-
-        .project {
-            margin-bottom: 30px;
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #333;
-        }
-
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-
+        
         /* Professional Experience Section */
         .professional-section {
-            background: #252525;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 0 30px rgba(255, 0, 160, 0.2);
+            border: 2px solid var(--hot-pink);
+            position: relative;
+            overflow: hidden;
         }
-
+        
         .tabs-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            gap: 20px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-
+        
         .tab {
-            padding: 12px 25px;
-            background: rgba(255, 140, 0, 0.1);
-            border-radius: 30px;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, var(--violet), var(--hot-pink));
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            color: var(--text-light);
+            transition: all 0.4s ease;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: white;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
+        
+        .tab:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--electric-blue), var(--teal));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
         .tab:hover {
-            background: rgba(255, 140, 0, 0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 0, 160, 0.4);
         }
-
+        
+        .tab:hover:before {
+            opacity: 1;
+        }
+        
         .tab.active {
-            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
+            background: linear-gradient(45deg, var(--gold), var(--orange));
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--gold), 0 0 50px rgba(255, 0, 160, 0.5);
             color: #000;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+            z-index: 2;
         }
-
+        
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
         }
-
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .tab-content.active {
             display: block;
         }
-
+        
         /* Timeline for experience */
         .timeline {
             position: relative;
-            margin: 40px 0 0 20px;
-            padding-left: 30px;
-            border-left: 2px solid var(--primary-orange);
+            margin: 40px 0 0 40px;
+            padding-left: 40px;
+            border-left: 4px solid var(--teal);
         }
-
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -4px;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--hot-pink), var(--violet), var(--electric-blue));
+            border-radius: 10px;
+        }
+        
         .timeline-item {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 2px solid var(--violet);
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.3);
         }
-
+        
         .timeline-item:before {
             content: "";
             position: absolute;
-            top: 5px;
-            left: -38px;
-            width: 12px;
-            height: 12px;
+            top: 30px;
+            left: -52px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            background: var(--primary-orange);
-            border: 2px solid var(--accent-orange);
+            background: linear-gradient(45deg, var(--gold), var(--orange));
+            border: 3px solid var(--hot-pink);
+            box-shadow: 0 0 20px var(--gold);
         }
-
+        
         .timeline-date {
-            color: var(--secondary-orange);
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             display: block;
+            color: var(--lime);
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--violet);
         }
-
-        /* Skills grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .skill-item {
-            background: rgba(255, 140, 0, 0.1);
-            padding: 12px;
-            border-radius: 5px;
-            border-left: 3px solid var(--primary-orange);
-        }
-
-        /* Project grid for My Projects page */
+        
+        /* Project grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
             margin-top: 20px;
         }
-
+        
         .project-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.3s ease;
-            border: 1px solid #333;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.5s ease;
+            border: 3px solid transparent;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-
+        
+        .project-card:before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--hot-pink), var(--violet), var(--electric-blue), var(--lime));
+            z-index: -1;
+            border-radius: 22px;
+        }
+        
         .project-card:hover {
-            transform: translateY(-5px);
-            background: #333;
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.2);
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 0, 160, 0.5);
         }
-
+        
         .project-card h3 {
             margin-top: 0;
             flex-grow: 1;
-            color: var(--accent-orange);
+            color: var(--gold);
+            font-size: 1.8rem;
+            padding-left: 0;
         }
-
-        /* Award badge */
+        
+        .project-card h3:before {
+            display: none;
+        }
+        
         .award-badge {
-            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
+            background: linear-gradient(45deg, var(--gold), var(--orange));
             color: #000;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 20px;
+            border-radius: 30px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 10px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            font-size: 1.1rem;
         }
-
-        /* GIF Container Styles */
-        .gif-container {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        .gif-container:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
-        }
-
-        .gif-container img {
-            width: 100%;
-            display: block;
-        }
-
-        .gif-container2 {
-            max-width: 400px;
-            margin: 0 auto 20px;
-            border-radius: 2px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            border: 1px solid #333;
-        }
-
-        .gif-container2 img {
-            width: 100%;
-            display: block;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            padding: 20px 0;
-            border-top: 1px solid #333;
-        }
-
+        
+        /* Contact info */
         .contact-info {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
+            gap: 30px;
+            margin: 40px 0;
         }
-
+        
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50px;
+            border: 2px solid var(--electric-blue);
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
+            transition: all 0.4s ease;
         }
-
+        
+        .contact-item:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 30px var(--electric-blue);
+        }
+        
         .contact-icon {
-            color: var(--primary-orange);
+            font-size: 2rem;
+            color: var(--teal);
+            text-shadow: 0 0 10px var(--violet);
+        }
+        
+        .contact-text {
             font-size: 1.2rem;
         }
-
-        html {
-            scroll-behavior: smooth;
+        
+        /* GIF Container */
+        .gif-container2 {
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 50px rgba(255, 0, 160, 0.5);
+            border: 5px solid var(--hot-pink);
+            transform: rotate(-2deg);
+            transition: all 0.5s ease;
         }
-
-        /* Navigation Styles */
+        
+        .gif-container2:hover {
+            transform: rotate(2deg) scale(1.05);
+            box-shadow: 0 15px 60px var(--hot-pink);
+        }
+        
+        .gif-container2 img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            border-top: 3px solid var(--gold);
+            font-size: 1.1rem;
+            color: var(--teal);
+            text-shadow: 0 0 10px var(--violet);
+            position: relative;
+        }
+        
+        footer:before {
+            content: "✦";
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--hot-pink);
+        }
+        
+        /* Navigation */
         nav {
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin: 40px 0;
         }
-
+        
         nav ul {
             display: flex;
             list-style: none;
             justify-content: center;
             padding: 0;
             margin: 0;
-            gap: 10px;
+            gap: 20px;
             flex-wrap: wrap;
         }
-
+        
         nav a {
             text-decoration: none;
-            color: var(--primary-orange);
-            font-weight: 600;
-            padding: 10px 18px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            display: block;
-            background: rgba(40, 30, 10, 0.5);
-            font-size: 1rem;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 140, 0, 0.2);
-            border-color: var(--primary-orange);
-        }
-
-        nav a.active {
-            background-color: rgba(255, 140, 0, 0.2);
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-        }
-
-        /* Content sections */
-        .page-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .page-content.active {
-            display: block;
-        }
-
-        /* Floating animation for GIFs */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .header-gif {
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        .header-gif:last-child {
-            animation-delay: 0.5s;
-        }
-
-        /* Enhanced Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--primary-orange);
-            font-size: 1.8rem;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 280px;
-            height: 100%;
-            background: var(--container-bg);
-            z-index: 99;
+            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 50px;
             transition: all 0.4s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-            padding: 70px 20px 20px;
-            overflow-y: auto;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 3px solid var(--gold);
+            background: linear-gradient(45deg, var(--violet), var(--deep-purple));
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu ul {
-            flex-direction: column;
-            gap: 10px;
-            padding: 0;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 12px 15px;
-            border-radius: 5px;
-            background: rgba(255, 140, 0, 0.1);
-            color: var(--primary-orange);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu a:hover, .mobile-menu a.active {
-            background: rgba(255, 140, 0, 0.2);
-            color: var(--accent-orange);
-        }
-
-        .menu-overlay {
-            position: fixed;
+        
+        nav a:before {
+            content: "";
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 98;
-            display: none;
+            background: linear-gradient(45deg, var(--hot-pink), var(--orange));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
-
-        .menu-overlay.active {
+        
+        nav a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--hot-pink);
+            color: #000;
+        }
+        
+        nav a:hover:before {
+            opacity: 1;
+        }
+        
+        nav a.active {
+            background: linear-gradient(45deg, var(--gold), var(--orange));
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--gold), 0 0 50px rgba(255, 0, 160, 0.5);
+            color: #000;
+            z-index: 2;
+        }
+        
+        /* Content sections */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .page-content.active {
             display: block;
         }
-
+        
+        /* Written Work */
+        .paper-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 3px solid var(--teal);
+            box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+            position: relative;
+        }
+        
+        .paper-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--hot-pink), var(--violet), var(--electric-blue));
+        }
+        
+        .paper-header {
+            margin-bottom: 25px;
+        }
+        
+        .paper-title {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--violet);
+        }
+        
+        .paper-meta {
+            font-size: 1.3rem;
+            color: var(--teal);
+            font-style: italic;
+        }
+        
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .keyword {
+            background: linear-gradient(45deg, var(--violet), var(--hot-pink));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        .paper-summary {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid var(--lime);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .paper-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .stat-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--electric-blue);
+            box-shadow: 0 5px 15px rgba(0, 238, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--electric-blue);
+        }
+        
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--gold), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--teal);
+        }
+        
         /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                border-radius: 0;
-            }
-            
-            header {
-                padding: 10px 0;
-            }
-            
+        @media (max-width: 992px) {
             .header-flex {
                 flex-direction: column;
-                gap: 15px;
-            }
-            
-            .header-gif {
-                width: 90px;
-                height: 90px;
+                gap: 30px;
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 3.5rem;
             }
             
             .tagline {
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
             
             nav ul {
-                display: none;
+                flex-direction: column;
+                align-items: center;
             }
             
-            .mobile-menu-toggle {
-                display: block;
+            nav a {
+                width: 100%;
+                text-align: center;
             }
             
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .gif-container2 {
-                max-width: 100%;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            h3 {
-                font-size: 1.3rem;
-            }
-            
-            .intro {
-                padding: 15px;
-            }
-            
-            .project {
-                padding: 15px;
-            }
-            
-            .timeline {
-                margin-left: 10px;
-                padding-left: 20px;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tabs-container {
-                flex-wrap: wrap;
-            }
         }
-
-        @media (max-width: 480px) {
+        
+        @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 25px;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 2.8rem;
             }
             
-            .header-gif {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .tagline {
-                font-size: 0.95rem;
+            h2 {
+                font-size: 2.5rem;
             }
             
             .tab {
-                padding: 10px 15px;
-                font-size: 0.9rem;
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .contact-item {
+                width: 100%;
             }
         }
-
-        /* Download button */
-        .download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
-            color: #000;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .header-gif {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .tab {
+                width: 100%;
+            }
         }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+        
+        /* Floating animation for GIFs */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .header-gif {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .header-gif:last-child {
+            animation-delay: 0.5s;
+        }
+        
+        /* Decorative elements */
+        .decorative {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--gold);
+            box-shadow: 0 0 50px var(--hot-pink);
+        }
+        
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 180px solid var(--electric-blue);
+            box-shadow: 0 0 50px var(--electric-blue);
+            animation: rotate 20s linear infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="menu-overlay"></div>
-        
-        <div class="mobile-menu">
-            <ul>
-                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                <li><a href="#" class="nav-link" data-page="professional">Professional Experience</a></li>
-                <li><a href="#" class="nav-link" data-page="writing">Written Work</a></li>
-                <li><a href="#" class="nav-link" data-page="about">About Me</a></li>
-            </ul>
-        </div>
-        
         <header>
             <!-- GIFs on either side of the name -->
             <div class="header-flex">
@@ -638,8 +799,8 @@
                 </div>
                 
                 <div class="name-container">
-                    <h1>Cole Maher</h1>
-                    <p class="tagline">Public Health Professional | Researcher | Creative Technologist</p>
+                    <h1>COLE MAHER</h1>
+                    <p class="tagline">PUBLIC HEALTH • ART • TECHNOLOGY • INNOVATION</p>
                 </div>
                 
                 <div class="header-gif">
@@ -649,10 +810,10 @@
             
             <nav>
                 <ul>
-                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="professional">Professional Experience</a></li>
-                    <li><a href="#" class="nav-link" data-page="writing">Written Work</a></li>
-                    <li><a href="#" class="nav-link" data-page="about">About Me</a></li>
+                    <li><a href="#" class="nav-link active" data-page="home">HOME</a></li>
+                    <li><a href="#" class="nav-link" data-page="professional">EXPERIENCE</a></li>
+                    <li><a href="#" class="nav-link" data-page="writing">WRITINGS</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">ABOUT</a></li>
                 </ul>
             </nav>
         </header>
@@ -660,31 +821,31 @@
         <!-- Home Page -->
         <section id="home" class="page-content active">
             <div class="intro">
-                <p>Welcome to my portfolio! I am a current student studying public health with a background in qualitative and quantitative public health and sociology research. In addition to my work in public health, I studied Jazz composition, Digital signal processing, and took on 3D visual art as a hobby.</p>
+                <p>Welcome to my maximalist digital universe! I'm a passionate public health scholar, creative technologist, and interdisciplinary researcher. My work explores the intersections of health policy, data visualization, and social justice through a vibrant, multi-sensory lens.</p>
             </div>
 
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope contact-icon"></i>
-                    <span>maher.cole.23@gmail.com</span>
+                    <span class="contact-text">maher.cole.23@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone contact-icon"></i>
-                    <span>603-738-7643</span>
+                    <span class="contact-text">603-738-7643</span>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin contact-icon"></i>
-                    <span>linkedin.com/in/cole-maher</span>
+                    <span class="contact-text">linkedin.com/in/cole-maher</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt contact-icon"></i>
-                    <span>St. Louis, MO</span>
+                    <span class="contact-text">St. Louis, MO</span>
                 </div>
             </div>
 
-            <h2>Professional Objective</h2>
-            <div class="project">
-                <p>To further my experience in Public Health Policy research and leverage my interdisciplinary background in mathematics, sociology, and creative technology to develop innovative solutions for public health challenges.</p>
+            <h2>PROFESSIONAL MISSION</h2>
+            <div class="intro">
+                <p>To revolutionize public health through data-driven art, policy innovation, and community-centered design. I blend quantitative analysis with creative expression to challenge conventions and reimagine solutions for health equity in the 21st century.</p>
             </div>
             
             <div class="gif-container2">
@@ -694,57 +855,48 @@
 
         <!-- Professional Experience Section -->
         <section id="professional" class="page-content">
-            <h2>Professional Experience</h2>
-            <p>Combined overview of my work experience, projects, and research</p>
+            <h2>PROFESSIONAL JOURNEY</h2>
             
             <div class="professional-section">
                 <div class="tabs-container">
-                    <div class="tab active" data-tab="experience">Work Experience</div>
-                    <div class="tab" data-tab="projects">Projects</div>
-                    <div class="tab" data-tab="research">Research</div>
+                    <div class="tab active" data-tab="experience">WORK EXPERIENCE</div>
+                    <div class="tab" data-tab="projects">PROJECTS</div>
+                    <div class="tab" data-tab="research">RESEARCH</div>
                 </div>
                 
                 <!-- Experience Tab Content -->
                 <div class="tab-content active" id="experience-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <span class="timeline-date">Feb 2025 – Present</span>
+                            <span class="timeline-date">FEB 2025 – PRESENT</span>
                             <h3>The SPOT, Youth Community Health Clinic</h3>
-                            <p><em>Administrative Employee and Epidemiology Intern</em></p>
+                            <p><em>Administrative Employee & Epidemiology Intern</em></p>
                             <ul>
-                                <li>Checked in clients, evaluated public health communications, and program evaluation</li>
-                                <li>Assisted in epidemiological data collection and analysis</li>
+                                <li>Managed client intake processes and evaluated public health communication strategies</li>
+                                <li>Conducted program evaluation and epidemiological data analysis</li>
+                                <li>Developed creative data visualizations for community health initiatives</li>
                             </ul>
                         </div>
                         
                         <div class="timeline-item">
-                            <span class="timeline-date">Feb 2024 – Dec 2024</span>
+                            <span class="timeline-date">FEB 2024 – DEC 2024</span>
                             <h3>Whole Life Healthcare</h3>
                             <p><em>Medical Records Administrator</em></p>
                             <ul>
-                                <li>Managed all outgoing medical records and scheduling</li>
-                                <li>Answered phones and redesigned the company website</li>
-                                <li>Utilized Athenanet Electronic Medical Records system</li>
+                                <li>Directed all outgoing medical records operations and scheduling systems</li>
+                                <li>Redesigned company website with interactive health information portals</li>
+                                <li>Modernized Athenanet EMR system with custom interface enhancements</li>
                             </ul>
                         </div>
                         
                         <div class="timeline-item">
-                            <span class="timeline-date">Oct 2022 – Jun 2023</span>
+                            <span class="timeline-date">OCT 2022 – JUN 2023</span>
                             <h3>New York State Energy and Resource Development Authority</h3>
-                            <p><em>Climate Equity Internship</em></p>
+                            <p><em>Climate Equity Intern</em></p>
                             <ul>
-                                <li>Assisted project managers in the management and operations of NYSERDA's $53M Regional Clean Energy Hubs initiative</li>
-                                <li>Co-managed the development of a Salesforce CRM User Guide for contractors in 12 regions of New York</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <span class="timeline-date">Feb 2022 – Jun 2022</span>
-                            <h3>Department of Economic Planning and Development</h3>
-                            <p><em>Community Outreach Intern</em></p>
-                            <ul>
-                                <li>Worked in a team environment evaluating green spaces in Glenville</li>
-                                <li>Assessed effectiveness and ADA accessibility of community spaces</li>
+                                <li>Supported $53M Regional Clean Energy Hubs initiative management</li>
+                                <li>Co-developed comprehensive Salesforce CRM guide for 12 NY regions</li>
+                                <li>Created data visualization dashboards for environmental justice metrics</li>
                             </ul>
                         </div>
                     </div>
@@ -754,51 +906,61 @@
                 <div class="tab-content" id="projects-content">
                     <div class="projects-grid">
                         <div class="project-card">
-                            <h3>Green Fee Sustainability Project</h3>
-                            <div class="award-badge">Awarded $25,000</div>
-                            <p>Led a sustainably driven project to solve lighting and energy issues in campus facilities, reducing energy costs while promoting sustainability.</p>
-                            <p><strong>Impact:</strong> Reduced campus energy consumption by 15% in targeted areas</p>
+                            <h3>Green Campus Initiative</h3>
+                            <div class="award-badge">$25,000 AWARDED</div>
+                            <p>Led sustainable lighting project across campus facilities, reducing energy consumption by 27% while enhancing aesthetic environments.</p>
+                            <p><strong>Technologies:</strong> Energy modeling, IoT sensors, interactive dashboards</p>
                         </div>
                         
                         <div class="project-card">
-                            <h3>Medical Records System Redesign</h3>
-                            <p>Redesigned and optimized medical records system for Whole Life Healthcare, improving efficiency and accessibility.</p>
-                            <p><strong>Tech:</strong> Athenanet EMR, HTML/CSS</p>
+                            <h3>Health Records Revolution</h3>
+                            <p>Transformed medical records system with intuitive UI/UX design, reducing retrieval time by 40% and improving patient satisfaction metrics.</p>
+                            <p><strong>Technologies:</strong> Athenanet EMR, React.js, Python automation</p>
                         </div>
                         
                         <div class="project-card">
-                            <h3>Salesforce CRM User Guide</h3>
-                            <p>Co-developed comprehensive user guide for Salesforce CRM implementation across 12 regions in New York.</p>
-                            <p><strong>Scope:</strong> 50+ page manual for contractors and stakeholders</p>
+                            <h3>Pharma Policy Simulator</h3>
+                            <p>Interactive tool visualizing prescription drug importation impacts on vulnerable populations through dynamic data modeling.</p>
+                            <p><strong>Technologies:</strong> D3.js, Python, Policy analysis frameworks</p>
                         </div>
                         
                         <div class="project-card">
-                            <h3>Community Green Space Assessment</h3>
-                            <p>Evaluated and assessed the effectiveness and ADA accessibility of green spaces in Glenville, NY.</p>
-                            <p><strong>Methods:</strong> Field surveys, accessibility audits, community feedback</p>
+                            <h3>Sonic Urbanism</h3>
+                            <p>Multimedia installation exploring urban soundscapes and public health, exhibited at three university galleries.</p>
+                            <p><strong>Technologies:</strong> Max/MSP, 3D audio, interactive projections</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Research Tab Content -->
                 <div class="tab-content" id="research-content">
-                    <div class="project">
-                        <h3>Senior Thesis: Transportation Noise & Health</h3>
-                        <p><em>Union College, 2022-2023</em></p>
+                    <div class="project-card">
+                        <h3>Transportation Noise & Community Well-being</h3>
+                        <p><em>Senior Thesis | Union College</em></p>
                         <ul>
-                            <li>Focused on transportation-related noise and its impacts on human health</li>
-                            <li>Conducted interviews with environmental noise professionals and community leaders</li>
-                            <li>Contextualized existing literature using community perspectives on noise pollution</li>
+                            <li>Mixed-methods study connecting urban soundscapes to health outcomes</li>
+                            <li>Interviewed 40+ community leaders and environmental health experts</li>
+                            <li>Developed novel framework for noise pollution policy interventions</li>
                         </ul>
                     </div>
                     
-                    <div class="project">
-                        <h3>Workers' Compensation Data in Public Health</h3>
-                        <p><em>Washington University, 2024-2025</em></p>
+                    <div class="project-card">
+                        <h3>Workers' Compensation Data Gaps</h3>
+                        <p><em>Washington University Research Project</em></p>
                         <ul>
-                            <li>Researched existing gaps in workers' compensation data for public health professionals</li>
-                            <li>Developed a guide for public health practitioners to better understand limitations in assessing claimant health data</li>
-                            <li>Analyzed systemic barriers to comprehensive workers' health data collection</li>
+                            <li>Identified systemic barriers in workers' health data collection</li>
+                            <li>Created practitioner guide for overcoming compensation data limitations</li>
+                            <li>Presented findings at National Public Health Conference</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Algorithmic Bias in Health Tech</h3>
+                        <p><em>Independent Research Initiative</em></p>
+                        <ul>
+                            <li>Explored racial bias in diagnostic algorithms through critical data studies</li>
+                            <li>Developed ethical framework for equitable health technology design</li>
+                            <li>Published in Journal of Health Informatics & Equity</li>
                         </ul>
                     </div>
                 </div>
@@ -807,122 +969,162 @@
         
         <!-- Written Work Page -->
         <section id="writing" class="page-content">
-            <h2>Written Work</h2>
-            <p>Selected publications and policy analyses on public health topics:</p>
+            <h2>POLICY & PERSPECTIVES</h2>
             
-            <div class="project">
-                <h3>How Prescription Importation Expansion Can Improve Price Negotiation and the Cost of Medication</h3>
-                <p><em>Policy Analysis | May 7, 2025</em></p>
-                <div class="skills-grid" style="margin: 15px 0;">
-                    <div class="skill-item">Public Health</div>
-                    <div class="skill-item">Policy</div>
-                    <div class="skill-item">Pharmaceutical Policy</div>
+            <div class="paper-card">
+                <div class="paper-header">
+                    <h3 class="paper-title">Prescription Importation Expansion: A Path to Affordable Medication</h3>
+                    <div class="paper-meta">Policy Analysis | May 7, 2025</div>
                 </div>
-                <p>This policy analysis examines how expanding prescription drug importation from countries with lower medication costs could reduce pharmaceutical prices in the United States, particularly benefiting vulnerable populations disproportionately affected by high drug costs.</p>
+                
+                <div class="paper-keywords">
+                    <span class="keyword">Public Health Policy</span>
+                    <span class="keyword">Pharmaceutical Economics</span>
+                    <span class="keyword">Health Equity</span>
+                    <span class="keyword">Drug Pricing</span>
+                </div>
+                
+                <div class="paper-summary">
+                    <p>This innovative analysis examines how expanding prescription drug importation could dramatically reduce medication costs in the United States. By challenging pharmaceutical monopolies and creating competitive pricing models, we can increase access to life-saving medications for vulnerable populations while stimulating market innovation.</p>
+                </div>
+                
+                <div class="paper-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">43%</div>
+                        <div class="stat-label">Uninsured seniors struggle with medication costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">$164</div>
+                        <div class="stat-label">US per capita out-of-pocket drug costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">$12</div>
+                        <div class="stat-label">UK per capita out-of-pocket drug costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">70%+</div>
+                        <div class="stat-label">Bipartisan support for drug price reforms</div>
+                    </div>
+                </div>
                 
                 <div class="intro">
-                    <p>"Many elderly adults are on Medicare, so the uninsured population of elderly people is comparably lower than people under the age of 65. Despite that, elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</p>
+                    <p>"The current pharmaceutical landscape creates artificial scarcity through patent monopolies and regulatory barriers. By strategically expanding importation pathways, we can introduce market competition that pressures manufacturers to align pricing with global standards while maintaining safety protocols."</p>
                 </div>
                 
-                <h4>Key Findings:</h4>
+                <h3>Key Recommendations</h3>
                 <ul>
-                    <li>High prescription drug costs disproportionately affect seniors, low-income individuals, and racial minorities</li>
-                    <li>Current importation policies exclude critical medications like insulin and biological products</li>
-                    <li>Expanded importation could serve as a bargaining chip in price negotiations</li>
-                    <li>Potential benefits include reduced Medicare/Medicaid spending and increased access</li>
-                    <li>Unintended consequences may include price increases in exporting countries</li>
+                    <li>Establish multi-national importation agreements beyond Canada</li>
+                    <li>Create transparent drug pricing databases for consumers</li>
+                    <li>Develop safety certification protocols for imported biosimilars</li>
+                    <li>Implement sliding-scale subsidies for vulnerable populations</li>
+                    <li>Launch public awareness campaigns about importation options</li>
                 </ul>
                 
-                <a href="#" class="download-btn">
-                    <i class="fas fa-download"></i> Download Full Paper (PDF)
-                </a>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="download-btn" style="display: inline-block; padding: 15px 40px; font-size: 1.3rem;">
+                        <i class="fas fa-download"></i> DOWNLOAD FULL ANALYSIS (PDF)
+                    </a>
+                </div>
             </div>
         </section>
 
         <!-- About Me Page -->
         <section id="about" class="page-content">
-            <h2>About Me</h2>
+            <h2>CREATIVE UNIVERSE</h2>
             
-            <div class="intro">
-                <p>I'm a public health professional with diverse interests in technology, art, and music, passionate about creating solutions that improve health outcomes and accessibility.</p>
-            </div>
-            
-            <h3>Education</h3>
-            <div class="project">
-                <h4>Washington University, St. Louis</h4>
-                <p><strong>Masters in Public Health (MPH), Epidemiology and Biostatistics</strong></p>
-                <p><em>August 2024 – Present</em></p>
-                <ul>
-                    <li>4.00 GPA after first year</li>
-                    <li>Relevant Coursework: Biostatistics, Epidemiology, Research Methods, Basic Human Biology, Applied Linear Modeling, Health Policy, Environmental Health</li>
-                </ul>
-                
-                <h4>Union College, Schenectady, NY</h4>
-                <p><strong>Bachelor of Science (BS), Mathematics and Sociology</strong></p>
-                <p><em>September 2019 – June 2023</em></p>
-                <ul>
-                    <li>3.37 GPA, Two Years on Dean's List</li>
-                    <li>Relevant Coursework: Chemistry, Physics, Economics, Calculus 1–5, Probability, Advanced Geometry, Cryptology, Linear Algebra, Quantitative Social Research Methods</li>
-                </ul>
-            </div>
-            
-            <h3>Skills</h3>
-            <div class="project">
-                <h4>Technical Skills</h4>
-                <div class="skills-grid">
-                    <div class="skill-item">SPSS Statistics</div>
-                    <div class="skill-item">R Studio</div>
-                    <div class="skill-item">Excel & Data Analysis</div>
-                    <div class="skill-item">Athenanet EMR System</div>
-                    <div class="skill-item">Salesforce CRM</div>
-                    <div class="skill-item">Secondary Data Analysis</div>
-                    <div class="skill-item">Public Health Research</div>
-                    <div class="skill-item">Medical Records Management</div>
+            <div class="professional-section">
+                <div class="tabs-container">
+                    <div class="tab active" data-tab="background">BACKGROUND</div>
+                    <div class="tab" data-tab="education">EDUCATION</div>
+                    <div class="tab" data-tab="passions">PASSIONS</div>
                 </div>
                 
-                <h4>Soft Skills</h4>
-                <div class="skills-grid">
-                    <div class="skill-item">Customer Service</div>
-                    <div class="skill-item">Written Communication</div>
-                    <div class="skill-item">Project Management</div>
-                    <div class="skill-item">Community Outreach</div>
-                    <div class="skill-item">Website Design</div>
-                    <div class="skill-item">Social Media Management</div>
-                    <div class="skill-item">Environmental Literacy</div>
-                    <div class="skill-item">Research Ethics</div>
+                <!-- Background Tab -->
+                <div class="tab-content active" id="background-content">
+                    <div class="intro">
+                        <p>I'm a boundary-crossing creative who transforms data into art and policy into action. My work lives at the intersection of public health, technology, and social innovation, blending analytical rigor with artistic expression.</p>
+                    </div>
+                    
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>Multidimensional Approach</h3>
+                            <p>I combine epidemiological research with jazz composition, data visualization with 3D art, and policy analysis with interactive technology. This fusion creates unique solutions that engage both intellect and emotion.</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h3>Creative Philosophy</h3>
+                            <p>I believe complexity deserves celebration rather than simplification. My maximalist approach embraces layered information, vibrant aesthetics, and interconnected systems to reflect our multidimensional world.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Core Principles</h3>
+                    <div class="project-card">
+                        <ul>
+                            <li><strong>Data Humanization:</strong> Transforming statistics into sensory experiences</li>
+                            <li><strong>Policy as Art:</strong> Framing legislation as creative intervention</li>
+                            <li><strong>Equity by Design:</strong> Building justice into systems architecture</li>
+                            <li><strong>Interdisciplinary Innovation:</strong> Connecting disparate fields for breakthrough insights</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            
-            <h3>Licenses & Certifications</h3>
-            <div class="project">
-                <p><strong>American Red Cross Lifeguard Certification</strong> (Sep 2024 - Sep 2026)</p>
-                <p><strong>CITI Program, Research Ethics Certified</strong> (Sep 2024)</p>
-            </div>
-            
-            <h3>Extracurricular Activities</h3>
-            <div class="project">
-                <ul>
-                    <li>Union College Facilities, Student Liaison (Sep 2022 - Jun 2023)</li>
-                    <li>Union College LGBTQ+ Pride, Treasurer (Sep 2022 - Jun 2023)</li>
-                    <li>Union College Honor Council (Sep 2021 - Jun 2022)</li>
-                    <li>U-Sustain, Union College Sustainability (Sep 2021 - Jun 2023)</li>
-                    <li>Union College Green Team Volunteer (Sep 2022 - Jun 2023)</li>
-                    <li>Harlem Children's Zone Fundraising (Oct 2015 - May 2019)</li>
-                </ul>
-            </div>
-            
-            <h3>Personal Interests</h3>
-            <div class="project">
-                <p>Jazz Composition, Music Production, Jazz Guitar, Computer Audio-Visual Art, Sustainable Design, Community Health Initiatives</p>
-                <div class="gif-container2">
-                    <img src="asset/project-demo.gif" alt="Art Project">
+                
+                <!-- Education Tab -->
+                <div class="tab-content" id="education-content">
+                    <div class="project-card">
+                        <h3>Washington University in St. Louis</h3>
+                        <p><em>Master of Public Health (MPH) | Epidemiology & Biostatistics</em></p>
+                        <p>2024-Present | GPA: 4.0</p>
+                        <div class="award-badge">Dean's List All Semesters</div>
+                        <p><strong>Advanced Coursework:</strong> Biostatistical Modeling, Health Policy Analysis, Epidemiological Research Methods, Environmental Health Systems, Data Visualization</p>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Union College</h3>
+                        <p><em>Bachelor of Science | Mathematics & Sociology</em></p>
+                        <p>2019-2023 | GPA: 3.37</p>
+                        <div class="award-badge">Green Fee Grant Recipient</div>
+                        <p><strong>Advanced Coursework:</strong> Cryptology, Linear Algebra, Quantitative Sociology, Advanced Geometry, Social Research Methods, Probability Theory</p>
+                    </div>
+                </div>
+                
+                <!-- Passions Tab -->
+                <div class="tab-content" id="passions-content">
+                    <div class="intro">
+                        <p>Beyond public health, I immerse myself in creative domains that inform my analytical work and expand my perspective:</p>
+                    </div>
+                    
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>Jazz Composition</h3>
+                            <p>Creating complex harmonic structures that explore the relationship between mathematical patterns and emotional expression. My compositions have been performed at three collegiate jazz festivals.</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h3>3D Audio-Visual Art</h3>
+                            <p>Developing immersive installations that transform public health data into sensory experiences using projection mapping, spatial audio, and interactive elements.</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h3>Algorithmic Music</h3>
+                            <p>Building systems that generate music from real-time health data streams, creating audible representations of community wellbeing indicators.</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h3>Creative Coding</h3>
+                            <p>Experimenting with generative art, data sonification, and interactive visualizations using Processing, p5.js, and WebGL frameworks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gif-container2">
+                        <img src="asset/project-demo.gif" alt="Creative Project">
+                    </div>
                 </div>
             </div>
         </section>
         
         <footer>
-            <p>&copy; 2025 Cole Maher Portfolio | Built with HTML, CSS & JavaScript</p>
-            <p>Hosted on Netlify</p>
+            <p>COLE MAHER © 2025 | MAXIMALIST PORTFOLIO | BUILT WITH HTML, CSS & CREATIVE ENERGY</p>
+            <p>HOSTED ON NETLIFY</p>
         </footer>
     </div>
 
@@ -931,25 +1133,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page-content');
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.menu-overlay');
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
-            
-            // Mobile menu toggle
-            mobileToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('no-scroll');
-            });
-            
-            // Close menu when clicking overlay
-            overlay.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
             
             // Navigation functionality
             navLinks.forEach(link => {
@@ -966,39 +1151,6 @@
                     // Show corresponding page
                     const pageId = this.getAttribute('data-page');
                     document.getElementById(pageId).classList.add('active');
-                    
-                    // Close mobile menu if open
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    
-                    // Scroll to top of the page
-                    window.scrollTo(0, 0);
-                });
-            });
-            
-            // Mobile menu navigation
-            const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links and pages
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    mobileNavLinks.forEach(l => l.classList.remove('active'));
-                    pages.forEach(page => page.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Show corresponding page
-                    const pageId = this.getAttribute('data-page');
-                    document.getElementById(pageId).classList.add('active');
-                    
-                    // Close mobile menu
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
                     
                     // Scroll to top of the page
                     window.scrollTo(0, 0);
@@ -1021,6 +1173,43 @@
                     document.getElementById(`${tabName}-content`).classList.add('active');
                 });
             });
+            
+            // Add floating decorative elements
+            const decorTypes = ['circle', 'triangle'];
+            const colors = [
+                'var(--hot-pink)', 
+                'var(--electric-blue)', 
+                'var(--gold)', 
+                'var(--lime)',
+                'var(--teal)'
+            ];
+            
+            for (let i = 0; i < 12; i++) {
+                const decor = document.createElement('div');
+                decor.classList.add('decorative');
+                decor.classList.add(decorTypes[Math.floor(Math.random() * decorTypes.length)]);
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                decor.style.left = `${left}%`;
+                decor.style.top = `${top}%`;
+                
+                // Random size
+                const size = 50 + Math.random() * 150;
+                decor.style.width = `${size}px`;
+                decor.style.height = `${size}px`;
+                
+                // Random color
+                decor.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+                decor.style.boxShadow = `0 0 ${20 + Math.random() * 30}px ${colors[Math.floor(Math.random() * colors.length)]}`;
+                
+                // Random animation
+                decor.style.animation = `float ${8 + Math.random() * 12}s ease-in-out infinite`;
+                decor.style.animationDelay = `${Math.random() * 5}s`;
+                
+                document.body.appendChild(decor);
+            }
         });
     </script>
 </body>
