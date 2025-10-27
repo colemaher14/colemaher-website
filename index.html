@@ -1259,15 +1259,35 @@
             <p>"Many elderly adults are on Medicare, so the uninsured population of elderly people is comparably lower than people under the age of 65. Despite that, elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</p>
         </div>
         
-        <!-- Embedded PDF -->
+        <!-- Embedded PDF with better error handling -->
         <div class="embedded-content">
             <div class="embed-header">
                 <h4>Full Policy Analysis PDF</h4>
-                <a href="asset/pdfs/prescription_importation.pdf" class="file-btn" download>
-                    <i class="fas fa-download"></i> Download
-                </a>
+                <div>
+                    <a href="asset/pdfs/prescription_importation.pdf" class="file-btn" download>
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                    <button class="file-btn view-pdf-btn" data-pdf="prescription_importation">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                </div>
             </div>
-            <embed src="asset/pdfs/prescription_importation.pdf" type="application/pdf" class="pdf-embed">
+            <div class="pdf-container" id="pdf-prescription_importation">
+                <embed src="asset/pdfs/prescription_importation.pdf" type="application/pdf" class="pdf-embed">
+            </div>
+            <div class="pdf-fallback" style="display: none;">
+                <div style="text-align: center; padding: 40px; background: var(--card-bg); border-radius: 8px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 15px;"></i>
+                    <h4>PDF Preview Not Available</h4>
+                    <p>The PDF preview couldn't be loaded. This could be because:</p>
+                    <ul style="text-align: left; margin: 15px 0;">
+                        <li>The PDF file is still being prepared</li>
+                        <li>Your browser doesn't support PDF preview</li>
+                        <li>The file path is incorrect</li>
+                    </ul>
+                    <p>You can still download the file using the button above.</p>
+                </div>
+            </div>
         </div>
         
         <h4>Key Findings:</h4>
@@ -1436,11 +1456,29 @@
                 <span class="timeline-date">Senior Thesis | Union College | 2023</span>
             </div>
             <p>Qualitative research examining community perceptions of transportation noise and its health impacts, incorporating interviews with environmental professionals and neighborhood residents.</p>
-            <embed src="asset/pdfs/transportation_noise_thesis.pdf" type="application/pdf" class="pdf-embed">
+            <div class="pdf-container" id="pdf-transportation_noise">
+                <embed src="asset/pdfs/transportation_noise_thesis.pdf" type="application/pdf" class="pdf-embed">
+            </div>
+            <div class="pdf-fallback" style="display: none;">
+                <div style="text-align: center; padding: 40px; background: var(--card-bg); border-radius: 8px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 15px;"></i>
+                    <h4>PDF Preview Not Available</h4>
+                    <p>The PDF preview couldn't be loaded. This could be because:</p>
+                    <ul style="text-align: left; margin: 15px 0;">
+                        <li>The PDF file is still being prepared</li>
+                        <li>Your browser doesn't support PDF preview</li>
+                        <li>The file path is incorrect</li>
+                    </ul>
+                    <p>You can still download the file using the button below.</p>
+                </div>
+            </div>
             <div class="embed-controls">
                 <a href="asset/pdfs/transportation_noise_thesis.pdf" class="file-btn" download>
                     <i class="fas fa-download"></i> Download PDF
                 </a>
+                <button class="file-btn view-pdf-btn" data-pdf="transportation_noise">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
             </div>
         </div>
 
@@ -1451,16 +1489,33 @@
                 <span class="timeline-date">Research Paper | Washington University | 2024</span>
             </div>
             <p>Analysis of systemic limitations in workers' compensation data systems and their implications for occupational health surveillance and policy development.</p>
-            <embed src="asset/pdfs/workers_compensation_research.pdf" type="application/pdf" class="pdf-embed">
+            <div class="pdf-container" id="pdf-workers_compensation">
+                <embed src="asset/pdfs/workers_compensation_research.pdf" type="application/pdf" class="pdf-embed">
+            </div>
+            <div class="pdf-fallback" style="display: none;">
+                <div style="text-align: center; padding: 40px; background: var(--card-bg); border-radius: 8px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 15px;"></i>
+                    <h4>PDF Preview Not Available</h4>
+                    <p>The PDF preview couldn't be loaded. This could be because:</p>
+                    <ul style="text-align: left; margin: 15px 0;">
+                        <li>The PDF file is still being prepared</li>
+                        <li>Your browser doesn't support PDF preview</li>
+                        <li>The file path is incorrect</li>
+                    </ul>
+                    <p>You can still download the file using the button below.</p>
+                </div>
+            </div>
             <div class="embed-controls">
                 <a href="asset/pdfs/workers_compensation_research.pdf" class="file-btn" download>
                     <i class="fas fa-download"></i> Download PDF
                 </a>
+                <button class="file-btn view-pdf-btn" data-pdf="workers_compensation">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
             </div>
         </div>
     </div>
 </section>
-
         <!-- Creative Work Page -->
         <section id="creative" class="page-content">
             <h2>Creative Work</h2>
