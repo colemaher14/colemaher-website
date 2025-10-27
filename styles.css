@@ -1,80 +1,267 @@
-body {
-    font-family: 'Lato', sans-serif;
-    line-height: 1.6;
-    color: #ffffff;
-    background-color: #121212;
+/* Reset and Base Styles */
+* {
     margin: 0;
-    padding: 20px;
-    min-height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent: #00ff00;
+    --accent-secondary: #0080ff;
+    --border: #333333;
+    --pixel-size: 2px;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2.5rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px var(--accent-secondary);
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.nav-btn {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    object-fit: cover;
+}
+
+.hero-text h2 {
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Projects Grid */
+.projects-grid, .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.project-title {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.project-date {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.download-btn {
+    background: var(--accent-secondary);
+    color: var(--bg-primary);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+/* About Section */
+.about-content {
     max-width: 800px;
     margin: 0 auto;
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
+.about-text h2 {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
 }
 
-h1 {
-    color: #64b5f6;
+.contact-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent-secondary);
 }
 
-h2 {
-    color: #4fc3f7;
-}
-
-.intro {
-    background: #2d2d2d;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    font-style: italic;
-    border-left: 4px solid #64b5f6;
-    color: #e0e0e0;
-}
-
-.project {
-    margin-bottom: 30px;
-}
-
-/* GIF Container Styles */
-.gif-container {
-  max-width: 800px;
-  margin: 0 auto 30px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.gif-container img {
-  width: 100%;
-  display: block;
-}
-
-footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #b0bec5;
-    font-size: 0.9em;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
+/* Responsive Design */
+@media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 0 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-btn {
+        width: 200px;
+    }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .projects-grid, .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.2rem;
     }
 }
