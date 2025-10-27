@@ -8,47 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-white: #ffffff;
-            --secondary-white: #f0f0f0;
-            --accent-white: #e0e0e0;
-            --dark-bg: #0a0a0a;
-            --container-bg: #111111;
-            --card-bg: #1a1a1a;
-            --text-light: #ffffff;
-            --text-muted: #888888;
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --text-white: #ffffff;
+            --text-grey: #cccccc;
             --border-color: #333333;
         }
         
         body {
             font-family: 'Lato', sans-serif;
             line-height: 1.6;
-            color: var(--text-light);
-            background-color: var(--dark-bg);
+            color: var(--text-white);
+            background-color: var(--bg-dark);
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(30, 30, 30, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(40, 40, 40, 0.1) 0%, transparent 20%);
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: var(--container-bg);
+            background: var(--bg-dark);
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-            position: relative;
-            z-index: 1;
-            border: 1px solid var(--border-color);
         }
 
-        /* Header styles with GIFs */
         header {
             text-align: center;
             margin-bottom: 30px;
-            position: relative;
             padding: 20px 0;
         }
 
@@ -65,14 +50,8 @@
             height: 100px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
             flex-shrink: 0;
-            border: 2px solid var(--primary-white);
-            transition: transform 0.3s ease;
-        }
-
-        .header-gif:hover {
-            transform: scale(1.05);
+            border: 2px solid white;
         }
 
         .header-gif img {
@@ -81,85 +60,56 @@
             object-fit: cover;
         }
 
-        .name-container {
-            flex-grow: 0;
-            text-align: center;
-        }
-
         h1 {
-            color: var(--primary-white);
+            color: white;
             margin: 0;
             font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             font-family: 'Playfair Display', serif;
         }
 
         .tagline {
-            color: var(--secondary-white);
+            color: var(--text-grey);
             font-style: italic;
             margin-top: 5px;
             font-size: 1.1rem;
         }
 
         h2 {
-            color: var(--primary-white);
+            color: white;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
             margin-top: 30px;
             font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
         }
 
         h3 {
-            color: var(--primary-white);
+            color: white;
             font-size: 1.4rem;
             margin-top: 0;
         }
 
         .intro {
-            background: var(--card-bg);
+            background: var(--bg-card);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
-            font-style: italic;
-            border-left: 4px solid var(--primary-white);
-            color: var(--secondary-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .intro:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-white), var(--accent-white));
+            border-left: 4px solid white;
+            color: var(--text-grey);
         }
 
         .project {
             margin-bottom: 30px;
-            background: var(--card-bg);
+            background: var(--bg-card);
             padding: 20px;
             border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--border-color);
         }
 
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            border-color: var(--accent-white);
-        }
-
-        /* Professional Experience Section */
         .professional-section {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             border: 1px solid var(--border-color);
         }
 
@@ -176,37 +126,28 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            color: var(--text-light);
+            color: white;
             border: 1px solid var(--border-color);
         }
 
-        .tab:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
         .tab.active {
-            background: var(--primary-white);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            background: white;
+            color: black;
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* Timeline for experience */
         .timeline {
             position: relative;
             margin: 40px 0 0 20px;
             padding-left: 30px;
-            border-left: 2px solid var(--primary-white);
+            border-left: 2px solid white;
         }
 
         .timeline-item {
@@ -222,18 +163,17 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--primary-white);
-            border: 2px solid var(--accent-white);
+            background: white;
+            border: 2px solid var(--text-grey);
         }
 
         .timeline-date {
-            color: var(--secondary-white);
+            color: var(--text-grey);
             font-weight: 700;
             margin-bottom: 5px;
             display: block;
         }
 
-        /* Skills grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -245,11 +185,10 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 12px;
             border-radius: 5px;
-            border-left: 3px solid var(--primary-white);
-            color: var(--text-light);
+            border-left: 3px solid white;
+            color: white;
         }
 
-        /* Project grid for My Projects page */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -258,32 +197,15 @@
         }
 
         .project-card {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border-radius: 8px;
             padding: 20px;
-            transition: transform 0.3s ease;
             border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            background: #222;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-white);
-        }
-
-        .project-card h3 {
-            margin-top: 0;
-            flex-grow: 1;
-            color: var(--primary-white);
-        }
-
-        /* Award badge */
         .award-badge {
-            background: var(--primary-white);
-            color: var(--dark-bg);
+            background: white;
+            color: black;
             padding: 5px 10px;
             border-radius: 4px;
             font-weight: bold;
@@ -291,37 +213,11 @@
             margin-bottom: 10px;
         }
 
-        /* GIF Container Styles */
-        .gif-container {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-            position: relative;
-        }
-
-        .gif-container:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-white), var(--accent-white));
-        }
-
-        .gif-container img {
-            width: 100%;
-            display: block;
-        }
-
         .gif-container2 {
             max-width: 400px;
             margin: 0 auto 20px;
             border-radius: 2px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.7);
             border: 1px solid var(--border-color);
         }
 
@@ -333,7 +229,7 @@
         footer {
             text-align: center;
             margin-top: 40px;
-            color: var(--text-muted);
+            color: var(--text-grey);
             font-size: 0.9em;
             padding: 20px 0;
             border-top: 1px solid var(--border-color);
@@ -354,15 +250,10 @@
         }
 
         .contact-icon {
-            color: var(--primary-white);
+            color: white;
             font-size: 1.2rem;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation Styles */
         nav {
             margin-top: 20px;
             margin-bottom: 10px;
@@ -380,129 +271,26 @@
 
         nav a {
             text-decoration: none;
-            color: var(--primary-white);
+            color: white;
             font-weight: 600;
             padding: 10px 18px;
             border-radius: 30px;
-            transition: all 0.3s ease;
             border: 1px solid var(--border-color);
-            display: block;
-            background: rgba(30, 30, 30, 0.7);
-            font-size: 1rem;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: var(--primary-white);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: var(--primary-white);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Content sections */
         .page-content {
             display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-content.active {
             display: block;
         }
 
-        /* Floating animation for GIFs */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .header-gif {
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        .header-gif:last-child {
-            animation-delay: 0.5s;
-        }
-
-        /* Enhanced Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--primary-white);
-            font-size: 1.8rem;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 280px;
-            height: 100%;
-            background: var(--container-bg);
-            z-index: 99;
-            transition: all 0.4s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            padding: 70px 20px 20px;
-            overflow-y: auto;
-            border-left: 1px solid var(--border-color);
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu ul {
-            flex-direction: column;
-            gap: 10px;
-            padding: 0;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 12px 15px;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--primary-white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .mobile-menu a:hover, .mobile-menu a.active {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--accent-white);
-        }
-
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 98;
-            display: none;
-        }
-
-        .menu-overlay.active {
-            display: block;
-        }
-
-        /* NEW: Creative Work Section Styles */
         .creative-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -511,23 +299,9 @@
         }
 
         .creative-item {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border-radius: 8px;
             padding: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .creative-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-white);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-        }
-
-        .creative-media {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 15px;
             border: 1px solid var(--border-color);
         }
 
@@ -540,24 +314,14 @@
 
         .file-btn {
             background: rgba(255, 255, 255, 0.1);
-            color: var(--accent-white);
-            border: 1px solid var(--primary-white);
+            color: white;
+            border: 1px solid white;
             padding: 8px 15px;
             border-radius: 20px;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        .file-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
-
-        /* NEW: Project management improvements */
         .project-filters {
             display: flex;
             gap: 10px;
@@ -568,27 +332,30 @@
         .filter-btn {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--border-color);
-            color: var(--text-light);
+            color: white;
             padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .filter-btn.active, .filter-btn:hover {
+        .filter-btn.active {
             background: rgba(255, 255, 255, 0.2);
-            border-color: var(--primary-white);
         }
 
-        /* Mobile responsiveness */
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
-                border-radius: 0;
-            }
-            
-            header {
-                padding: 10px 0;
             }
             
             .header-flex {
@@ -605,16 +372,8 @@
                 font-size: 2.2rem;
             }
             
-            .tagline {
-                font-size: 1rem;
-            }
-            
             nav ul {
                 display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: block;
             }
             
             .projects-grid, .creative-grid {
@@ -624,111 +383,12 @@
             .gif-container2 {
                 max-width: 100%;
             }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            h3 {
-                font-size: 1.3rem;
-            }
-            
-            .intro {
-                padding: 15px;
-            }
-            
-            .project {
-                padding: 15px;
-            }
-            
-            .timeline {
-                margin-left: 10px;
-                padding-left: 20px;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tabs-container {
-                flex-wrap: wrap;
-            }
-
-            /* NEW: Mobile adjustments for creative section */
-            .file-downloads {
-                flex-direction: column;
-            }
-            
-            .file-btn {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .header-gif {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .tagline {
-                font-size: 0.95rem;
-            }
-            
-            .tab {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Download button */
-        .download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--primary-white);
-            color: var(--dark-bg);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="menu-overlay"></div>
-        
-        <div class="mobile-menu">
-            <ul>
-                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                <li><a href="#" class="nav-link" data-page="professional">Professional Experience</a></li>
-                <li><a href="#" class="nav-link" data-page="writing">Written Work</a></li>
-                <li><a href="#" class="nav-link" data-page="creative">Creative Work</a></li>
-                <li><a href="#" class="nav-link" data-page="about">About Me</a></li>
-            </ul>
-        </div>
-        
         <header>
-            <!-- GIFs on either side of the name -->
             <div class="header-flex">
                 <div class="header-gif">
                     <img src="asset/Gif2.gif" alt="Decorative Art GIF">
@@ -857,34 +517,6 @@
                                 <li>Managed user guide documentation for Salesforce CRM platform</li>
                             </ul>
                         </div>
-                        
-                        <div class="timeline-item">
-                            <span class="timeline-date">May 2021 – Sep 2021</span>
-                            <h3>New Castle, NH DPW</h3>
-                            <p><em>Park Manager</em></p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <span class="timeline-date">Mar 2021 – Jun 2021</span>
-                            <h3>Town of Glenville NY</h3>
-                            <p><em>Community Worker in Office of Economic Development</em></p>
-                            <ul>
-                                <li>Performed environmental and social accessibility assessments on parks, playgrounds, and public elementary schools</li>
-                                <li>Focused on equitable access and sustainable planning</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <span class="timeline-date">Nov 2020 – Feb 2021</span>
-                            <h3>UPS</h3>
-                            <p><em>Delivery Driver Helper</em></p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <span class="timeline-date">Apr 2017 – Sep 2017</span>
-                            <h3>City of Portsmouth, NH</h3>
-                            <p><em>Lifeguard</em></p>
-                        </div>
                     </div>
                 </div>
                 
@@ -908,12 +540,6 @@
                             <h3>Salesforce CRM User Guide</h3>
                             <p>Co-developed comprehensive user guide for Salesforce CRM implementation across 12 regions in New York.</p>
                             <p><strong>Scope:</strong> 50+ page manual for contractors and stakeholders</p>
-                        </div>
-                        
-                        <div class="project-card">
-                            <h3>Community Green Space Assessment</h3>
-                            <p>Evaluated and assessed the effectiveness and ADA accessibility of green spaces in Glenville, NY.</p>
-                            <p><strong>Methods:</strong> Field surveys, accessibility audits, community feedback</p>
                         </div>
                     </div>
                 </div>
@@ -977,7 +603,7 @@
             </div>
         </section>
 
-        <!-- NEW: Creative Work Page -->
+        <!-- Creative Work Page -->
         <section id="creative" class="page-content">
             <h2>Creative Work</h2>
             <p>Artistic projects, music compositions, and creative technology experiments:</p>
@@ -1007,9 +633,6 @@
                         <a href="asset/audio/jazz_composition_1.wav" class="file-btn" download>
                             <i class="fas fa-file-audio"></i> WAV (15.7 MB)
                         </a>
-                        <a href="asset/pdfs/jazz_scores.pdf" class="file-btn" download>
-                            <i class="fas fa-file-pdf"></i> Sheet Music
-                        </a>
                     </div>
                 </div>
                 
@@ -1026,49 +649,6 @@
                     <div class="file-downloads">
                         <a href="asset/videos/3d_art_process.mp4" class="file-btn" download>
                             <i class="fas fa-video"></i> Process Video (12.4 MB)
-                        </a>
-                        <a href="asset/images/3d_art_collection.zip" class="file-btn" download>
-                            <i class="fas fa-file-archive"></i> Image Collection
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="creative-item" data-category="tech">
-                    <h3>Interactive Audio Visualizer</h3>
-                    <p><em>MAX/MSP real-time audio visualization tool</em></p>
-                    
-                    <div class="gif-container2">
-                        <img src="asset/audio-viz-demo.gif" alt="Audio Visualizer Demo">
-                    </div>
-                    
-                    <p>An interactive tool built in MAX/MSP that creates real-time visual representations of audio input, exploring the relationship between sound and visual form.</p>
-                    
-                    <div class="file-downloads">
-                        <a href="asset/max-projects/audio_visualizer.maxpat" class="file-btn" download>
-                            <i class="fas fa-code"></i> MAX Patch
-                        </a>
-                        <a href="asset/pdfs/visualizer_guide.pdf" class="file-btn" download>
-                            <i class="fas fa-file-pdf"></i> User Guide
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="creative-item" data-category="music">
-                    <h3>Digital Signal Processing Experiments</h3>
-                    <p><em>Audio processing and synthesis explorations</em></p>
-                    
-                    <div class="gif-container2">
-                        <img src="asset/dsp-demo.gif" alt="DSP Demo">
-                    </div>
-                    
-                    <p>Experiments in digital signal processing, creating custom audio effects and synthesizers using various programming environments.</p>
-                    
-                    <div class="file-downloads">
-                        <a href="asset/audio/dsp_examples.zip" class="file-btn" download>
-                            <i class="fas fa-file-audio"></i> Audio Examples
-                        </a>
-                        <a href="asset/pdfs/dsp_techniques.pdf" class="file-btn" download>
-                            <i class="fas fa-file-pdf"></i> Technical Notes
                         </a>
                     </div>
                 </div>
@@ -1092,14 +672,6 @@
                     <li>4.00 GPA after first year</li>
                     <li>Relevant Coursework: Biostatistics, Epidemiology, Research Methods, Basic Human Biology, Applied Linear Modeling, Health Policy, Environmental Health</li>
                 </ul>
-                
-                <h4>Union College, Schenectady, NY</h4>
-                <p><strong>Bachelor of Science (BS), Mathematics and Sociology</strong></p>
-                <p><em>September 2019 – June 2023</em></p>
-                <ul>
-                    <li>3.37 GPA, Two Years on Dean's List</li>
-                    <li>Relevant Coursework: Chemistry, Physics, Economics, Calculus 1–5, Probability, Advanced Geometry, Cryptology, Linear Algebra, Quantitative Social Research Methods</li>
-                </ul>
             </div>
             
             <h3>Skills</h3>
@@ -1111,171 +683,56 @@
                     <div class="skill-item">Excel & Data Analysis</div>
                     <div class="skill-item">Athenanet EMR System</div>
                     <div class="skill-item">Salesforce CRM</div>
-                    <div class="skill-item">Secondary Data Analysis</div>
-                    <div class="skill-item">Public Health Research</div>
-                    <div class="skill-item">Medical Records Management</div>
                     <div class="skill-item">MAX/MSP</div>
-                    <div class="skill-item">Digital Audio Workstations</div>
-                    <div class="skill-item">3D Modeling</div>
                     <div class="skill-item">HTML/CSS</div>
-                </div>
-                
-                <h4>Soft Skills</h4>
-                <div class="skills-grid">
-                    <div class="skill-item">Customer Service</div>
-                    <div class="skill-item">Written Communication</div>
-                    <div class="skill-item">Project Management</div>
-                    <div class="skill-item">Community Outreach</div>
-                    <div class="skill-item">Website Design</div>
-                    <div class="skill-item">Social Media Management</div>
-                    <div class="skill-item">Environmental Literacy</div>
-                    <div class="skill-item">Research Ethics</div>
-                </div>
-            </div>
-            
-            <h3>Licenses & Certifications</h3>
-            <div class="project">
-                <p><strong>American Red Cross Lifeguard Certification</strong> (Sep 2024 - Sep 2026)</p>
-                <p><strong>CITI Program, Research Ethics Certified</strong> (Sep 2024)</p>
-            </div>
-            
-            <h3>Extracurricular Activities</h3>
-            <div class="project">
-                <ul>
-                    <li>Union College Facilities, Student Liaison (Sep 2022 - Jun 2023)</li>
-                    <li>Union College LGBTQ+ Pride, Treasurer (Sep 2022 - Jun 2023)</li>
-                    <li>Union College Honor Council (Sep 2021 - Jun 2022)</li>
-                    <li>U-Sustain, Union College Sustainability (Sep 2021 - Jun 2023)</li>
-                    <li>Union College Green Team Volunteer (Sep 2022 - Jun 2023)</li>
-                    <li>Harlem Children's Zone Fundraising (Oct 2015 - May 2019)</li>
-                </ul>
-            </div>
-            
-            <h3>Personal Interests</h3>
-            <div class="project">
-                <p>Jazz Composition, Music Production, Jazz Guitar, Computer Audio-Visual Art, Sustainable Design, Community Health Initiatives</p>
-                <div class="gif-container2">
-                    <img src="asset/project-demo.gif" alt="Art Project">
                 </div>
             </div>
         </section>
         
         <footer>
-            <p>&copy; 2025 Cole Maher Portfolio | Built with HTML, CSS & JavaScript</p>
-            <p>Hosted on Netlify</p>
+            <p>&copy; 2025 Cole Maher Portfolio</p>
         </footer>
     </div>
 
     <script>
-        // Page navigation functionality
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page-content');
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.menu-overlay');
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
-            
-            // NEW: Creative work filter functionality
             const filterBtns = document.querySelectorAll('.filter-btn');
             const creativeItems = document.querySelectorAll('.creative-item');
             
-            // Mobile menu toggle
-            mobileToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('no-scroll');
-            });
-            
-            // Close menu when clicking overlay
-            overlay.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
-            
-            // Navigation functionality
+            // Navigation
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Remove active class from all links and pages
                     navLinks.forEach(l => l.classList.remove('active'));
                     pages.forEach(page => page.classList.remove('active'));
-                    
-                    // Add active class to clicked link
                     this.classList.add('active');
-                    
-                    // Show corresponding page
                     const pageId = this.getAttribute('data-page');
                     document.getElementById(pageId).classList.add('active');
-                    
-                    // Close mobile menu if open
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    
-                    // Scroll to top of the page
                     window.scrollTo(0, 0);
                 });
             });
             
-            // Mobile menu navigation
-            const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links and pages
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    mobileNavLinks.forEach(l => l.classList.remove('active'));
-                    pages.forEach(page => page.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Show corresponding page
-                    const pageId = this.getAttribute('data-page');
-                    document.getElementById(pageId).classList.add('active');
-                    
-                    // Close mobile menu
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    
-                    // Scroll to top of the page
-                    window.scrollTo(0, 0);
-                });
-            });
-            
-            // Tab functionality
+            // Tabs
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const tabName = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs and tab contents
                     tabs.forEach(t => t.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
                     this.classList.add('active');
-                    
-                    // Show corresponding tab content
                     document.getElementById(`${tabName}-content`).classList.add('active');
                 });
             });
             
-            // NEW: Creative work filter functionality
+            // Filters
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const filter = this.getAttribute('data-filter');
-                    
-                    // Update active filter button
                     filterBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Filter creative items
                     creativeItems.forEach(item => {
                         if (filter === 'all' || item.getAttribute('data-category') === filter) {
                             item.style.display = 'block';
