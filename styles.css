@@ -34,7 +34,7 @@ body {
     margin: 0 auto;
     background: var(--container-bg);
     padding: 40px;
-    border-radius: 15px;
+    border-radius: 4px;
     box-shadow: 0 0 50px rgba(0,0,0,0.6);
     position: relative;
     z-index: 1;
@@ -65,7 +65,7 @@ header {
 .header-gif {
     width: 120px;
     height: 120px;
-    border-radius: 50%;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.6);
     flex-shrink: 0;
@@ -87,7 +87,7 @@ header {
     right: -2px;
     bottom: -2px;
     background: linear-gradient(45deg, transparent, var(--primary-blue), transparent);
-    border-radius: 50%;
+    border-radius: 4px;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -106,7 +106,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 4px;
 }
 
 .name-container {
@@ -194,7 +194,7 @@ h3 {
 .intro {
     background: #2d2d2d;
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 4px;
     margin-bottom: 40px;
     font-style: italic;
     border-left: 4px solid var(--primary-blue);
@@ -221,7 +221,7 @@ h3 {
     margin-bottom: 40px;
     background: var(--card-bg);
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 4px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #333;
     opacity: 0;
@@ -261,7 +261,7 @@ h3 {
 /* Professional Experience Section */
 .professional-section {
     background: #252525;
-    border-radius: 15px;
+    border-radius: 4px;
     padding: 30px;
     margin-bottom: 50px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.4);
@@ -280,7 +280,7 @@ h3 {
 .tab {
     padding: 15px 30px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: 600;
@@ -362,7 +362,7 @@ h3 {
     left: -46px;
     width: 16px;
     height: 16px;
-    border-radius: 50%;
+    border-radius: 4px;
     background: var(--primary-blue);
     border: 3px solid var(--accent-blue);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
@@ -393,7 +393,7 @@ h3 {
 .skill-item {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 4px;
     border-left: 4px solid var(--primary-blue);
     transition: all 0.3s ease;
     opacity: 0;
@@ -421,7 +421,7 @@ h3 {
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 25px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #333;
@@ -454,7 +454,7 @@ h3 {
     background: var(--primary-blue);
     color: #000;
     padding: 8px 15px;
-    border-radius: 6px;
+    border-radius: 4px;
     font-weight: bold;
     display: inline-block;
     margin-bottom: 15px;
@@ -471,7 +471,7 @@ h3 {
 .gif-container {
     max-width: 900px;
     margin: 0 auto 40px;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.6);
     position: relative;
@@ -502,7 +502,7 @@ h3 {
 .gif-container2 {
     max-width: 500px;
     margin: 0 auto 30px;
-    border-radius: 4px;
+    border-radius: 0px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     border: 1px solid #333;
@@ -546,7 +546,7 @@ footer {
     gap: 12px;
     padding: 12px 20px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
+    border-radius: 4px;
     transition: all 0.3s ease;
     opacity: 0;
     animation: fadeInUp 0.6s ease forwards;
@@ -598,7 +598,7 @@ nav a {
     color: var(--text-light);
     font-weight: 600;
     padding: 12px 25px;
-    border-radius: 30px;
+    border-radius: 4px;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid transparent;
     display: block;
@@ -693,7 +693,7 @@ nav a.active {
 .mobile-menu a {
     display: block;
     padding: 15px 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     background: rgba(255, 255, 255, 0.1);
     color: var(--primary-blue);
     text-decoration: none;
@@ -732,7 +732,7 @@ nav a.active {
 
 .creative-item {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 25px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #333;
@@ -753,7 +753,7 @@ nav a.active {
 
 .creative-media {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-bottom: 20px;
     border: 1px solid #444;
     transition: transform 0.5s ease;
@@ -775,7 +775,7 @@ nav a.active {
     color: var(--accent-blue);
     border: 1px solid var(--primary-blue);
     padding: 10px 18px;
-    border-radius: 25px;
+    border-radius: 4px;
     text-decoration: none;
     font-size: 0.9rem;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -821,7 +821,7 @@ nav a.active {
     border: 1px solid #444;
     color: var(--text-light);
     padding: 12px 20px;
-    border-radius: 25px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: 600;
@@ -846,7 +846,7 @@ nav a.active {
     background: var(--primary-blue);
     color: #000;
     text-decoration: none;
-    border-radius: 35px;
+    border-radius: 4px;
     font-weight: bold;
     margin-top: 20px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -886,7 +886,7 @@ nav a.active {
     color: #000;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -911,7 +911,7 @@ nav a.active {
 /* NEW: Embedded Content Styles */
 .embedded-content {
     margin: 25px 0;
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
@@ -935,7 +935,7 @@ nav a.active {
     width: 100%;
     background: var(--card-bg);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     border: 1px solid #333;
 }
 
@@ -948,7 +948,7 @@ nav a.active {
 .substack-embed {
     background: var(--card-bg);
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 4px;
     border: 1px solid #333;
     margin: 25px 0;
     transition: all 0.3s ease;
@@ -966,7 +966,7 @@ nav a.active {
     margin: 15px 0;
     background: rgba(255, 255, 255, 0.05);
     padding: 15px 20px;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 4px 4px 0;
 }
 
 .substack-meta {
@@ -992,7 +992,7 @@ nav a.active {
     background: rgba(255, 255, 255, 0.2);
     color: var(--primary-blue);
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 4px;
     transition: all 0.3s ease;
     margin-top: 15px;
     border: 1px solid var(--primary-blue);
