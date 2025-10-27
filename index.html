@@ -1649,175 +1649,215 @@
             <p>Hosted on Netlify</p>
         </footer>
     </div>
-
-    <script>
-        // Page navigation functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const pages = document.querySelectorAll('.page-content');
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.menu-overlay');
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const scrollToTopBtn = document.querySelector('.scroll-to-top');
-            
-            // Creative work filter functionality
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const creativeItems = document.querySelectorAll('.creative-item');
-            
-            // Scroll to top functionality
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
-                }
+<script>
+    // Page navigation functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-content');
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.menu-overlay');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const scrollToTopBtn = document.querySelector('.scroll-to-top');
+        
+        // Creative work filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const creativeItems = document.querySelectorAll('.creative-item');
+        
+        // Scroll to top functionality
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-            
-            scrollToTopBtn.addEventListener('click', function() {
+        });
+        
+        // Mobile menu toggle
+        mobileToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+        
+        // Close menu when clicking overlay
+        overlay.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+        
+        // Navigation functionality
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(l => l.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu if open
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                
+                // Scroll to top of the page
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             });
-            
-            // Mobile menu toggle
-            mobileToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('no-scroll');
-            });
-            
-            // Close menu when clicking overlay
-            overlay.addEventListener('click', function() {
+        });
+        
+        // Mobile menu navigation
+        const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(l => l.classList.remove('active'));
+                mobileNavLinks.forEach(l => l.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu
                 mobileMenu.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.classList.remove('no-scroll');
-            });
-            
-            // Navigation functionality
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links and pages
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    pages.forEach(page => page.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Show corresponding page
-                    const pageId = this.getAttribute('data-page');
-                    document.getElementById(pageId).classList.add('active');
-                    
-                    // Close mobile menu if open
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    
-                    // Scroll to top of the page
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                
+                // Scroll to top of the page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
-            });
-            
-            // Mobile menu navigation
-            const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links and pages
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    mobileNavLinks.forEach(l => l.classList.remove('active'));
-                    pages.forEach(page => page.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Show corresponding page
-                    const pageId = this.getAttribute('data-page');
-                    document.getElementById(pageId).classList.add('active');
-                    
-                    // Close mobile menu
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    
-                    // Scroll to top of the page
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Tab functionality
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabName = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs and tab contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // Show corresponding tab content
-                    document.getElementById(`${tabName}-content`).classList.add('active');
-                });
-            });
-            
-            // Creative work filter functionality
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // Update active filter button
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter creative items
-                    creativeItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                            item.style.display = 'block';
-                            // Re-trigger animation
-                            item.style.animation = 'none';
-                            setTimeout(() => {
-                                item.style.animation = 'fadeInUp 0.6s ease forwards';
-                            }, 10);
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Add intersection observer for scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all animated elements
-            document.querySelectorAll('.project, .skill-item, .project-card, .creative-item').forEach(el => {
-                observer.observe(el);
             });
         });
-    </script>
+        
+        // Tab functionality
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and tab contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding tab content
+                document.getElementById(`${tabName}-content`).classList.add('active');
+            });
+        });
+        
+        // Creative work filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active filter button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter creative items
+                creativeItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        // Re-trigger animation
+                        item.style.animation = 'none';
+                        setTimeout(() => {
+                            item.style.animation = 'fadeInUp 0.6s ease forwards';
+                        }, 10);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.querySelectorAll('.project, .skill-item, .project-card, .creative-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // PDF Embed Error Handling Functionality
+        function setupPDFEmbeds() {
+            const pdfEmbeds = document.querySelectorAll('embed[type="application/pdf"]');
+            pdfEmbeds.forEach(embed => {
+                embed.addEventListener('error', function() {
+                    const parent = this.parentElement;
+                    parent.innerHTML = `
+                        <div style="text-align: center; padding: 40px; background: var(--card-bg); border-radius: 8px;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 15px;"></i>
+                            <h4>PDF Preview Not Available</h4>
+                            <p>The PDF preview couldn't be loaded, but you can still download the file.</p>
+                            <a href="${this.src}" class="download-btn" download>
+                                <i class="fas fa-download"></i> Download PDF
+                            </a>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        // Initialize PDF embeds
+        setupPDFEmbeds();
+
+        // Audio player enhancements
+        function setupAudioPlayers() {
+            const audioPlayers = document.querySelectorAll('audio');
+            audioPlayers.forEach(audio => {
+                // Add custom styling and events if needed
+                audio.addEventListener('play', function() {
+                    this.parentElement.style.borderColor = 'var(--primary-blue)';
+                });
+                
+                audio.addEventListener('pause', function() {
+                    this.parentElement.style.borderColor = '#333';
+                });
+            });
+        }
+
+        // Initialize audio players
+        setupAudioPlayers();
+    });
+</script>
 </body>
 </html>
