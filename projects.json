@@ -1,0 +1,48 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "How Prescription Importation Expansion Can Improve Price Negotiation",
+      "category": "written",
+      "description": "Research paper examining prescription drug importation policies and their impact on medication costs.",
+      "file": "assets/pdfs/prescription_importation.pdf",
+      "fileType": "pdf",
+      "fileSize": "2.4 MB",
+      "date": "2023-11-15",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Healthcare Policy Analysis",
+      "category": "professional",
+      "description": "Comprehensive analysis of current healthcare policies and their economic implications.",
+      "file": "assets/pdfs/healthcare_analysis.pdf",
+      "fileType": "pdf",
+      "fileSize": "1.8 MB",
+      "date": "2023-10-20",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Interactive Data Visualization",
+      "category": "creative",
+      "description": "Creative coding project visualizing economic data through interactive web components.",
+      "file": "assets/videos/data_viz.mp4",
+      "fileType": "video",
+      "fileSize": "5.2 MB",
+      "date": "2023-12-01",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Market Design Research",
+      "category": "professional",
+      "description": "Research on market mechanisms and their application to healthcare systems.",
+      "file": "assets/pdfs/market_design.pdf",
+      "fileType": "pdf",
+      "fileSize": "3.1 MB",
+      "date": "2023-09-10",
+      "featured": false
+    }
+  ]
+}
