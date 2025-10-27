@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-orange: #FF8C00;
-            --secondary-orange: #FFA500;
-            --accent-orange: #FFD700;
-            --dark-bg: #121212;
-            --container-bg: #1e1e1e;
-            --card-bg: #2a2a2a;
-            --text-light: #e0e0e0;
-            --text-muted: #b0bec5;
+            --primary-white: #ffffff;
+            --secondary-white: #f0f0f0;
+            --accent-white: #e0e0e0;
+            --dark-bg: #0a0a0a;
+            --container-bg: #111111;
+            --card-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --border-color: #333333;
         }
         
         body {
             font-family: 'Lato', sans-serif;
             line-height: 1.6;
-            color: #ffffff;
+            color: var(--text-light);
             background-color: var(--dark-bg);
             margin: 0;
             padding: 0;
             min-height: 100vh;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(50, 30, 10, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(70, 40, 10, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(30, 30, 30, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(40, 40, 40, 0.1) 0%, transparent 20%);
         }
 
         .container {
@@ -38,9 +38,10 @@
             background: var(--container-bg);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
             position: relative;
             z-index: 1;
+            border: 1px solid var(--border-color);
         }
 
         /* Header styles with GIFs */
@@ -64,9 +65,9 @@
             height: 100px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
             flex-shrink: 0;
-            border: 2px solid var(--primary-orange);
+            border: 2px solid var(--primary-white);
             transition: transform 0.3s ease;
         }
 
@@ -86,23 +87,23 @@
         }
 
         h1 {
-            color: var(--primary-orange);
+            color: var(--primary-white);
             margin: 0;
             font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             font-family: 'Playfair Display', serif;
         }
 
         .tagline {
-            color: var(--text-light);
+            color: var(--secondary-white);
             font-style: italic;
             margin-top: 5px;
             font-size: 1.1rem;
         }
 
         h2 {
-            color: var(--secondary-orange);
-            border-bottom: 2px solid #333;
+            color: var(--primary-white);
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
             margin-top: 30px;
             font-size: 1.8rem;
@@ -110,19 +111,19 @@
         }
 
         h3 {
-            color: var(--accent-orange);
+            color: var(--primary-white);
             font-size: 1.4rem;
             margin-top: 0;
         }
 
         .intro {
-            background: #2d2d2d;
+            background: var(--card-bg);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
             font-style: italic;
-            border-left: 4px solid var(--primary-orange);
-            color: var(--text-light);
+            border-left: 4px solid var(--primary-white);
+            color: var(--secondary-white);
             position: relative;
             overflow: hidden;
         }
@@ -134,7 +135,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
+            background: linear-gradient(90deg, var(--primary-white), var(--accent-white));
         }
 
         .project {
@@ -143,49 +144,52 @@
             padding: 20px;
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #333;
+            border: 1px solid var(--border-color);
         }
 
         .project:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border-color: var(--accent-white);
         }
 
         /* Professional Experience Section */
         .professional-section {
-            background: #252525;
+            background: var(--card-bg);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
         }
 
         .tabs-container {
             display: flex;
             gap: 10px;
             margin-bottom: 30px;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
         }
 
         .tab {
             padding: 12px 25px;
-            background: rgba(255, 140, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
             color: var(--text-light);
+            border: 1px solid var(--border-color);
         }
 
         .tab:hover {
-            background: rgba(255, 140, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .tab.active {
-            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
-            color: #000;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+            background: var(--primary-white);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
         .tab-content {
@@ -202,7 +206,7 @@
             position: relative;
             margin: 40px 0 0 20px;
             padding-left: 30px;
-            border-left: 2px solid var(--primary-orange);
+            border-left: 2px solid var(--primary-white);
         }
 
         .timeline-item {
@@ -218,12 +222,12 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--primary-orange);
-            border: 2px solid var(--accent-orange);
+            background: var(--primary-white);
+            border: 2px solid var(--accent-white);
         }
 
         .timeline-date {
-            color: var(--secondary-orange);
+            color: var(--secondary-white);
             font-weight: 700;
             margin-bottom: 5px;
             display: block;
@@ -238,10 +242,11 @@
         }
 
         .skill-item {
-            background: rgba(255, 140, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 12px;
             border-radius: 5px;
-            border-left: 3px solid var(--primary-orange);
+            border-left: 3px solid var(--primary-white);
+            color: var(--text-light);
         }
 
         /* Project grid for My Projects page */
@@ -257,27 +262,28 @@
             border-radius: 8px;
             padding: 20px;
             transition: transform 0.3s ease;
-            border: 1px solid #333;
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            background: #333;
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.2);
+            background: #222;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-white);
         }
 
         .project-card h3 {
             margin-top: 0;
             flex-grow: 1;
-            color: var(--accent-orange);
+            color: var(--primary-white);
         }
 
         /* Award badge */
         .award-badge {
-            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
-            color: #000;
+            background: var(--primary-white);
+            color: var(--dark-bg);
             padding: 5px 10px;
             border-radius: 4px;
             font-weight: bold;
@@ -291,7 +297,7 @@
             margin: 0 auto 30px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
             position: relative;
         }
 
@@ -302,7 +308,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
+            background: linear-gradient(90deg, var(--primary-white), var(--accent-white));
         }
 
         .gif-container img {
@@ -315,8 +321,8 @@
             margin: 0 auto 20px;
             border-radius: 2px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            border: 1px solid #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+            border: 1px solid var(--border-color);
         }
 
         .gif-container2 img {
@@ -330,7 +336,7 @@
             color: var(--text-muted);
             font-size: 0.9em;
             padding: 20px 0;
-            border-top: 1px solid #333;
+            border-top: 1px solid var(--border-color);
         }
 
         .contact-info {
@@ -348,7 +354,7 @@
         }
 
         .contact-icon {
-            color: var(--primary-orange);
+            color: var(--primary-white);
             font-size: 1.2rem;
         }
 
@@ -374,26 +380,26 @@
 
         nav a {
             text-decoration: none;
-            color: var(--primary-orange);
+            color: var(--primary-white);
             font-weight: 600;
             padding: 10px 18px;
             border-radius: 30px;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
+            border: 1px solid var(--border-color);
             display: block;
-            background: rgba(40, 30, 10, 0.5);
+            background: rgba(30, 30, 30, 0.7);
             font-size: 1rem;
         }
 
         nav a:hover {
-            background-color: rgba(255, 140, 0, 0.2);
-            border-color: var(--primary-orange);
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-white);
         }
 
         nav a.active {
-            background-color: rgba(255, 140, 0, 0.2);
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-white);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         /* Content sections */
@@ -431,7 +437,7 @@
             display: none;
             background: transparent;
             border: none;
-            color: var(--primary-orange);
+            color: var(--primary-white);
             font-size: 1.8rem;
             cursor: pointer;
             position: absolute;
@@ -449,9 +455,10 @@
             background: var(--container-bg);
             z-index: 99;
             transition: all 0.4s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
             padding: 70px 20px 20px;
             overflow-y: auto;
+            border-left: 1px solid var(--border-color);
         }
 
         .mobile-menu.active {
@@ -468,15 +475,16 @@
             display: block;
             padding: 12px 15px;
             border-radius: 5px;
-            background: rgba(255, 140, 0, 0.1);
-            color: var(--primary-orange);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary-white);
             text-decoration: none;
             transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .mobile-menu a:hover, .mobile-menu a.active {
-            background: rgba(255, 140, 0, 0.2);
-            color: var(--accent-orange);
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--accent-white);
         }
 
         .menu-overlay {
@@ -485,7 +493,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             z-index: 98;
             display: none;
         }
@@ -507,20 +515,20 @@
             border-radius: 8px;
             padding: 20px;
             transition: all 0.3s ease;
-            border: 1px solid #333;
+            border: 1px solid var(--border-color);
         }
 
         .creative-item:hover {
             transform: translateY(-5px);
-            border-color: var(--primary-orange);
-            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2);
+            border-color: var(--primary-white);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
         }
 
         .creative-media {
             width: 100%;
             border-radius: 5px;
             margin-bottom: 15px;
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
         }
 
         .file-downloads {
@@ -531,9 +539,9 @@
         }
 
         .file-btn {
-            background: rgba(255, 140, 0, 0.2);
-            color: var(--accent-orange);
-            border: 1px solid var(--primary-orange);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-white);
+            border: 1px solid var(--primary-white);
             padding: 8px 15px;
             border-radius: 20px;
             text-decoration: none;
@@ -545,7 +553,7 @@
         }
 
         .file-btn:hover {
-            background: rgba(255, 140, 0, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             transform: scale(1.05);
         }
 
@@ -558,8 +566,8 @@
         }
 
         .filter-btn {
-            background: rgba(255, 140, 0, 0.1);
-            border: 1px solid #444;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             color: var(--text-light);
             padding: 8px 16px;
             border-radius: 20px;
@@ -568,8 +576,8 @@
         }
 
         .filter-btn.active, .filter-btn:hover {
-            background: rgba(255, 140, 0, 0.3);
-            border-color: var(--primary-orange);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-white);
         }
 
         /* Mobile responsiveness */
@@ -684,8 +692,8 @@
         .download-btn {
             display: inline-block;
             padding: 10px 20px;
-            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange));
-            color: #000;
+            background: var(--primary-white);
+            color: var(--dark-bg);
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
@@ -697,7 +705,7 @@
 
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
@@ -795,91 +803,90 @@
                 </div>
                 
                 <!-- Experience Tab Content -->
-               <!-- Experience Tab Content -->
-<div class="tab-content active" id="experience-content">
-    <div class="timeline">
-        <div class="timeline-item">
-            <span class="timeline-date">Feb 2025 – Present</span>
-            <h3>The SPOT / Project ARK, Department of Pediatrics BJC</h3>
-            <p><em>SPOT Data Management and Epidemiology Intern</em></p>
-            <p><strong>About the Organization:</strong> The SPOT and Project ARK are youth-focused community health organizations in St. Louis, MO, dedicated to providing inclusive and accessible mental health, sexual health, primary care, and support services to adolescents and young adults aged 13-24.</p>
-            <ul>
-                <li>Apply advanced statistical methods to evaluate public health programs and improve youth client care outcomes</li>
-                <li>Perform comprehensive statistical analysis on client data from SAMHSA-funded sexual health assessment program using ANOVA, logistic regression in R/SPSS</li>
-                <li>Manage data quality and implement protocols to track and re-engage eligible clients using RedCap</li>
-                <li>Lead data verification projects reconciling external laboratory records with internal EHR systems</li>
-                <li>Conduct literature reviews to evaluate screening tools for depression, anxiety, and substance use in adolescent populations</li>
-                <li>Assist with administrative tasks including scheduling appointments and client registration</li>
-            </ul>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">Sep 2024 – Present</span>
-            <h3>Washington University in St. Louis</h3>
-            <p><em>Lifeguard</em></p>
-            <ul>
-                <li>Lifeguarding at the Sumers Pool at Washington University St. Louis</li>
-            </ul>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">Feb 2024 – Present</span>
-            <h3>Whole Life Healthcare</h3>
-            <p><em>Primary Care Health Data Administrator</em></p>
-            <p><strong>About the Organization:</strong> Whole Life Healthcare is a small, Nurse owned and run Family Care / Integrated Care practice in Newington, New Hampshire providing primary care to all ages, mental health care, physical therapy, and more.</p>
-            <ul>
-                <li>Manage phone operations and schedule patient visits with nurse practitioners</li>
-                <li>Process medical record releases and requests</li>
-                <li>Perform website administration and design for the independent practice</li>
-                <li>Lead data-focused project evaluating best practices for provider registration</li>
-                <li>Manage Inovalon SOAP note requests and transcribe medical visits for incentive programs</li>
-                <li>Utilize Athenanet Electronic Medical Records system</li>
-            </ul>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">Oct 2022 – Jun 2023</span>
-            <h3>NYSERDA</h3>
-            <p><em>Energy and Climate Equity Intern</em></p>
-            <p><strong>About the Organization:</strong> NYSERDA is a public benefit corporation focused on advancing clean energy and accelerating climate solutions for all New Yorkers through innovation, programs, and partnerships.</p>
-            <ul>
-                <li>Supported operational success of $53M Regional Clean Energy Hubs initiative ensuring equitable transition to clean energy</li>
-                <li>Co-managed development of comprehensive Salesforce CRM User Guide for contractors across 12 NY regions</li>
-                <li>Served as liaison between program managers, Salesforce administration, and IT departments</li>
-                <li>Built and deployed surveys to contractors statewide to gather feedback and operational data</li>
-                <li>Managed user guide documentation for Salesforce CRM platform</li>
-            </ul>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">May 2021 – Sep 2021</span>
-            <h3>New Castle, NH DPW</h3>
-            <p><em>Park Manager</em></p>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">Mar 2021 – Jun 2021</span>
-            <h3>Town of Glenville NY</h3>
-            <p><em>Community Worker in Office of Economic Development</em></p>
-            <ul>
-                <li>Performed environmental and social accessibility assessments on parks, playgrounds, and public elementary schools</li>
-                <li>Focused on equitable access and sustainable planning</li>
-            </ul>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">Nov 2020 – Feb 2021</span>
-            <h3>UPS</h3>
-            <p><em>Delivery Driver Helper</em></p>
-        </div>
-        
-        <div class="timeline-item">
-            <span class="timeline-date">Apr 2017 – Sep 2017</span>
-            <h3>City of Portsmouth, NH</h3>
-            <p><em>Lifeguard</em></p>
-        </div>
-    </div>
-</div>
+                <div class="tab-content active" id="experience-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">Feb 2025 – Present</span>
+                            <h3>The SPOT / Project ARK, Department of Pediatrics BJC</h3>
+                            <p><em>SPOT Data Management and Epidemiology Intern</em></p>
+                            <p><strong>About the Organization:</strong> The SPOT and Project ARK are youth-focused community health organizations in St. Louis, MO, dedicated to providing inclusive and accessible mental health, sexual health, primary care, and support services to adolescents and young adults aged 13-24.</p>
+                            <ul>
+                                <li>Apply advanced statistical methods to evaluate public health programs and improve youth client care outcomes</li>
+                                <li>Perform comprehensive statistical analysis on client data from SAMHSA-funded sexual health assessment program using ANOVA, logistic regression in R/SPSS</li>
+                                <li>Manage data quality and implement protocols to track and re-engage eligible clients using RedCap</li>
+                                <li>Lead data verification projects reconciling external laboratory records with internal EHR systems</li>
+                                <li>Conduct literature reviews to evaluate screening tools for depression, anxiety, and substance use in adolescent populations</li>
+                                <li>Assist with administrative tasks including scheduling appointments and client registration</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">Sep 2024 – Present</span>
+                            <h3>Washington University in St. Louis</h3>
+                            <p><em>Lifeguard</em></p>
+                            <ul>
+                                <li>Lifeguarding at the Sumers Pool at Washington University St. Louis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">Feb 2024 – Present</span>
+                            <h3>Whole Life Healthcare</h3>
+                            <p><em>Primary Care Health Data Administrator</em></p>
+                            <p><strong>About the Organization:</strong> Whole Life Healthcare is a small, Nurse owned and run Family Care / Integrated Care practice in Newington, New Hampshire providing primary care to all ages, mental health care, physical therapy, and more.</p>
+                            <ul>
+                                <li>Manage phone operations and schedule patient visits with nurse practitioners</li>
+                                <li>Process medical record releases and requests</li>
+                                <li>Perform website administration and design for the independent practice</li>
+                                <li>Lead data-focused project evaluating best practices for provider registration</li>
+                                <li>Manage Inovalon SOAP note requests and transcribe medical visits for incentive programs</li>
+                                <li>Utilize Athenanet Electronic Medical Records system</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">Oct 2022 – Jun 2023</span>
+                            <h3>NYSERDA</h3>
+                            <p><em>Energy and Climate Equity Intern</em></p>
+                            <p><strong>About the Organization:</strong> NYSERDA is a public benefit corporation focused on advancing clean energy and accelerating climate solutions for all New Yorkers through innovation, programs, and partnerships.</p>
+                            <ul>
+                                <li>Supported operational success of $53M Regional Clean Energy Hubs initiative ensuring equitable transition to clean energy</li>
+                                <li>Co-managed development of comprehensive Salesforce CRM User Guide for contractors across 12 NY regions</li>
+                                <li>Served as liaison between program managers, Salesforce administration, and IT departments</li>
+                                <li>Built and deployed surveys to contractors statewide to gather feedback and operational data</li>
+                                <li>Managed user guide documentation for Salesforce CRM platform</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">May 2021 – Sep 2021</span>
+                            <h3>New Castle, NH DPW</h3>
+                            <p><em>Park Manager</em></p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">Mar 2021 – Jun 2021</span>
+                            <h3>Town of Glenville NY</h3>
+                            <p><em>Community Worker in Office of Economic Development</em></p>
+                            <ul>
+                                <li>Performed environmental and social accessibility assessments on parks, playgrounds, and public elementary schools</li>
+                                <li>Focused on equitable access and sustainable planning</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">Nov 2020 – Feb 2021</span>
+                            <h3>UPS</h3>
+                            <p><em>Delivery Driver Helper</em></p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-date">Apr 2017 – Sep 2017</span>
+                            <h3>City of Portsmouth, NH</h3>
+                            <p><em>Lifeguard</em></p>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Projects Tab Content -->
                 <div class="tab-content" id="projects-content">
