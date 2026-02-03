@@ -759,6 +759,18 @@ nav a.active {
     transition: transform 0.5s ease;
 }
 
+.star-gif {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    transition: transform 0.5s ease;
+}
+
+.star-gif:hover {
+    transform: scale(1.05);
+}
+
 .creative-item:hover .creative-media {
     transform: scale(1.05);
 }
