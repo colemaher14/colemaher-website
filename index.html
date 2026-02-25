@@ -19,15 +19,16 @@ body {
     background: var(--bg);
     color: var(--ink);
     min-height: 100vh;
-    overflow-x: hidden;
 }
 #bg-canvas {
     position: fixed;
     top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
     display: block;
+    opacity: 1;
 }
 /* ── MASTHEAD ── */
 .masthead {
@@ -234,51 +235,51 @@ footer a:hover { color:var(--ink); }
 
     <div id="experience" class="sub-panel active">
         <div class="timeline-entry">
-            <div class="t-meta">Nov 2025 – Present<br><br>Washington University<br>st. louis, mo</div>
+            <div class="t-meta">nov 2025 – present<br><br>washington university<br>st. louis, mo</div>
             <div class="t-body">
                 <h3>washington university — research</h3>
                 <div class="role">research assistant, pediatric cancer outcomes</div>
                 <ul>
-                    <li>Conducting pediatric cancer outcomes research under Dr. Kim Johnson, evaluating stage at diagnosis and survival differences among children insured through Medicaid vs. CHIP</li>
-                    <li>Developing a research protocol leveraging the SEER–Medicaid–CHIP linked database (diagnosis years 1999–2021)</li>
+                    <li>conducting pediatric cancer outcomes research under dr. kim johnson, evaluating stage at diagnosis and survival differences among children insured through medicaid vs. chip</li>
+                    <li>developing a research protocol leveraging the seer–medicaid–chip linked database (diagnosis years 1999–2021)</li>
                 </ul>
             </div>
         </div>
         <div class="timeline-entry">
-            <div class="t-meta">Feb 2025 – Present<br><br>The SPOT / Dept. of Pediatrics<br>Washington University</div>
+            <div class="t-meta">feb 2025 – present<br><br>the spot / dept. of pediatrics<br>washington university</div>
             <div class="t-body">
                 <h3>the spot</h3>
                 <div class="role">research &amp; epidemiology intern</div>
                 <ul>
-                    <li>Evaluated public health programs using regression analysis and ANOVA to enhance outcomes for youth clients</li>
-                    <li>Analyzed client data from SAMHSA sexual health assessment program using linear regression and correlation analysis in R</li>
-                    <li>Led data verification project reconciling external lab STI records with internal EHR for clinical decision-making</li>
-                    <li>Conducted literature review evaluating screening tools for depression, anxiety, and substance use in adolescent populations</li>
+                    <li>evaluated public health programs using regression analysis and anova to enhance outcomes for youth clients</li>
+                    <li>analyzed client data from samhsa sexual health assessment program using linear regression and correlation analysis in r</li>
+                    <li>led data verification project reconciling external lab sti records with internal ehr for clinical decision-making</li>
+                    <li>conducted literature review evaluating screening tools for depression, anxiety, and substance use in adolescent populations</li>
                 </ul>
             </div>
         </div>
         <div class="timeline-entry">
-            <div class="t-meta">Feb 2024 – Present<br><br>whole life healthcare<br>Newington, NH</div>
+            <div class="t-meta">feb 2024 – present<br><br>whole life healthcare<br>newington, nh</div>
             <div class="t-body">
                 <h3>whole life healthcare</h3>
                 <div class="role">primary care data management administrator</div>
                 <ul>
-                    <li>Scheduled patient visits and led data management projects and medical records requests on a small administrative team</li>
-                    <li>Independently led all management and submission of Inovalon SOAP note requests</li>
-                    <li>Coordinated due dates and medical records for 9 providers, securing ~$100 Anthem incentive per patient record (30–50 records per provider)</li>
+                    <li>scheduled patient visits and led data management projects and medical records requests on a small administrative team</li>
+                    <li>independently led all management and submission of inovalon soap note requests</li>
+                    <li>coordinated due dates and medical records for 9 providers, securing ~$100 anthem incentive per patient record (30–50 records per provider)</li>
                 </ul>
             </div>
         </div>
         <div class="timeline-entry">
-            <div class="t-meta">Oct 2022 – Jun 2023<br><br>nyserda<br>Albany, NY</div>
+            <div class="t-meta">oct 2022 – jun 2023<br><br>nyserda<br>albany, ny</div>
             <div class="t-body">
                 <h3>nyserda</h3>
                 <div class="role">climate equity intern</div>
                 <ul>
-                    <li>Coordinated with 12 regional contractors on NYSERDA's $53M Regional Clean Energy Hubs initiative</li>
-                    <li>Co-managed development of a comprehensive Salesforce CRM User Guide standardizing processes across all 12 NY regions</li>
-                    <li>Coordinated Salesforce platform enhancements with 5 program managers and IT staff</li>
-                    <li>Built and deployed statewide surveys to gather contractor feedback and operational data</li>
+                    <li>coordinated with 12 regional contractors on nyserda's $53m regional clean energy hubs initiative</li>
+                    <li>co-managed development of a comprehensive salesforce crm user guide standardizing processes across all 12 ny regions</li>
+                    <li>coordinated salesforce platform enhancements with 5 program managers and it staff</li>
+                    <li>built and deployed statewide surveys to gather contractor feedback and operational data</li>
                 </ul>
             </div>
         </div>
@@ -289,47 +290,47 @@ footer a:hover { color:var(--ink); }
             <div class="card">
                 <div class="card-badge">awarded $25,000</div>
                 <h3>green fee sustainability project</h3>
-                <p>Led and implemented a sustainable lighting infrastructure project at Union College in collaboration with campus facilities and outside vendors. Won, led, and executed 2021–22.</p>
+                <p>led and implemented a sustainable lighting infrastructure project at union college in collaboration with campus facilities and outside vendors. won, led, and executed 2021–22.</p>
             </div>
             <div class="card">
                 <div class="card-badge">certified nov 2025</div>
                 <h3>certified in public health (cph)</h3>
-                <p>Passed the CPH board exam administered by the National Board of Public Health Examiners, demonstrating competency across core public health disciplines.</p>
+                <p>passed the cph board exam administered by the national board of public health examiners, demonstrating competency across core public health disciplines.</p>
             </div>
             <div class="card">
                 <h3>salesforce crm user guide</h3>
-                <p>Co-developed a comprehensive implementation guide standardizing Salesforce processes for contractors across 12 New York State regions as part of the NYSERDA Clean Energy Hubs initiative.</p>
+                <p>co-developed a comprehensive implementation guide standardizing salesforce processes for contractors across 12 new york state regions as part of the nyserda clean energy hubs initiative.</p>
             </div>
             <div class="card">
                 <h3>seer–medicaid–chip research protocol</h3>
-                <p>Developing a pediatric cancer outcomes research protocol using the SEER–Medicaid–CHIP linked database, examining 22 years of diagnosis data (1999–2021).</p>
+                <p>developing a pediatric cancer outcomes research protocol using the seer–medicaid–chip linked database, examining 22 years of diagnosis data (1999–2021).</p>
             </div>
         </div>
     </div>
 
     <div id="research" class="sub-panel">
         <div class="timeline-entry">
-            <div class="t-meta">Washington University<br>Nov 2025 – Present</div>
+            <div class="t-meta">washington university<br>nov 2025 – present</div>
             <div class="t-body">
                 <h3>pediatric cancer outcomes: medicaid vs. chip</h3>
                 <div class="role">primary research · seer database</div>
-                <p>Evaluating differences in stage at diagnosis and survival among children insured through Medicaid versus CHIP, using the SEER–Medicaid–CHIP linked database spanning 1999–2021.</p>
+                <p>evaluating differences in stage at diagnosis and survival among children insured through medicaid versus chip, using the seer–medicaid–chip linked database spanning 1999–2021.</p>
             </div>
         </div>
         <div class="timeline-entry">
-            <div class="t-meta">Union College<br>2022 – 2023</div>
+            <div class="t-meta">union college<br>2022 – 2023</div>
             <div class="t-body">
                 <h3>senior thesis: transportation noise &amp; health</h3>
                 <div class="role">qualitative research</div>
-                <p>Examined transportation-related noise and its health impacts through interviews with environmental noise professionals, community leaders, and residents. Contextualized existing literature using community perspectives.</p>
+                <p>examined transportation-related noise and its health impacts through interviews with environmental noise professionals, community leaders, and residents. contextualized existing literature using community perspectives.</p>
             </div>
         </div>
         <div class="timeline-entry">
-            <div class="t-meta">Washington University<br>2024 – 2025</div>
+            <div class="t-meta">washington university<br>2024 – 2025</div>
             <div class="t-body">
                 <h3>workers' compensation data gaps in public health</h3>
                 <div class="role">policy research</div>
-                <p>Identified systemic gaps in workers' compensation data for public health practitioners and developed a practitioner guide for assessing limitations in claimant health data.</p>
+                <p>identified systemic gaps in workers' compensation data for public health practitioners and developed a practitioner guide for assessing limitations in claimant health data.</p>
             </div>
         </div>
     </div>
@@ -341,36 +342,36 @@ footer a:hover { color:var(--ink); }
     <h2 class="sec-title">written<br>work<span>policy · research · essays</span></h2>
 
     <div class="writing-piece">
-        <div class="w-meta">May 2025<br>Policy Analysis<br><span class="tag">pharmaceutical</span><span class="tag">policy</span></div>
+        <div class="w-meta">may 2025<br>policy analysis<br><span class="tag">pharmaceutical</span><span class="tag">policy</span></div>
         <div class="w-body">
             <h3>how prescription importation expansion can improve price negotiation and the cost of medication</h3>
-            <p>Examines how expanding prescription drug importation from lower-cost countries could reduce pharmaceutical prices in the US, with particular focus on seniors, low-income individuals, and racial minorities disproportionately affected by high drug costs.</p>
-            <div class="pullquote">"Elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</div>
-            <a href="asset/pdfs/prescription_importation.pdf" class="text-link" download>↓ Download PDF</a>
+            <p>examines how expanding prescription drug importation from lower-cost countries could reduce pharmaceutical prices in the us, with particular focus on seniors, low-income individuals, and racial minorities disproportionately affected by high drug costs.</p>
+            <div class="pullquote">"elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</div>
+            <a href="asset/pdfs/prescription_importation.pdf" class="text-link" download>↓ download pdf</a>
         </div>
     </div>
     <div class="writing-piece">
-        <div class="w-meta">Union College<br>2023<br>Senior Thesis<br><span class="tag">qualitative</span></div>
+        <div class="w-meta">union college<br>2023<br>senior thesis<br><span class="tag">qualitative</span></div>
         <div class="w-body">
             <h3>transportation noise and public health: a community-centered analysis</h3>
-            <p>Qualitative research examining community perceptions of transportation noise and health impacts, incorporating interviews with environmental professionals, ambient noise experts, and neighborhood residents.</p>
-            <a href="asset/pdfs/transportation_noise_thesis.pdf" class="text-link" download>↓ Download Thesis</a>
+            <p>qualitative research examining community perceptions of transportation noise and health impacts, incorporating interviews with environmental professionals, ambient noise experts, and neighborhood residents.</p>
+            <a href="asset/pdfs/transportation_noise_thesis.pdf" class="text-link" download>↓ download thesis</a>
         </div>
     </div>
     <div class="writing-piece">
-        <div class="w-meta">Washington University<br>2024–25<br>Research Paper<br><span class="tag">occupational</span></div>
+        <div class="w-meta">washington university<br>2024–25<br>research paper<br><span class="tag">occupational</span></div>
         <div class="w-body">
             <h3>workers' compensation data gaps in public health surveillance</h3>
-            <p>Analysis of systemic limitations in workers' compensation data and their implications for occupational health surveillance and policy development.</p>
-            <a href="asset/pdfs/workers_compensation_research.pdf" class="text-link" download>↓ Download Paper</a>
+            <p>analysis of systemic limitations in workers' compensation data and their implications for occupational health surveillance and policy development.</p>
+            <a href="asset/pdfs/workers_compensation_research.pdf" class="text-link" download>↓ download paper</a>
         </div>
     </div>
     <div class="writing-piece">
-        <div class="w-meta">Ongoing<br>Newsletter</div>
+        <div class="w-meta">ongoing<br>newsletter</div>
         <div class="w-body">
             <h3>substack</h3>
             <p>new essays and articles on public health, policy, and more.</p>
-            <a href="https://coletmaher.substack.com" class="text-link" target="_blank">→ Read on Substack</a>
+            <a href="https://coletmaher.substack.com" class="text-link" target="_blank">→ read on substack</a>
         </div>
     </div>
 </section>
@@ -381,25 +382,25 @@ footer a:hover { color:var(--ink); }
     <h2 class="sec-title">creative<br>work<span>music · visual art · interactive</span></h2>
 
     <div class="creative-item">
-        <div class="c-meta">Music<br>Jazz Composition<br>Guitar<br>Production</div>
+        <div class="c-meta">music<br>jazz composition<br>guitar<br>production</div>
         <div class="c-body">
             <h3>jazz composition &amp; music production</h3>
-            <p>Original compositions written during formal study — blending traditional jazz harmony with contemporary influences and extended techniques. Active practice in guitar, composition, and music production.</p>
+            <p>original compositions written during formal study — blending traditional jazz harmony with contemporary influences and extended techniques. active practice in guitar, composition, and music production.</p>
         </div>
     </div>
     <div class="creative-item">
-        <div class="c-meta">Visual<br>3D Design<br>Max / Jitter</div>
+        <div class="c-meta">visual<br>3d design<br>max / jitter</div>
         <div class="c-body">
             <h3>3d design &amp; max/jitter</h3>
-            <p>A self-directed practice in 3D visual art and real-time graphics using Max/Jitter. Exploring form, light, and abstract composition in procedural and sculpted environments.</p>
+            <p>a self-directed practice in 3d visual art and real-time graphics using max/jitter. exploring form, light, and abstract composition in procedural and sculpted environments.</p>
         </div>
     </div>
     <div class="creative-item">
-        <div class="c-meta">Interactive<br>Web Audio API<br>MAX/MSP</div>
+        <div class="c-meta">interactive<br>web audio api<br>max/msp</div>
         <div class="c-body">
             <h3>interactive drum machine</h3>
-            <p>A browser-based drum machine reconstructed from a MAX/MSP patch — synthesized kick, snare, closed hat, open hat, and rim. Runs live in the browser via the Web Audio API.</p>
-            <a href="drum-machine_1.html" class="text-link" target="_blank">→ Launch Drum Machine</a>
+            <p>a browser-based drum machine reconstructed from a max/msp patch — synthesized kick, snare, closed hat, open hat, and rim. runs live in the browser via the web audio api.</p>
+            <a href="drum-machine_1.html" class="text-link" target="_blank">→ launch drum machine</a>
         </div>
     </div>
 </section>
@@ -412,56 +413,57 @@ footer a:hover { color:var(--ink); }
     <div class="about-grid">
         <div class="about-cell">
             <h3>background</h3>
-            <p>Public health researcher with an interdisciplinary background spanning mathematics, sociology, and creative technology. My work sits at the intersection of rigorous quantitative analysis and qualitative community-centered research — with a focus on health equity, youth populations, and data-driven policy.</p><br>
-            <p>Member of the WashU Student Advisory Council on Human Rights, Gender and Migration. Outside of public health: jazz composition, guitar, music production, and 3D design.</p>
+            <p>public health researcher with an interdisciplinary background spanning mathematics, sociology, and creative technology. my work sits at the intersection of rigorous quantitative analysis and qualitative community-centered research — with a focus on health equity, youth populations, and data-driven policy.</p><br>
+            <p>member of the washu student advisory council on human rights, gender and migration. outside of public health: jazz composition, guitar, music production, and 3d design.</p>
         </div>
         <div class="about-cell">
             <h3>education</h3>
             <div class="edu-entry">
                 <div class="edu-degree">mph, epidemiology &amp; biostatistics</div>
                 <div class="edu-school">washington university in st. louis</div>
-                <div class="edu-date">2024 – May 2026 · GPA 4.0</div>
-                <div class="edu-note">Certified in Public Health (CPH) — Nov 2025</div>
+                <div class="edu-date">2024 – may 2026 · gpa 4.0</div>
+                <div class="edu-note">certified in public health (cph) — nov 2025</div>
             </div>
             <div class="edu-entry">
                 <div class="edu-degree">bs, mathematics &amp; sociology</div>
                 <div class="edu-school">union college, schenectady ny</div>
-                <div class="edu-date">2019 – 2023 · GPA 3.37 · Dean's List 2022, 2023</div>
+                <div class="edu-date">2019 – 2023 · gpa 3.37 · dean's list 2022, 2023</div>
             </div>
             <div class="edu-entry">
                 <div class="edu-degree">high school diploma</div>
                 <div class="edu-school">st. john's preparatory school</div>
-                <div class="edu-date">Danvers, MA · 2019</div>
+                <div class="edu-date">danvers, ma · 2019</div>
             </div>
         </div>
         <div class="about-cell">
             <h3>technical skills</h3>
             <div class="skill-row">
-                <span class="skill-pill">R / RStudio</span>
-                <span class="skill-pill">SPSS</span>
-                <span class="skill-pill">Tableau</span>
-                <span class="skill-pill">REDCap</span>
-                <span class="skill-pill">Athenanet EMR</span>
-                <span class="skill-pill">Salesforce CRM</span>
-                <span class="skill-pill">Microsoft Office</span>
-                <span class="skill-pill">Regression Modeling</span>
-                <span class="skill-pill">Time-to-Event Models</span>
-                <span class="skill-pill">Epidemiological Methods</span>
-                <span class="skill-pill">Research Design</span>
-                <span class="skill-pill">Literature Review</span>
-                <span class="skill-pill">HTML / CSS</span>
-                <span class="skill-pill">MAX/MSP</span>
-                <span class="skill-pill">Max / Jitter</span>
-                <span class="skill-pill">3D Modeling</span>
+                <span class="skill-pill">r / rstudio</span>
+                <span class="skill-pill">spss</span>
+                <span class="skill-pill">tableau</span>
+                <span class="skill-pill">redcap</span>
+                <span class="skill-pill">athenanet emr</span>
+                <span class="skill-pill">salesforce crm</span>
+                <span class="skill-pill">microsoft office</span>
+                <span class="skill-pill">regression modeling</span>
+                <span class="skill-pill">time-to-event models</span>
+                <span class="skill-pill">epidemiological methods</span>
+                <span class="skill-pill">research design</span>
+                <span class="skill-pill">literature review</span>
+                <span class="skill-pill">html / css</span>
+                <span class="skill-pill">max/msp</span>
+                <span class="skill-pill">max / jitter</span>
+                <span class="skill-pill">3d modeling</span>
             </div>
         </div>
         <div class="about-cell">
             <h3>contact</h3>
             <p style="margin-bottom:6px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0d39eddd1d8d5c2f0c7c5c3c4dc9ed5d4c5">[email&#160;protected]</a></p>
             <p style="margin-bottom:6px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="234e424b46510d404c4f460d111063444e424a4f0d404c4e">[email&#160;protected]</a></p>
+            <p style="margin-bottom:6px;">maherc2023@gmail.com</p>
             <p style="margin-bottom:6px;">603-738-7643</p>
             <p style="margin-bottom:16px;"><a href="https://linkedin.com/in/cole-maher" class="text-link" target="_blank" style="font-size:0.6rem;">→ linkedin.com/in/cole-maher</a></p>
-            <p style="color:var(--mid);font-size:0.68rem;line-height:1.85;">Open to opportunities in public health research, policy analysis, and creative collaboration.</p>
+            <p style="color:var(--mid);font-size:0.68rem;line-height:1.85;">open to opportunities in public health research, policy analysis, and creative collaboration.</p>
         </div>
     </div>
 </section>
@@ -479,97 +481,95 @@ footer a:hover { color:var(--ink); }
     let W = 0, H = 0;
 
     function resize() {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
+        // Use offsetWidth/Height of body — most reliable across all desktop browsers
+        W = canvas.width  = window.innerWidth  || document.body.offsetWidth;
+        H = canvas.height = window.innerHeight || document.body.offsetHeight;
     }
+
+    // Run resize immediately, on load, and on resize
     resize();
     window.addEventListener('resize', resize);
+    window.addEventListener('load', function() { resize(); });
+    // Extra safety: re-run after a short delay in case of late layout shift on desktop
+    setTimeout(resize, 100);
+    setTimeout(resize, 500);
 
-    const mouse = { x:0, y:0, tx:0, ty:0, active:false };
-    window.addEventListener('mousemove', e => { mouse.tx=e.clientX; mouse.ty=e.clientY; mouse.active=true; });
-    window.addEventListener('mouseleave', () => { mouse.active=false; });
+    const mouse = { x:-9999, y:-9999, tx:-9999, ty:-9999, active:false };
+
+    document.addEventListener('mousemove', function(e) {
+        mouse.tx = e.clientX;
+        mouse.ty = e.clientY;
+        mouse.active = true;
+    });
+
+    document.addEventListener('mouseleave', function() {
+        mouse.active = false;
+        mouse.tx = -9999;
+        mouse.ty = -9999;
+    });
 
     function lerpMouse() {
-        if (mouse.active) {
-            mouse.x += (mouse.tx - mouse.x) * 0.06;
-            mouse.y += (mouse.ty - mouse.y) * 0.06;
-        }
+        mouse.x += (mouse.tx - mouse.x) * 0.07;
+        mouse.y += (mouse.ty - mouse.y) * 0.07;
     }
 
     // ── Grid
-    const COLS=24, ROWS=15, WARP_R=260, WARP_F=60;
+    const COLS=22, ROWS=14, WARP_R=280, WARP_F=65;
+
     function drawGrid() {
-        const cw=W/COLS, ch=H/ROWS;
-        const N=[];
-        for (let r=0;r<=ROWS;r++) {
-            N[r]=[];
-            for (let c=0;c<=COLS;c++) {
-                let x=c*cw, y=r*ch;
-                if (mouse.active) {
-                    const dx=mouse.x-x, dy=mouse.y-y, d=Math.hypot(dx,dy);
-                    if (d<WARP_R && d>0.5) { const f=(1-d/WARP_R)*WARP_F; x+=(dx/d)*f; y+=(dy/d)*f; }
+        if (W === 0 || H === 0) return;
+        const cw = W / COLS;
+        const ch = H / ROWS;
+        const N = [];
+
+        for (let r = 0; r <= ROWS; r++) {
+            N[r] = [];
+            for (let c = 0; c <= COLS; c++) {
+                let x = c * cw;
+                let y = r * ch;
+                if (mouse.active && mouse.x > 0) {
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const d  = Math.sqrt(dx*dx + dy*dy);
+                    if (d < WARP_R && d > 1) {
+                        const f = (1 - d / WARP_R) * WARP_F;
+                        x += (dx / d) * f;
+                        y += (dy / d) * f;
+                    }
                 }
-                N[r][c]=[x,y];
+                N[r][c] = [x, y];
             }
         }
-        ctx.strokeStyle='rgba(26,26,26,0.10)'; ctx.lineWidth=0.75;
-        for (let r=0;r<=ROWS;r++) {
-            ctx.beginPath();
-            for (let c=0;c<=COLS;c++) { const[x,y]=N[r][c]; c===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }
-            ctx.stroke();
-        }
-        for (let c=0;c<=COLS;c++) {
-            ctx.beginPath();
-            for (let r=0;r<=ROWS;r++) { const[x,y]=N[r][c]; r===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }
-            ctx.stroke();
-        }
-    }
 
-    // ── Shapes
-    const TYPES=['circle','rect','triangle','diamond','cross'];
-    function rnd(a,b){return a+Math.random()*(b-a);}
-    const shapes=Array.from({length:22},()=>({
-        type:TYPES[Math.floor(Math.random()*TYPES.length)],
-        nx:Math.random(), ny:Math.random(),
-        size:rnd(10,50), vx:rnd(-0.00013,0.00013), vy:rnd(-0.00011,0.00011),
-        rot:rnd(0,Math.PI*2), vrot:rnd(-0.0035,0.0035),
-        opacity:rnd(0.055,0.13), px:rnd(0.010,0.020), py:rnd(0.010,0.020),
-    }));
+        ctx.strokeStyle = 'rgba(26,26,26,0.12)';
+        ctx.lineWidth   = 1;
 
-    function strokeShape(s) {
-        const ox=mouse.active?(mouse.x/W-0.5)*W*s.px:0;
-        const oy=mouse.active?(mouse.y/H-0.5)*H*s.py:0;
-        const sx=s.nx*W+ox, sy=s.ny*H+oy, sz=s.size;
-        ctx.save(); ctx.translate(sx,sy); ctx.rotate(s.rot);
-        ctx.strokeStyle=`rgba(26,26,26,${s.opacity})`; ctx.lineWidth=1;
-        ctx.beginPath();
-        switch(s.type) {
-            case 'circle': ctx.arc(0,0,sz*0.5,0,Math.PI*2); break;
-            case 'rect': ctx.rect(-sz*0.5,-sz*0.5,sz,sz); break;
-            case 'triangle':
-                ctx.moveTo(0,-sz*0.55); ctx.lineTo(sz*0.48,sz*0.38); ctx.lineTo(-sz*0.48,sz*0.38); ctx.closePath(); break;
-            case 'diamond':
-                ctx.moveTo(0,-sz*0.55); ctx.lineTo(sz*0.4,0); ctx.lineTo(0,sz*0.55); ctx.lineTo(-sz*0.4,0); ctx.closePath(); break;
-            case 'cross': {
-                const a=sz*0.46,t=sz*0.10;
-                ctx.moveTo(-a,-t);ctx.lineTo(-t,-t);ctx.lineTo(-t,-a);ctx.lineTo(t,-a);ctx.lineTo(t,-t);ctx.lineTo(a,-t);
-                ctx.lineTo(a,t);ctx.lineTo(t,t);ctx.lineTo(t,a);ctx.lineTo(-t,a);ctx.lineTo(-t,t);ctx.lineTo(-a,t);
-                ctx.closePath(); break;
+        for (let r = 0; r <= ROWS; r++) {
+            ctx.beginPath();
+            for (let c = 0; c <= COLS; c++) {
+                const [x, y] = N[r][c];
+                c === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
             }
+            ctx.stroke();
         }
-        ctx.stroke(); ctx.restore();
-        s.nx+=s.vx; s.ny+=s.vy; s.rot+=s.vrot;
-        if(s.nx<-0.06)s.nx=1.06; if(s.nx>1.06)s.nx=-0.06;
-        if(s.ny<-0.06)s.ny=1.06; if(s.ny>1.06)s.ny=-0.06;
+        for (let c = 0; c <= COLS; c++) {
+            ctx.beginPath();
+            for (let r = 0; r <= ROWS; r++) {
+                const [x, y] = N[r][c];
+                r === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
     }
 
     function frame() {
         lerpMouse();
-        ctx.clearRect(0,0,W,H);
+        ctx.clearRect(0, 0, W, H);
         drawGrid();
-        shapes.forEach(s=>strokeShape(s));
         requestAnimationFrame(frame);
     }
+
+    // Start loop — no dependency on DOM ready since script is at bottom of body
     requestAnimationFrame(frame);
 
     // ── Nav
