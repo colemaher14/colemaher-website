@@ -579,4 +579,18 @@ footer a:hover { color:var(--ink); }
             document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById(btn.dataset.section).classList.add('active');
-            window.scrollTo({top
+            window.scrollTo({top:0});
+        });
+    });
+    document.querySelectorAll('.sub-tab').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+            document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('.sub-panel').forEach(p=>p.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.panel).classList.add('active');
+        });
+    });
+}());
+</script>
+</body>
+</html>
