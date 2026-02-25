@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DRUM MACHINE — Cole Maher</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
     --bg:      #f8f8f6;
@@ -13,7 +12,7 @@
     --border:  #cccccc;
     --ink:     #1a1a1a;
     --mid:     #888888;
-    --mono:    'Space Mono', monospace;
+    --mono:    Helvetica, 'Helvetica Neue', Arial, sans-serif;
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -38,7 +37,7 @@ body {
     gap: 6px;
     font-size: 0.6rem;
     letter-spacing: 0.18em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--mid);
     text-decoration: none;
     border-bottom: 1px solid var(--border);
@@ -81,14 +80,14 @@ body {
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.2em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--ink);
 }
 
 .machine-sub {
     font-size: 0.58rem;
     letter-spacing: 0.14em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--mid);
 }
 
@@ -155,7 +154,7 @@ body {
     align-items: center;
     gap: 10px;
 }
-.bpm-label { font-size: 0.58rem; letter-spacing: 0.16em; color: var(--mid); text-transform: uppercase; }
+.bpm-label { font-size: 0.58rem; letter-spacing: 0.16em; color: var(--mid); text-transform: lowercase; }
 .bpm-display { font-size: 1.1rem; font-weight: 700; color: var(--ink); min-width: 44px; text-align: center; }
 .bpm-btn {
     background: none;
@@ -205,7 +204,7 @@ body {
     text-align: right;
     padding-right: 10px;
     border-right: 1px solid var(--border);
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .steps {
@@ -278,7 +277,7 @@ body {
 .viz-label {
     font-size: 0.56rem;
     letter-spacing: 0.2em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--mid);
     margin-bottom: 8px;
 }
@@ -301,7 +300,7 @@ body {
 .footer-text, .step-counter {
     font-size: 0.56rem;
     letter-spacing: 0.14em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--mid);
 }
 
@@ -318,28 +317,28 @@ body {
 </head>
 <body>
 
-<a href="index.html" class="back-link">← Back to Portfolio</a>
+<a href="index.html" class="back-link">← back to portfolio</a>
 
 <div class="machine">
 
     <!-- Header -->
     <div class="machine-header">
         <div>
-            <div class="machine-title">Drum Machine</div>
-            <div class="machine-sub">MAX/MSP Reconstruction — Web Audio API</div>
+            <div class="machine-title">drum machine</div>
+            <div class="machine-sub">max/msp reconstruction — web audio api</div>
         </div>
         <div class="status">
             <div class="status-dot" id="statusDot"></div>
-            <span id="statusText">Stopped</span>
+            <span id="statusText">stopped</span>
         </div>
     </div>
 
     <!-- Transport -->
     <div class="transport">
-        <button class="t-btn" id="playBtn" onclick="togglePlay()">Play</button>
-        <button class="t-btn" onclick="stopSequencer()">Stop</button>
-        <button class="t-btn" onclick="clearAll()">Clear</button>
-        <button class="t-btn" onclick="randomize()">Rand</button>
+        <button class="t-btn" id="playBtn" onclick="togglePlay()">play</button>
+        <button class="t-btn" onclick="stopSequencer()">stop</button>
+        <button class="t-btn" onclick="clearAll()">clear</button>
+        <button class="t-btn" onclick="randomize()">rand</button>
         <div class="bpm-section">
             <span class="bpm-label">BPM</span>
             <button class="bpm-btn" onclick="changeBPM(-5)">−</button>
@@ -358,27 +357,27 @@ body {
     <!-- Sequencer -->
     <div class="sequencer">
         <div class="track">
-            <div class="track-label">Kick</div>
+            <div class="track-label">kick</div>
             <div class="steps" id="steps-kick"></div>
             <div class="track-volume"><input type="range" class="vol-slider" min="0" max="1" step="0.01" value="0.9" oninput="setVolume('kick',this.value)"></div>
         </div>
         <div class="track">
-            <div class="track-label">Snare</div>
+            <div class="track-label">snare</div>
             <div class="steps" id="steps-snare"></div>
             <div class="track-volume"><input type="range" class="vol-slider" min="0" max="1" step="0.01" value="0.75" oninput="setVolume('snare',this.value)"></div>
         </div>
         <div class="track">
-            <div class="track-label">Hat Cl</div>
+            <div class="track-label">hat cl</div>
             <div class="steps" id="steps-hat1"></div>
             <div class="track-volume"><input type="range" class="vol-slider" min="0" max="1" step="0.01" value="0.6" oninput="setVolume('hat1',this.value)"></div>
         </div>
         <div class="track">
-            <div class="track-label">Hat Op</div>
+            <div class="track-label">hat op</div>
             <div class="steps" id="steps-hat2"></div>
             <div class="track-volume"><input type="range" class="vol-slider" min="0" max="1" step="0.01" value="0.5" oninput="setVolume('hat2',this.value)"></div>
         </div>
         <div class="track">
-            <div class="track-label">Rim</div>
+            <div class="track-label">rim</div>
             <div class="steps" id="steps-rim"></div>
             <div class="track-volume"><input type="range" class="vol-slider" min="0" max="1" step="0.01" value="0.7" oninput="setVolume('rim',this.value)"></div>
         </div>
@@ -386,13 +385,13 @@ body {
 
     <!-- Visualizer -->
     <div class="viz-section">
-        <div class="viz-label">Waveform Output</div>
+        <div class="viz-label">waveform output</div>
         <canvas id="vizCanvas"></canvas>
     </div>
 
     <!-- Footer -->
     <div class="machine-footer">
-        <span class="footer-text">Built with Web Audio API — Reconstructed from MAX/MSP</span>
+        <span class="footer-text">built with web audio api — reconstructed from max/msp</span>
         <span class="step-counter" id="stepCounter">Step — / 16</span>
     </div>
 
@@ -501,7 +500,7 @@ function updateUI(step) {
             const el=document.querySelector(`#steps-${tr} .step:nth-child(${step+1})`);
             if(el) el.classList.add('playing');
         });
-        document.getElementById('stepCounter').textContent=`Step ${String(step+1).padStart(2,'0')} / 16`;
+        document.getElementById('stepCounter').textContent=`step ${String(step+1).padStart(2,'0')} / 16`;
     });
 }
 
@@ -512,12 +511,12 @@ function togglePlay() {
         isPlaying=false; clearTimeout(schedulerTimer);
         document.getElementById('playBtn').classList.remove('active');
         document.getElementById('statusDot').classList.remove('playing');
-        document.getElementById('statusText').textContent='Paused';
+        document.getElementById('statusText').textContent='paused';
     } else {
         isPlaying=true; nextStepTime=audioCtx.currentTime+0.05; scheduler();
         document.getElementById('playBtn').classList.add('active');
         document.getElementById('statusDot').classList.add('playing');
-        document.getElementById('statusText').textContent='Playing';
+        document.getElementById('statusText').textContent='playing';
     }
 }
 
@@ -525,8 +524,8 @@ function stopSequencer() {
     isPlaying=false; clearTimeout(schedulerTimer); currentStep=0;
     document.getElementById('playBtn').classList.remove('active');
     document.getElementById('statusDot').classList.remove('playing');
-    document.getElementById('statusText').textContent='Stopped';
-    document.getElementById('stepCounter').textContent='Step — / 16';
+    document.getElementById('statusText').textContent='stopped';
+    document.getElementById('stepCounter').textContent='step — / 16';
     document.querySelectorAll('.playhead-tick').forEach(t=>t.classList.remove('active'));
     document.querySelectorAll('.step.playing').forEach(s=>s.classList.remove('playing'));
 }
