@@ -1,628 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cole Maher Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #ffffff;
-            --secondary-color: #cccccc;
-            --accent-color: #888888;
-            --dark-bg: #000000;
-            --container-bg: #0a0a0a;
-            --card-bg: #111111;
-            --text-light: #ffffff;
-            --text-muted: #666666;
-            --border-color: #333333;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Source Code Pro', monospace;
-            line-height: 1.6;
-            color: var(--text-light);
-            background-color: var(--dark-bg);
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-weight: 400;
-        }
-
-        .universe-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            background: radial-gradient(circle at center, #000000 0%, #0a0a0a 100%);
-        }
-
-        .central-hub {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px; height: 300px;
-            border: 2px solid var(--border-color);
-            border-radius: 50%;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center;
-            background: rgba(10,10,10,0.9);
-            z-index: 10;
-            animation: hubPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes hubPulse {
-            0%,100% { box-shadow: 0 0 30px rgba(255,255,255,0.1); }
-            50%      { box-shadow: 0 0 50px rgba(255,255,255,0.2); }
-        }
-
-        .central-hub h1 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 10px; font-weight: 600; letter-spacing: 0.05em; }
-
-        .central-gif { width: 80px; height: 80px; margin-bottom: 15px; border: 2px solid var(--border-color); overflow: hidden; }
-        .central-gif img { width: 100%; height: 100%; object-fit: cover; }
-
-        .orbital-element {
-            position: absolute;
-            width: 120px; height: 120px;
-            border: 2px solid var(--border-color);
-            background: rgba(10,10,10,0.9);
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center; cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-            z-index: 5; overflow: hidden;
-        }
-
-        .orbital-element::before { content:''; position:absolute; inset:-2px; border:2px solid var(--primary-color); opacity:0; transition:opacity 0.3s ease; }
-        .orbital-element:hover::before { opacity:1; }
-        .orbital-element:hover { transform:scale(1.15); background:rgba(20,20,20,0.95); }
-
-        .orbital-gif { width:40px; height:40px; margin-bottom:8px; border:2px solid var(--border-color); overflow:hidden; }
-        .orbital-gif img { width:100%; height:100%; object-fit:cover; }
-        .orbital-element .element-title { font-size:0.8rem; color:var(--text-light); font-weight:400; }
-
-        .orbital-home       { top:20%; left:50%; transform:translateX(-50%); animation:floatHome 6s ease-in-out infinite; }
-        .orbital-professional{ top:30%; right:20%; animation:floatProfessional 7s ease-in-out infinite; }
-        .orbital-writing    { bottom:30%; right:20%; animation:floatWriting 8s ease-in-out infinite; }
-        .orbital-creative   { bottom:20%; left:50%; transform:translateX(-50%); animation:floatCreative 9s ease-in-out infinite; }
-        .orbital-about      { top:30%; left:20%; animation:floatAbout 10s ease-in-out infinite; }
-        .orbital-contact    { bottom:30%; left:20%; animation:floatContact 11s ease-in-out infinite; }
-
-        @keyframes floatHome        { 0%,100%{transform:translateX(-50%) translateY(0);}    50%{transform:translateX(-50%) translateY(-15px);} }
-        @keyframes floatProfessional{ 0%,100%{transform:translateY(0);}  50%{transform:translateY(-10px);} }
-        @keyframes floatWriting     { 0%,100%{transform:translateY(0);}  50%{transform:translateY(10px);} }
-        @keyframes floatCreative    { 0%,100%{transform:translateX(-50%) translateY(0);}    50%{transform:translateX(-50%) translateY(15px);} }
-        @keyframes floatAbout       { 0%,100%{transform:translateY(0);}  50%{transform:translateY(-10px);} }
-        @keyframes floatContact     { 0%,100%{transform:translateY(0);}  50%{transform:translateY(10px);} }
-
-        .connection-line { position:absolute; background:linear-gradient(90deg,transparent,var(--primary-color),transparent); height:2px; transform-origin:0 0; z-index:1; opacity:0.3; }
-
-        .content-section { position:fixed; inset:0; background:rgba(0,0,0,0.97); z-index:100; display:none; overflow-y:auto; padding:40px; }
-        .content-section.active { display:block; animation:fadeIn 0.5s ease; }
-
-        @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-
-        .section-header { text-align:center; margin-bottom:40px; border-bottom:2px solid var(--border-color); padding-bottom:20px; }
-        .section-header h2 { color:var(--primary-color); font-size:2rem; font-weight:600; margin-bottom:10px; }
-        .section-header .section-subtitle { color:var(--text-muted); font-size:1rem; font-weight:300; }
-
-        .close-section { position:absolute; top:20px; right:20px; background:none; border:2px solid var(--border-color); color:var(--primary-color); width:40px; height:40px; font-size:1.2rem; cursor:pointer; transition:all 0.3s ease; z-index:101; font-family:'Source Code Pro',monospace; }
-        .close-section:hover { background:var(--primary-color); color:#000; }
-
-        .content-container { max-width:1200px; margin:0 auto; background:rgba(10,10,10,0.9); padding:30px; border:2px solid var(--border-color); position:relative; }
-        .content-container::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-
-        .intro { background:#000; padding:25px; margin-bottom:40px; border:2px solid var(--border-color); color:var(--text-light); position:relative; overflow:hidden; font-weight:300; }
-        .intro:before { content:""; position:absolute; top:0; left:0; width:100%; height:2px; background:var(--primary-color); }
-
-        .project { margin-bottom:40px; background:#000; padding:25px; transition:all 0.4s ease; border:2px solid var(--border-color); position:relative; }
-        .project::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-        .project:hover { transform:translateY(-3px); border-color:var(--primary-color); }
-
-        .contact-info { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; margin:30px 0; }
-        .contact-item { display:flex; align-items:center; gap:12px; padding:12px 20px; background:rgba(255,255,255,0.05); transition:all 0.3s ease; border:2px solid var(--border-color); }
-        .contact-item:hover { background:rgba(255,255,255,0.1); transform:translateY(-3px); border-color:var(--primary-color); }
-        .contact-icon { color:var(--primary-color); font-size:1.2rem; }
-
-        .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:15px; margin-top:20px; }
-        .skill-item { background:rgba(255,255,255,0.05); padding:15px; transition:all 0.3s ease; border:2px solid var(--border-color); font-weight:300; }
-        .skill-item:hover { background:rgba(255,255,255,0.1); transform:translateY(-3px); border-color:var(--primary-color); }
-
-        .professional-section { background:#000; padding:25px; margin-bottom:40px; border:2px solid var(--border-color); position:relative; }
-        .professional-section::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-
-        .tabs-container { display:flex; gap:10px; margin-bottom:30px; border-bottom:2px solid var(--border-color); padding-bottom:15px; }
-        .tab { padding:12px 20px; background:rgba(255,255,255,0.05); cursor:pointer; transition:all 0.3s ease; font-weight:500; color:var(--text-light); border:2px solid var(--border-color); font-family:'Source Code Pro',monospace; }
-        .tab:hover { background:rgba(255,255,255,0.1); border-color:var(--primary-color); }
-        .tab.active { background:rgba(255,255,255,0.15); color:var(--primary-color); border-color:var(--primary-color); }
-        .tab-content { display:none; animation:fadeIn 0.5s ease; }
-        .tab-content.active { display:block; }
-
-        .timeline { position:relative; margin:30px 0 0 20px; padding-left:30px; border-left:2px solid var(--primary-color); }
-        .timeline-item { position:relative; margin-bottom:30px; }
-        .timeline-item:before { content:""; position:absolute; top:5px; left:-36px; width:12px; height:12px; background:var(--primary-color); border:2px solid #000; }
-        .timeline-date { color:var(--primary-color); font-weight:600; margin-bottom:8px; display:block; font-size:1rem; }
-
-        .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:25px; margin-top:25px; }
-        .project-card { background:#000; padding:20px; transition:all 0.4s ease; border:2px solid var(--border-color); display:flex; flex-direction:column; position:relative; }
-        .project-card::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-        .project-card:hover { transform:translateY(-5px); border-color:var(--primary-color); }
-
-        .award-badge { background:var(--primary-color); color:#000; padding:6px 12px; font-weight:600; display:inline-block; margin-bottom:12px; border:2px solid #000; font-family:'Source Code Pro',monospace; }
-
-        .creative-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:25px; margin-top:25px; }
-        .creative-item { background:#000; padding:20px; transition:all 0.4s ease; border:2px solid var(--border-color); position:relative; }
-        .creative-item::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-        .creative-item:hover { transform:translateY(-5px); border-color:var(--primary-color); }
-
-        .star-gif { width:100%; margin-bottom:15px; border:1px solid #444; transition:transform 0.5s ease; }
-        .star-gif:hover { transform:scale(1.05); }
-
-        .file-downloads { margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; }
-        .file-btn { background:rgba(255,255,255,0.05); color:var(--text-light); border:2px solid var(--border-color); padding:8px 15px; text-decoration:none; font-size:0.85rem; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:6px; font-family:'Source Code Pro',monospace; font-weight:300; }
-        .file-btn:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); border-color:var(--primary-color); }
-
-        .download-btn { display:inline-block; padding:12px 25px; background:var(--primary-color); color:#000; text-decoration:none; font-weight:600; margin-top:20px; transition:all 0.3s ease; cursor:pointer; border:2px solid #000; font-family:'Source Code Pro',monospace; }
-        .download-btn:hover { transform:translateY(-3px); background:var(--text-muted); color:#000; }
-
-        .gif-container { max-width:100%; margin:20px 0; overflow:hidden; border:2px solid var(--border-color); }
-        .gif-container img { width:100%; display:block; }
-
-        .gif-container2 { max-width:400px; margin:20px auto; overflow:hidden; border:2px solid var(--border-color); position:relative; }
-        .gif-container2::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-        .gif-container2 img { width:100%; display:block; }
-
-        .embedded-content { margin:25px 0; border:2px solid var(--border-color); overflow:hidden; background:#000; position:relative; transition:border-color 0.3s ease; }
-        .embedded-content::before { content:''; position:absolute; inset:-2px; border:2px solid var(--text-muted); pointer-events:none; }
-        .embedded-content:hover { border-color:var(--primary-color); }
-
-        .embed-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; padding-bottom:10px; border-bottom:1px solid var(--border-color); flex-wrap:wrap; gap:15px; }
-
-        .substack-link { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:rgba(255,255,255,0.05); color:var(--primary-color); text-decoration:none; transition:all 0.3s ease; margin-top:15px; border:2px solid var(--border-color); font-weight:500; font-family:'Source Code Pro',monospace; }
-        .substack-link:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); border-color:var(--primary-color); }
-
-        @media (max-width:768px) {
-            .universe-container { display:none; }
-            .mobile-fallback { display:block; padding:20px; }
-            .content-section { padding:20px; }
-            .content-container { padding:20px; }
-            .embed-header { flex-direction:column; align-items:flex-start; }
-        }
-
-        @media (min-width:769px) { .mobile-fallback { display:none; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cole maher</title>
+<style>
+:root {
+    --bg: #f8f8f6;
+    --ink: #1a1a1a;
+    --mid: #888;
+    --rule: #ccc;
+    --mono: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; }
+body {
+    font-family: var(--mono);
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+#bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+}
+/* ── MASTHEAD ── */
+.masthead {
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid var(--ink);
+    padding: 0 clamp(20px,5vw,80px);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 64px;
+    background: rgba(248,248,246,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+.masthead-left { font-size:0.56rem; letter-spacing:0.18em; text-transform:lowercase; color:var(--mid); }
+.masthead-title { font-size:clamp(1rem,2vw,1.35rem); font-weight:700; letter-spacing:0.1em; text-transform:lowercase; text-align:center; }
+.masthead-right { font-size:0.56rem; letter-spacing:0.14em; text-transform:lowercase; color:var(--mid); text-align:right; }
+/* ── NAV ── */
+nav {
+    position: sticky; top: 64px; z-index: 99;
+    border-bottom: 1px solid var(--ink);
+    padding: 0 clamp(20px,5vw,80px);
+    display: flex; overflow-x: auto; scrollbar-width: none;
+    background: rgba(248,248,246,0.92);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+}
+nav::-webkit-scrollbar { display:none; }
+.nav-item {
+    font-family: var(--mono); font-size:0.62rem; letter-spacing:0.2em; text-transform:lowercase;
+    padding:16px 28px 14px; cursor:pointer; border:none; background:none;
+    color:var(--mid); border-bottom:2px solid transparent;
+    position:relative; top:1px; white-space:nowrap;
+    transition:color 0.2s, border-color 0.2s;
+}
+.nav-item:first-child { padding-left:0; }
+.nav-item:hover { color:var(--ink); }
+.nav-item.active { color:var(--ink); border-bottom-color:var(--ink); }
+/* ── SECTIONS ── */
+.section {
+    display:none; padding:clamp(40px,6vw,80px) clamp(20px,5vw,80px);
+    min-height:calc(100vh - 128px); position:relative; z-index:1;
+    animation:appear 0.3s ease;
+}
+.section.active { display:block; }
+@keyframes appear { from{opacity:0;transform:translateY(7px);} to{opacity:1;transform:translateY(0);} }
+/* ── SECTION HEADERS ── */
+.sec-eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.sec-num { font-size:0.56rem; letter-spacing:0.28em; color:var(--mid); }
+.sec-rule-short { flex:1; max-width:48px; height:1px; background:var(--rule); display:block; }
+.sec-title {
+    font-size:clamp(1.8rem,4.5vw,3.6rem); font-weight:700; line-height:0.9;
+    letter-spacing:-0.025em; text-transform:lowercase; margin-bottom:48px;
+}
+.sec-title span {
+    display:block; color:var(--mid); font-size:0.55em; letter-spacing:0.1em;
+    font-weight:400; margin-top:8px; text-transform:lowercase;
+}
+/* ── SUB TABS ── */
+.sub-tabs { display:flex; border-bottom:1px solid var(--ink); margin-bottom:0; }
+.sub-tab {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.18em; text-transform:lowercase;
+    padding:12px 24px 10px; cursor:pointer; border:none; background:none;
+    color:var(--mid); border-bottom:2px solid transparent;
+    position:relative; top:1px; transition:color 0.2s, border-color 0.2s;
+}
+.sub-tab:first-child { padding-left:0; }
+.sub-tab:hover { color:var(--ink); }
+.sub-tab.active { color:var(--ink); border-bottom-color:var(--ink); }
+.sub-panel { display:none; }
+.sub-panel.active { display:block; }
+/* ── TIMELINE ── */
+.timeline-entry {
+    display:grid; grid-template-columns:180px 1fr; gap:0 48px;
+    padding:32px 0; border-top:1px solid var(--rule); transition:background 0.2s;
+}
+.timeline-entry:last-child { border-bottom:1px solid var(--rule); }
+.timeline-entry:hover { background:rgba(255,255,255,0.55); }
+.t-meta { font-size:0.62rem; letter-spacing:0.08em; color:var(--mid); line-height:2; padding-top:3px; }
+.t-body h3 { font-size:0.86rem; font-weight:700; letter-spacing:0.05em; text-transform:lowercase; margin-bottom:6px; }
+.t-body .role { font-size:0.6rem; letter-spacing:0.14em; text-transform:lowercase; color:var(--mid); margin-bottom:14px; }
+.t-body p, .t-body li { font-size:0.73rem; line-height:1.95; color:#444; }
+.t-body ul { padding-left:1.2em; }
+.t-body li { margin-bottom:4px; }
+/* ── CARDS ── */
+.cards-grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:40px;
+}
+.card { background:var(--bg); padding:28px 24px; transition:background 0.2s; }
+.card:hover { background:rgba(255,255,255,0.72); }
+.card-badge {
+    font-size:0.56rem; letter-spacing:0.14em; text-transform:lowercase;
+    border:1px solid var(--ink); display:inline-block; padding:3px 8px; margin-bottom:12px;
+}
+.card h3 { font-size:0.8rem; font-weight:700; text-transform:lowercase; letter-spacing:0.05em; margin-bottom:8px; }
+.card p { font-size:0.72rem; line-height:1.85; color:#555; }
+/* ── WRITING ── */
+.writing-piece {
+    display:grid; grid-template-columns:180px 1fr; gap:0 48px;
+    padding:32px 0; border-top:1px solid var(--rule); transition:background 0.2s;
+}
+.writing-piece:last-child { border-bottom:1px solid var(--rule); }
+.writing-piece:hover { background:rgba(255,255,255,0.55); }
+.w-meta { font-size:0.62rem; letter-spacing:0.08em; color:var(--mid); line-height:2; padding-top:3px; }
+.w-meta .tag {
+    display:inline-block; border:1px solid var(--rule); padding:2px 6px;
+    font-size:0.56rem; letter-spacing:0.1em; text-transform:lowercase;
+    margin-top:8px; margin-right:3px; color:var(--mid);
+}
+.w-body h3 { font-size:0.86rem; font-weight:700; text-transform:lowercase; letter-spacing:0.05em; margin-bottom:12px; line-height:1.4; }
+.w-body p { font-size:0.73rem; line-height:1.95; color:#444; max-width:560px; margin-bottom:14px; }
+.pullquote {
+    border-left:2px solid var(--ink); padding:4px 18px; margin:16px 0;
+    font-style:italic; font-size:0.79rem; line-height:1.75; color:#333; max-width:500px;
+}
+.text-link {
+    display:inline-flex; align-items:center; gap:6px; font-size:0.6rem;
+    letter-spacing:0.16em; text-transform:lowercase; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:1px;
+    transition:color 0.15s, border-color 0.15s;
+}
+.text-link:hover { color:var(--mid); border-color:var(--mid); }
+/* ── CREATIVE ── */
+.creative-item {
+    display:grid; grid-template-columns:180px 1fr; gap:0 48px;
+    padding:32px 0; border-top:1px solid var(--rule); transition:background 0.2s;
+}
+.creative-item:last-child { border-bottom:1px solid var(--rule); }
+.creative-item:hover { background:rgba(255,255,255,0.55); }
+.c-meta { font-size:0.62rem; letter-spacing:0.08em; color:var(--mid); line-height:2; padding-top:3px; }
+.c-body h3 { font-size:0.86rem; font-weight:700; text-transform:lowercase; letter-spacing:0.05em; margin-bottom:10px; }
+.c-body p { font-size:0.73rem; line-height:1.95; color:#444; max-width:520px; margin-bottom:14px; }
+/* ── ABOUT ── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); }
+.about-cell { background:var(--bg); padding:36px 32px; transition:background 0.2s; }
+.about-cell:hover { background:rgba(255,255,255,0.72); }
+.about-cell h3 { font-size:0.68rem; font-weight:700; letter-spacing:0.2em; text-transform:lowercase; margin-bottom:20px; }
+.about-cell p, .about-cell li { font-size:0.72rem; line-height:1.95; color:#444; }
+.about-cell ul { padding-left:1.2em; }
+.about-cell li { margin-bottom:4px; }
+.edu-entry { margin-bottom:22px; }
+.edu-entry:last-child { margin-bottom:0; }
+.edu-degree { font-size:0.72rem; font-weight:700; margin-bottom:2px; color:var(--ink); }
+.edu-school { font-size:0.68rem; color:var(--ink); margin-bottom:2px; letter-spacing:0.04em; }
+.edu-date { font-size:0.62rem; color:var(--mid); }
+.edu-note { font-size:0.62rem; color:var(--mid); margin-top:4px; font-style:italic; }
+.skill-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+.skill-pill {
+    font-size:0.58rem; letter-spacing:0.08em; text-transform:lowercase;
+    border:1px solid var(--rule); padding:3px 9px; color:#555;
+    transition:border-color 0.15s, color 0.15s; cursor:default;
+}
+.skill-pill:hover { border-color:var(--ink); color:var(--ink); }
+/* ── FOOTER ── */
+footer {
+    border-top:1px solid var(--ink); padding:20px clamp(20px,5vw,80px);
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px; background:rgba(248,248,246,0.92);
+    backdrop-filter:blur(16px); position:relative; z-index:1;
+}
+footer span, footer a {
+    font-size:0.58rem; letter-spacing:0.14em; text-transform:lowercase;
+    color:var(--mid); text-decoration:none; transition:color 0.15s;
+}
+footer a:hover { color:var(--ink); }
+/* ── RESPONSIVE ── */
+@media (max-width:640px) {
+    .masthead { grid-template-columns:1fr auto; }
+    .masthead-left { display:none; }
+    .timeline-entry, .writing-piece, .creative-item { grid-template-columns:1fr; gap:8px; }
+    .about-grid { grid-template-columns:1fr; }
+    .sec-title { font-size:2rem; }
+    .nav-item { padding-left:16px; padding-right:16px; }
+}
+</style>
 </head>
 <body>
 
-    <div class="universe-container" id="universeView">
-        <div class="central-hub">
-            <div class="central-gif"><img src="asset/Gif2.gif" alt="Central GIF"></div>
-            <h1>COLE MAHER</h1>
+<canvas id="bg-canvas"></canvas>
+
+<header class="masthead">
+    <span class="masthead-left">public health · research · creative tech</span>
+    <span class="masthead-title">cole maher</span>
+    <span class="masthead-right">st. louis, mo</span>
+</header>
+
+<nav>
+    <button class="nav-item active" data-section="professional">professional</button>
+    <button class="nav-item" data-section="writing">writing</button>
+    <button class="nav-item" data-section="creative">creative</button>
+    <button class="nav-item" data-section="about">about</button>
+</nav>
+
+<!-- ═══ PROFESSIONAL ═══ -->
+<section id="professional" class="section active">
+    <div class="sec-eyebrow"><span class="sec-num">001</span><span class="sec-rule-short"></span></div>
+    <h2 class="sec-title">experience<br>&amp; projects<span>public health · data · policy</span></h2>
+
+    <div class="sub-tabs">
+        <button class="sub-tab active" data-panel="experience">work experience</button>
+        <button class="sub-tab" data-panel="projects">projects</button>
+        <button class="sub-tab" data-panel="research">research</button>
+    </div>
+
+    <div id="experience" class="sub-panel active">
+        <div class="timeline-entry">
+            <div class="t-meta">Nov 2025 – Present<br><br>Washington University<br>st. louis, mo</div>
+            <div class="t-body">
+                <h3>washington university — research</h3>
+                <div class="role">research assistant, pediatric cancer outcomes</div>
+                <ul>
+                    <li>Conducting pediatric cancer outcomes research under Dr. Kim Johnson, evaluating stage at diagnosis and survival differences among children insured through Medicaid vs. CHIP</li>
+                    <li>Developing a research protocol leveraging the SEER–Medicaid–CHIP linked database (diagnosis years 1999–2021)</li>
+                </ul>
+            </div>
         </div>
-        <div class="orbital-element orbital-home" data-section="home">
-            <div class="orbital-gif"><img src="asset/Gif2.gif" alt="Home"></div>
-            <div class="element-title">Home</div>
+        <div class="timeline-entry">
+            <div class="t-meta">Feb 2025 – Present<br><br>The SPOT / Dept. of Pediatrics<br>Washington University</div>
+            <div class="t-body">
+                <h3>the spot</h3>
+                <div class="role">research &amp; epidemiology intern</div>
+                <ul>
+                    <li>Evaluated public health programs using regression analysis and ANOVA to enhance outcomes for youth clients</li>
+                    <li>Analyzed client data from SAMHSA sexual health assessment program using linear regression and correlation analysis in R</li>
+                    <li>Led data verification project reconciling external lab STI records with internal EHR for clinical decision-making</li>
+                    <li>Conducted literature review evaluating screening tools for depression, anxiety, and substance use in adolescent populations</li>
+                </ul>
+            </div>
         </div>
-        <div class="orbital-element orbital-professional" data-section="professional">
-            <div class="orbital-gif"><img src="asset/Gif2.gif" alt="Professional"></div>
-            <div class="element-title">Professional</div>
+        <div class="timeline-entry">
+            <div class="t-meta">Feb 2024 – Present<br><br>whole life healthcare<br>Newington, NH</div>
+            <div class="t-body">
+                <h3>whole life healthcare</h3>
+                <div class="role">primary care data management administrator</div>
+                <ul>
+                    <li>Scheduled patient visits and led data management projects and medical records requests on a small administrative team</li>
+                    <li>Independently led all management and submission of Inovalon SOAP note requests</li>
+                    <li>Coordinated due dates and medical records for 9 providers, securing ~$100 Anthem incentive per patient record (30–50 records per provider)</li>
+                </ul>
+            </div>
         </div>
-        <div class="orbital-element orbital-writing" data-section="writing">
-            <div class="orbital-gif"><img src="asset/Gif2.gif" alt="Writing"></div>
-            <div class="element-title">Written Work</div>
-        </div>
-        <div class="orbital-element orbital-creative" data-section="creative">
-            <div class="orbital-gif"><img src="asset/Gif2.gif" alt="Creative"></div>
-            <div class="element-title">Creative Work</div>
-        </div>
-        <div class="orbital-element orbital-about" data-section="about">
-            <div class="orbital-gif"><img src="asset/Gif2.gif" alt="About"></div>
-            <div class="element-title">About Me</div>
-        </div>
-        <div class="orbital-element orbital-contact" data-section="contact">
-            <div class="orbital-gif"><img src="asset/Gif2.gif" alt="Contact"></div>
-            <div class="element-title">Contact</div>
+        <div class="timeline-entry">
+            <div class="t-meta">Oct 2022 – Jun 2023<br><br>nyserda<br>Albany, NY</div>
+            <div class="t-body">
+                <h3>nyserda</h3>
+                <div class="role">climate equity intern</div>
+                <ul>
+                    <li>Coordinated with 12 regional contractors on NYSERDA's $53M Regional Clean Energy Hubs initiative</li>
+                    <li>Co-managed development of a comprehensive Salesforce CRM User Guide standardizing processes across all 12 NY regions</li>
+                    <li>Coordinated Salesforce platform enhancements with 5 program managers and IT staff</li>
+                    <li>Built and deployed statewide surveys to gather contractor feedback and operational data</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="mobile-fallback">
-        <div class="content-container">
-            <h1>COLE MAHER</h1>
-            <p style="color:var(--text-muted);margin-top:8px;">Public Health Professional | Researcher | Creative Technologist</p>
-            <div style="display:flex;flex-wrap:wrap;gap:10px;margin:30px 0;">
-                <button class="tab" data-section="home">Home</button>
-                <button class="tab" data-section="professional">Professional</button>
-                <button class="tab" data-section="writing">Writing</button>
-                <button class="tab" data-section="creative">Creative</button>
-                <button class="tab" data-section="about">About</button>
-                <button class="tab" data-section="contact">Contact</button>
+    <div id="projects" class="sub-panel">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-badge">awarded $25,000</div>
+                <h3>green fee sustainability project</h3>
+                <p>Led and implemented a sustainable lighting infrastructure project at Union College in collaboration with campus facilities and outside vendors. Won, led, and executed 2021–22.</p>
+            </div>
+            <div class="card">
+                <div class="card-badge">certified nov 2025</div>
+                <h3>certified in public health (cph)</h3>
+                <p>Passed the CPH board exam administered by the National Board of Public Health Examiners, demonstrating competency across core public health disciplines.</p>
+            </div>
+            <div class="card">
+                <h3>salesforce crm user guide</h3>
+                <p>Co-developed a comprehensive implementation guide standardizing Salesforce processes for contractors across 12 New York State regions as part of the NYSERDA Clean Energy Hubs initiative.</p>
+            </div>
+            <div class="card">
+                <h3>seer–medicaid–chip research protocol</h3>
+                <p>Developing a pediatric cancer outcomes research protocol using the SEER–Medicaid–CHIP linked database, examining 22 years of diagnosis data (1999–2021).</p>
             </div>
         </div>
     </div>
 
-    <!-- HOME -->
-    <section id="home" class="content-section">
-        <button class="close-section">&times;</button>
-        <div class="section-header">
-            <h2>Home</h2>
-            <p class="section-subtitle">Welcome to my interactive portfolio</p>
-        </div>
-        <div class="content-container">
-            <div class="intro">
-                <p>Welcome to my portfolio! I am a current student studying public health with a background in qualitative and quantitative public health and sociology research. In addition to my work in public health, I studied Jazz composition, Digital signal processing, and took on 3D visual art as a hobby.</p>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item"><i class="fas fa-envelope contact-icon"></i><span>maher.cole.23@gmail.com</span></div>
-                <div class="contact-item"><i class="fas fa-phone contact-icon"></i><span>603-738-7643</span></div>
-                <div class="contact-item"><i class="fab fa-linkedin contact-icon"></i><span>linkedin.com/in/cole-maher</span></div>
-                <div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><span>St. Louis, MO</span></div>
-            </div>
-            <h2>Professional Objective</h2>
-            <div class="project">
-                <p>To further my experience in Public Health Policy research and leverage my interdisciplinary background in mathematics, sociology, and creative technology to develop innovative solutions for public health challenges.</p>
-            </div>
-            <div class="gif-container2">
-                <img src="asset/project-demo.gif" alt="Project Demo">
+    <div id="research" class="sub-panel">
+        <div class="timeline-entry">
+            <div class="t-meta">Washington University<br>Nov 2025 – Present</div>
+            <div class="t-body">
+                <h3>pediatric cancer outcomes: medicaid vs. chip</h3>
+                <div class="role">primary research · seer database</div>
+                <p>Evaluating differences in stage at diagnosis and survival among children insured through Medicaid versus CHIP, using the SEER–Medicaid–CHIP linked database spanning 1999–2021.</p>
             </div>
         </div>
-    </section>
-
-    <!-- PROFESSIONAL -->
-    <section id="professional" class="content-section">
-        <button class="close-section">&times;</button>
-        <div class="section-header">
-            <h2>Professional Experience</h2>
-            <p class="section-subtitle">A comprehensive view of my professional journey</p>
-        </div>
-        <div class="content-container">
-            <div class="professional-section">
-                <div class="tabs-container">
-                    <div class="tab active" data-tab="experience">Work Experience</div>
-                    <div class="tab" data-tab="projects">Projects</div>
-                    <div class="tab" data-tab="research">Research</div>
-                </div>
-                <div class="tab-content active" id="experience-content">
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <span class="timeline-date">Feb 2025 – Present</span>
-                            <h3>The SPOT / Project ARK, Department of Pediatrics BJC</h3>
-                            <p><em>SPOT Data Management and Epidemiology Intern</em></p>
-                            <p><strong>About the Organization:</strong> The SPOT and Project ARK are youth-focused community health organizations in St. Louis, MO, dedicated to providing inclusive and accessible mental health, sexual health, primary care, and support services to adolescents and young adults aged 13-24.</p>
-                            <ul>
-                                <li>Apply advanced statistical methods to evaluate public health programs and improve youth client care outcomes</li>
-                                <li>Perform comprehensive statistical analysis on client data from SAMHSA-funded sexual health assessment program using ANOVA, logistic regression in R/SPSS</li>
-                                <li>Manage data quality and implement protocols to track and re-engage eligible clients using RedCap</li>
-                                <li>Lead data verification projects reconciling external laboratory records with internal EHR systems</li>
-                                <li>Conduct literature reviews to evaluate screening tools for depression, anxiety, and substance use in adolescent populations</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-date">Sep 2024 – Present</span>
-                            <h3>Washington University in St. Louis</h3>
-                            <p><em>Lifeguard</em></p>
-                            <ul><li>Lifeguarding at the Sumers Pool at Washington University St. Louis</li></ul>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-date">Feb 2024 – Present</span>
-                            <h3>Whole Life Healthcare</h3>
-                            <p><em>Primary Care Health Data Administrator</em></p>
-                            <p><strong>About the Organization:</strong> A small, nurse-owned family care practice in Newington, NH providing primary care, mental health, and physical therapy services.</p>
-                            <ul>
-                                <li>Manage phone operations and schedule patient visits with nurse practitioners</li>
-                                <li>Process medical record releases and requests</li>
-                                <li>Perform website administration and design for the independent practice</li>
-                                <li>Lead data-focused project evaluating best practices for provider registration</li>
-                                <li>Manage Inovalon SOAP note requests and transcribe medical visits for incentive programs</li>
-                                <li>Utilize Athenanet Electronic Medical Records system</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-date">Oct 2022 – Jun 2023</span>
-                            <h3>NYSERDA</h3>
-                            <p><em>Energy and Climate Equity Intern</em></p>
-                            <p><strong>About the Organization:</strong> NYSERDA is a public benefit corporation focused on advancing clean energy and accelerating climate solutions for all New Yorkers.</p>
-                            <ul>
-                                <li>Supported operational success of $53M Regional Clean Energy Hubs initiative</li>
-                                <li>Co-managed development of comprehensive Salesforce CRM User Guide for contractors across 12 NY regions</li>
-                                <li>Served as liaison between program managers, Salesforce administration, and IT departments</li>
-                                <li>Built and deployed surveys to contractors statewide to gather feedback and operational data</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content" id="projects-content">
-                    <div class="projects-grid">
-                        <div class="project-card">
-                            <h3>Green Fee Sustainability Project</h3>
-                            <div class="award-badge">Awarded $25,000</div>
-                            <p>Led a sustainably driven project to solve lighting and energy issues in campus facilities, reducing energy costs while promoting sustainability.</p>
-                            <p><strong>Impact:</strong> Reduced campus energy consumption by 15% in targeted areas</p>
-                        </div>
-                        <div class="project-card">
-                            <h3>Medical Records System Redesign</h3>
-                            <p>Redesigned and optimized medical records system for Whole Life Healthcare.</p>
-                            <p><strong>Tech:</strong> Athenanet EMR, HTML/CSS</p>
-                        </div>
-                        <div class="project-card">
-                            <h3>Salesforce CRM User Guide</h3>
-                            <p>Co-developed comprehensive user guide for Salesforce CRM implementation across 12 regions in New York.</p>
-                            <p><strong>Scope:</strong> 50+ page manual for contractors and stakeholders</p>
-                        </div>
-                        <div class="project-card">
-                            <h3>Community Green Space Assessment</h3>
-                            <p>Evaluated and assessed the effectiveness and ADA accessibility of green spaces in Glenville, NY.</p>
-                            <p><strong>Methods:</strong> Field surveys, accessibility audits, community feedback</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content" id="research-content">
-                    <div class="project">
-                        <h3>Senior Thesis: Transportation Noise & Health</h3>
-                        <p><em>Union College, 2022-2023</em></p>
-                        <ul>
-                            <li>Focused on transportation-related noise and its impacts on human health</li>
-                            <li>Conducted interviews with environmental noise professionals and community leaders</li>
-                            <li>Contextualized existing literature using community perspectives on noise pollution</li>
-                        </ul>
-                    </div>
-                    <div class="project">
-                        <h3>Workers' Compensation Data in Public Health</h3>
-                        <p><em>Washington University, 2024-2025</em></p>
-                        <ul>
-                            <li>Researched existing gaps in workers' compensation data for public health professionals</li>
-                            <li>Developed a guide for practitioners to better understand limitations in assessing claimant health data</li>
-                            <li>Analyzed systemic barriers to comprehensive workers' health data collection</li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="timeline-entry">
+            <div class="t-meta">Union College<br>2022 – 2023</div>
+            <div class="t-body">
+                <h3>senior thesis: transportation noise &amp; health</h3>
+                <div class="role">qualitative research</div>
+                <p>Examined transportation-related noise and its health impacts through interviews with environmental noise professionals, community leaders, and residents. Contextualized existing literature using community perspectives.</p>
             </div>
         </div>
-    </section>
-
-    <!-- WRITING -->
-    <section id="writing" class="content-section">
-        <button class="close-section">&times;</button>
-        <div class="section-header">
-            <h2>Written Work</h2>
-            <p class="section-subtitle">Policy analyses, research, and Substack articles</p>
-        </div>
-        <div class="content-container">
-            <div class="project">
-                <h3>How Prescription Importation Expansion Can Improve Price Negotiation and the Cost of Medication</h3>
-                <p><em>Policy Analysis | May 7, 2025</em></p>
-                <div class="skills-grid" style="margin:15px 0;">
-                    <div class="skill-item">Public Health</div>
-                    <div class="skill-item">Policy</div>
-                    <div class="skill-item">Pharmaceutical Policy</div>
-                </div>
-                <p>This policy analysis examines how expanding prescription drug importation from countries with lower medication costs could reduce pharmaceutical prices in the United States, particularly benefiting vulnerable populations disproportionately affected by high drug costs.</p>
-                <div class="intro" style="margin-top:20px;">
-                    <p>"Many elderly adults are on Medicare, so the uninsured population of elderly people is comparably lower than people under the age of 65. Despite that, elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</p>
-                </div>
-                <div style="text-align:center;margin:25px 0;">
-                    <a href="asset/pdfs/prescription_importation.pdf" class="download-btn" download>
-                        <i class="fas fa-download"></i> Download Full Policy Analysis (PDF)
-                    </a>
-                </div>
-                <h4>Key Findings:</h4>
-                <ul>
-                    <li>High prescription drug costs disproportionately affect seniors, low-income individuals, and racial minorities</li>
-                    <li>Current importation policies exclude critical medications like insulin and biological products</li>
-                    <li>Expanded importation could serve as a bargaining chip in price negotiations</li>
-                    <li>Potential benefits include reduced Medicare/Medicaid spending and increased access</li>
-                    <li>Unintended consequences may include price increases in exporting countries</li>
-                </ul>
-            </div>
-
-            <div class="intro" style="text-align:center;margin-bottom:40px;">
-                <h4>Stay Updated with My Latest Written Work</h4>
-                <p style="margin:10px 0 20px;">Subscribe to my Substack newsletter to receive new articles directly in your inbox.</p>
-                <a href="https://coletmaher.substack.com/subscribe" class="download-btn" target="_blank" style="display:inline-flex;align-items:center;gap:10px;">
-                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
-                </a>
-            </div>
-
-            <div class="project">
-                <h3>Academic Research & Papers</h3>
-                <div class="embedded-content" style="padding:25px;">
-                    <div class="embed-header">
-                        <h4>Transportation Noise and Public Health: A Community-Centered Analysis</h4>
-                        <span class="timeline-date">Senior Thesis | Union College | 2023</span>
-                    </div>
-                    <p>Qualitative research examining community perceptions of transportation noise and its health impacts, incorporating interviews with environmental professionals, ambient noise experts, and neighborhood residents.</p>
-                    <div style="text-align:center;margin:20px 0;">
-                        <a href="asset/pdfs/transportation_noise_thesis.pdf" class="download-btn" download>
-                            <i class="fas fa-download"></i> Download Thesis (PDF)
-                        </a>
-                    </div>
-                </div>
-                <div class="embedded-content" style="padding:25px;">
-                    <div class="embed-header">
-                        <h4>Workers' Compensation Data Gaps in Public Health Surveillance</h4>
-                        <span class="timeline-date">Research Paper | Washington University | 2024</span>
-                    </div>
-                    <p>Analysis of systemic limitations in workers' compensation data systems and their implications for occupational health surveillance and policy development.</p>
-                    <div style="text-align:center;margin:20px 0;">
-                        <a href="asset/pdfs/workers_compensation_research.pdf" class="download-btn" download>
-                            <i class="fas fa-download"></i> Download Research Paper (PDF)
-                        </a>
-                    </div>
-                </div>
+        <div class="timeline-entry">
+            <div class="t-meta">Washington University<br>2024 – 2025</div>
+            <div class="t-body">
+                <h3>workers' compensation data gaps in public health</h3>
+                <div class="role">policy research</div>
+                <p>Identified systemic gaps in workers' compensation data for public health practitioners and developed a practitioner guide for assessing limitations in claimant health data.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CREATIVE -->
-    <section id="creative" class="content-section">
-        <button class="close-section">&times;</button>
-        <div class="section-header">
-            <h2>Creative Work</h2>
-            <p class="section-subtitle">Music, visual art, and creative technology experiments</p>
+<!-- ═══ WRITING ═══ -->
+<section id="writing" class="section">
+    <div class="sec-eyebrow"><span class="sec-num">002</span><span class="sec-rule-short"></span></div>
+    <h2 class="sec-title">written<br>work<span>policy · research · essays</span></h2>
+
+    <div class="writing-piece">
+        <div class="w-meta">May 2025<br>Policy Analysis<br><span class="tag">pharmaceutical</span><span class="tag">policy</span></div>
+        <div class="w-body">
+            <h3>how prescription importation expansion can improve price negotiation and the cost of medication</h3>
+            <p>Examines how expanding prescription drug importation from lower-cost countries could reduce pharmaceutical prices in the US, with particular focus on seniors, low-income individuals, and racial minorities disproportionately affected by high drug costs.</p>
+            <div class="pullquote">"Elderly populations are more likely to be taking one or more prescription medications and tend to report trouble with prescription affordability."</div>
+            <a href="asset/pdfs/prescription_importation.pdf" class="text-link" download>↓ Download PDF</a>
         </div>
-        <div class="content-container">
-            <div class="creative-grid">
-
-                <div class="creative-item">
-                    <h3>Jazz Composition Series</h3>
-                    <p><em>Original jazz compositions exploring modern harmonies</em></p>
-                    <div class="gif-container2">
-                        <img src="asset/music-demo.gif" alt="Music Composition Demo">
-                    </div>
-                    <p>A collection of original jazz pieces composed during my studies, blending traditional jazz elements with contemporary influences.</p>
-                </div>
-
-                <div class="creative-item">
-                    <h3>Digital Art Exploration</h3>
-                    <p><em>3D visual art and animations</em></p>
-                    <div class="gif-container2">
-                        <img src="asset/3d-art-demo.gif" alt="3D Art Demo">
-                    </div>
-                    <div class="gif-container2">
-                        <img class="star-gif" src="asset/star10.gif" alt="Star Animation">
-                    </div>
-                    <p>A series of 3D digital artworks created as a hobby, exploring form, light, and abstract composition.</p>
-                </div>
-
-                <!-- DRUM MACHINE CARD -->
-                <div class="creative-item">
-                    <h3>Interactive Drum Machine</h3>
-                    <p><em>MAX/MSP reconstruction — Web Audio API</em></p>
-                    <p style="margin:12px 0;color:var(--text-muted);font-size:0.85rem;line-height:1.6;">synthesized kick, snare, closed hat, open hat, and rim. run live in the browser.</p>
-                    <div class="file-downloads">
-                        <a href="drum-machine_1.html" class="file-btn" target="_blank">
-                            <i class="fas fa-play"></i> LAUNCH DRUM MACHINE
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+    </div>
+    <div class="writing-piece">
+        <div class="w-meta">Union College<br>2023<br>Senior Thesis<br><span class="tag">qualitative</span></div>
+        <div class="w-body">
+            <h3>transportation noise and public health: a community-centered analysis</h3>
+            <p>Qualitative research examining community perceptions of transportation noise and health impacts, incorporating interviews with environmental professionals, ambient noise experts, and neighborhood residents.</p>
+            <a href="asset/pdfs/transportation_noise_thesis.pdf" class="text-link" download>↓ Download Thesis</a>
         </div>
-    </section>
+    </div>
+    <div class="writing-piece">
+        <div class="w-meta">Washington University<br>2024–25<br>Research Paper<br><span class="tag">occupational</span></div>
+        <div class="w-body">
+            <h3>workers' compensation data gaps in public health surveillance</h3>
+            <p>Analysis of systemic limitations in workers' compensation data and their implications for occupational health surveillance and policy development.</p>
+            <a href="asset/pdfs/workers_compensation_research.pdf" class="text-link" download>↓ Download Paper</a>
+        </div>
+    </div>
+    <div class="writing-piece">
+        <div class="w-meta">Ongoing<br>Newsletter</div>
+        <div class="w-body">
+            <h3>substack</h3>
+            <p>new essays and articles on public health, policy, and more.</p>
+            <a href="https://coletmaher.substack.com" class="text-link" target="_blank">→ Read on Substack</a>
+        </div>
+    </div>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about" class="content-section">
-        <button class="close-section">&times;</button>
-        <div class="section-header">
-            <h2>About Me</h2>
-            <p class="section-subtitle">Background, skills, and interests</p>
-        </div>
-        <div class="content-container">
-            <div class="intro">
-                <p>I'm a public health worker with diverse interests in technology, art, and music, passionate about creating things that improve people's health.</p>
-            </div>
-            <h3>Education</h3>
-            <div class="project">
-                <h4>Washington University, St. Louis</h4>
-                <p><strong>Masters in Public Health (MPH), Epidemiology and Biostatistics</strong></p>
-                <p><em>August 2024 – Present &nbsp;|&nbsp; GPA: 4.00</em></p>
-                <ul>
-                    <li>Coursework: Biostatistics, Epidemiology, Research Methods, Human Biology, Applied Linear Modeling, Health Policy, Advanced Data Analysis, Risk Prediction Models</li>
-                </ul>
-                <br>
-                <h4>Union College, Schenectady, NY</h4>
-                <p><strong>Bachelor of Science, Mathematics and Sociology</strong></p>
-                <p><em>September 2019 – June 2023</em></p>
-                <ul>
-                    <li>Coursework: Chemistry, Physics, Economics, Calculus 1–5, Diff. Eq, Probability Theory, Advanced Geometry, Cryptology, Linear Algebra, Quantitative Social Research Methods</li>
-                </ul>
-            </div>
-            <h3>Skills</h3>
-            <div class="project">
-                <div class="skills-grid">
-                    <div class="skill-item">SPSS Statistics</div>
-                    <div class="skill-item">R Studio</div>
-                    <div class="skill-item">Excel & Data Analysis</div>
-                    <div class="skill-item">Salesforce CRM</div>
-                    <div class="skill-item">Secondary Data Analysis</div>
-                    <div class="skill-item">Public Health Research</div>
-                    <div class="skill-item">Medical Records Management</div>
-                    <div class="skill-item">MAX/MSP</div>
-                    <div class="skill-item">Digital Audio Workstations</div>
-                    <div class="skill-item">3D Modeling</div>
-                    <div class="skill-item">HTML/CSS</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ═══ CREATIVE ═══ -->
+<section id="creative" class="section">
+    <div class="sec-eyebrow"><span class="sec-num">003</span><span class="sec-rule-short"></span></div>
+    <h2 class="sec-title">creative<br>work<span>music · visual art · interactive</span></h2>
 
-    <!-- CONTACT -->
-    <section id="contact" class="content-section">
-        <button class="close-section">&times;</button>
-        <div class="section-header">
-            <h2>Contact</h2>
-            <p class="section-subtitle">Get in touch</p>
+    <div class="creative-item">
+        <div class="c-meta">Music<br>Jazz Composition<br>Guitar<br>Production</div>
+        <div class="c-body">
+            <h3>jazz composition &amp; music production</h3>
+            <p>Original compositions written during formal study — blending traditional jazz harmony with contemporary influences and extended techniques. Active practice in guitar, composition, and music production.</p>
         </div>
-        <div class="content-container">
-            <div class="contact-info">
-                <div class="contact-item"><i class="fas fa-envelope contact-icon"></i><span>maher.cole.23@gmail.com</span></div>
-                <div class="contact-item"><i class="fas fa-phone contact-icon"></i><span>603-738-7643</span></div>
-                <div class="contact-item"><i class="fab fa-linkedin contact-icon"></i><span>linkedin.com/in/cole-maher</span></div>
-                <div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><span>St. Louis, MO</span></div>
+    </div>
+    <div class="creative-item">
+        <div class="c-meta">Visual<br>3D Design<br>Max / Jitter</div>
+        <div class="c-body">
+            <h3>3d design &amp; max/jitter</h3>
+            <p>A self-directed practice in 3D visual art and real-time graphics using Max/Jitter. Exploring form, light, and abstract composition in procedural and sculpted environments.</p>
+        </div>
+    </div>
+    <div class="creative-item">
+        <div class="c-meta">Interactive<br>Web Audio API<br>MAX/MSP</div>
+        <div class="c-body">
+            <h3>interactive drum machine</h3>
+            <p>A browser-based drum machine reconstructed from a MAX/MSP patch — synthesized kick, snare, closed hat, open hat, and rim. Runs live in the browser via the Web Audio API.</p>
+            <a href="drum-machine_1.html" class="text-link" target="_blank">→ Launch Drum Machine</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="section">
+    <div class="sec-eyebrow"><span class="sec-num">004</span><span class="sec-rule-short"></span></div>
+    <h2 class="sec-title">about<span>background · education · skills</span></h2>
+
+    <div class="about-grid">
+        <div class="about-cell">
+            <h3>background</h3>
+            <p>Public health researcher with an interdisciplinary background spanning mathematics, sociology, and creative technology. My work sits at the intersection of rigorous quantitative analysis and qualitative community-centered research — with a focus on health equity, youth populations, and data-driven policy.</p><br>
+            <p>Member of the WashU Student Advisory Council on Human Rights, Gender and Migration. Outside of public health: jazz composition, guitar, music production, and 3D design.</p>
+        </div>
+        <div class="about-cell">
+            <h3>education</h3>
+            <div class="edu-entry">
+                <div class="edu-degree">mph, epidemiology &amp; biostatistics</div>
+                <div class="edu-school">washington university in st. louis</div>
+                <div class="edu-date">2024 – May 2026 · GPA 4.0</div>
+                <div class="edu-note">Certified in Public Health (CPH) — Nov 2025</div>
             </div>
-            <div class="project">
-                <h3>Let's Connect</h3>
-                <p>I'm always interested in new opportunities in public health research, policy analysis, and creative collaborations. Feel free to reach out through any of the channels above.</p>
+            <div class="edu-entry">
+                <div class="edu-degree">bs, mathematics &amp; sociology</div>
+                <div class="edu-school">union college, schenectady ny</div>
+                <div class="edu-date">2019 – 2023 · GPA 3.37 · Dean's List 2022, 2023</div>
             </div>
-            <div class="gif-container2">
-                <img src="asset/project-demo.gif" alt="Contact">
+            <div class="edu-entry">
+                <div class="edu-degree">high school diploma</div>
+                <div class="edu-school">st. john's preparatory school</div>
+                <div class="edu-date">Danvers, MA · 2019</div>
             </div>
         </div>
-    </section>
+        <div class="about-cell">
+            <h3>technical skills</h3>
+            <div class="skill-row">
+                <span class="skill-pill">R / RStudio</span>
+                <span class="skill-pill">SPSS</span>
+                <span class="skill-pill">Tableau</span>
+                <span class="skill-pill">REDCap</span>
+                <span class="skill-pill">Athenanet EMR</span>
+                <span class="skill-pill">Salesforce CRM</span>
+                <span class="skill-pill">Microsoft Office</span>
+                <span class="skill-pill">Regression Modeling</span>
+                <span class="skill-pill">Time-to-Event Models</span>
+                <span class="skill-pill">Epidemiological Methods</span>
+                <span class="skill-pill">Research Design</span>
+                <span class="skill-pill">Literature Review</span>
+                <span class="skill-pill">HTML / CSS</span>
+                <span class="skill-pill">MAX/MSP</span>
+                <span class="skill-pill">Max / Jitter</span>
+                <span class="skill-pill">3D Modeling</span>
+            </div>
+        </div>
+        <div class="about-cell">
+            <h3>contact</h3>
+            <p style="margin-bottom:6px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0d39eddd1d8d5c2f0c7c5c3c4dc9ed5d4c5">[email&#160;protected]</a></p>
+            <p style="margin-bottom:6px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="234e424b46510d404c4f460d111063444e424a4f0d404c4e">[email&#160;protected]</a></p>
+            <p style="margin-bottom:6px;">603-738-7643</p>
+            <p style="margin-bottom:16px;"><a href="https://linkedin.com/in/cole-maher" class="text-link" target="_blank" style="font-size:0.6rem;">→ linkedin.com/in/cole-maher</a></p>
+            <p style="color:var(--mid);font-size:0.68rem;line-height:1.85;">Open to opportunities in public health research, policy analysis, and creative collaboration.</p>
+        </div>
+    </div>
+</section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const orbitalElements        = document.querySelectorAll('.orbital-element');
-            const contentSections        = document.querySelectorAll('.content-section');
-            const closeButtons           = document.querySelectorAll('.close-section');
-            const mobileTabs             = document.querySelectorAll('.mobile-fallback .tab');
-            const professionalTabs       = document.querySelectorAll('.professional-section .tab');
-            const professionalTabContents= document.querySelectorAll('.professional-section .tab-content');
+<footer>
+    <span>cole maher © 2026</span>
+    <a href="/cdn-cgi/l/email-protection#89eaa7e4e8e1ecfbc9fefcfafde5a7ecedfc"><span class="__cf_email__" data-cfemail="8feca1e2eee7eafdcff8fafcfbe3a1eaebfa">[email&#160;protected]</span></a>
+    <span>st. louis, mo</span>
+</footer>
 
-            orbitalElements.forEach(el => el.addEventListener('click', () => showSection(el.dataset.section)));
-            mobileTabs.forEach(tab => tab.addEventListener('click', () => showSection(tab.dataset.section)));
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function () {
+    const canvas = document.getElementById('bg-canvas');
+    const ctx    = canvas.getContext('2d');
+    let W = 0, H = 0;
 
-            professionalTabs.forEach(tab => {
-                tab.addEventListener('click', function () {
-                    professionalTabs.forEach(t => t.classList.remove('active'));
-                    professionalTabContents.forEach(c => c.classList.remove('active'));
-                    this.classList.add('active');
-                    document.getElementById(`${this.dataset.tab}-content`).classList.add('active');
-                });
-            });
+    function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
 
-            closeButtons.forEach(btn => btn.addEventListener('click', hideAllSections));
-            contentSections.forEach(s => s.addEventListener('click', e => { if (e.target === s) hideAllSections(); }));
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') hideAllSections(); });
+    const mouse = { x:0, y:0, tx:0, ty:0, active:false };
+    window.addEventListener('mousemove', e => { mouse.tx=e.clientX; mouse.ty=e.clientY; mouse.active=true; });
+    window.addEventListener('mouseleave', () => { mouse.active=false; });
 
-            function showSection(id) { hideAllSections(); document.getElementById(id).classList.add('active'); }
-            function hideAllSections() { contentSections.forEach(s => s.classList.remove('active')); }
+    function lerpMouse() {
+        if (mouse.active) {
+            mouse.x += (mouse.tx - mouse.x) * 0.06;
+            mouse.y += (mouse.ty - mouse.y) * 0.06;
+        }
+    }
 
-            function createConnectionLines() {
-                document.querySelectorAll('.connection-line').forEach(l => l.remove());
-                const hub = document.querySelector('.central-hub');
-                const hr  = hub.getBoundingClientRect();
-                const hx  = hr.left + hr.width  / 2;
-                const hy  = hr.top  + hr.height / 2;
-
-                document.querySelectorAll('.orbital-element').forEach(el => {
-                    const r   = el.getBoundingClientRect();
-                    const ex  = r.left + r.width  / 2;
-                    const ey  = r.top  + r.height / 2;
-                    const len = Math.hypot(ex - hx, ey - hy);
-                    const ang = Math.atan2(ey - hy, ex - hx) * 180 / Math.PI;
-                    const line = document.createElement('div');
-                    line.className = 'connection-line';
-                    line.style.cssText = `width:${len}px;left:${hx}px;top:${hy}px;transform:rotate(${ang}deg);`;
-                    document.querySelector('.universe-container').appendChild(line);
-                });
+    // ── Grid
+    const COLS=24, ROWS=15, WARP_R=260, WARP_F=60;
+    function drawGrid() {
+        const cw=W/COLS, ch=H/ROWS;
+        const N=[];
+        for (let r=0;r<=ROWS;r++) {
+            N[r]=[];
+            for (let c=0;c<=COLS;c++) {
+                let x=c*cw, y=r*ch;
+                if (mouse.active) {
+                    const dx=mouse.x-x, dy=mouse.y-y, d=Math.hypot(dx,dy);
+                    if (d<WARP_R && d>0.5) { const f=(1-d/WARP_R)*WARP_F; x+=(dx/d)*f; y+=(dy/d)*f; }
+                }
+                N[r][c]=[x,y];
             }
+        }
+        ctx.strokeStyle='rgba(26,26,26,0.10)'; ctx.lineWidth=0.75;
+        for (let r=0;r<=ROWS;r++) {
+            ctx.beginPath();
+            for (let c=0;c<=COLS;c++) { const[x,y]=N[r][c]; c===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }
+            ctx.stroke();
+        }
+        for (let c=0;c<=COLS;c++) {
+            ctx.beginPath();
+            for (let r=0;r<=ROWS;r++) { const[x,y]=N[r][c]; r===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }
+            ctx.stroke();
+        }
+    }
 
-            window.addEventListener('load',   createConnectionLines);
-            window.addEventListener('resize', createConnectionLines);
-        });
-    </script>
-</body>
-</html>
+    // ── Shapes
+    const TYPES=['circle','rect','triangle','diamond','cross'];
+    function rnd(a,b){return a+Math.random()*(b-a);}
+    const shapes=Array.from({length:22},()=>({
+        type:TYPES[Math.floor(Math.random()*TYPES.length)],
+        nx:Math.random(), ny:Math.random(),
+        size:rnd(10,50), vx:rnd(-0.00013,0.00013), vy:rnd(-0.00011,0.00011),
+        rot:rnd(0,Math.PI*2), vrot:rnd(-0.0035,0.0035),
+        opacity:rnd(0.055,0.13), px:rnd(0.010,0.020), py:rnd(0.010,0.020),
+    }));
+
+    function strokeShape(s) {
+        const ox=mouse.active?(mouse.x/W-0.5)*W*s.px:0;
+        const oy=mouse.active?(mouse.y/H-0.5)*H*s.py:0;
+        const sx=s.nx*W+ox, sy=s.ny*H+oy, sz=s.size;
+        ctx.save(); ctx.translate(sx,sy); ctx.rotate(s.rot);
+        ctx.strokeStyle=`rgba(26,26,26,${s.opacity})`; ctx.lineWidth=1;
+        ctx.beginPath();
+        switch(s.type) {
+            case 'circle': ctx.arc(0,0,sz*0.5,0,Math.PI*2); break;
+            case 'rect': ctx.rect(-sz*0.5,-sz*0.5,sz,sz); break;
+            case 'triangle':
+                ctx.moveTo(0,-sz*0.55); ctx.lineTo(sz*0.48,sz*0.38); ctx.lineTo(-sz*0.48,sz*0.38); ctx.closePath(); break;
+            case 'diamond':
+                ctx.moveTo(0,-sz*0.55); ctx.lineTo(sz*0.4,0); ctx.lineTo(0,sz*0.55); ctx.lineTo(-sz*0.4,0); ctx.closePath(); break;
+            case 'cross': {
+                const a=sz*0.46,t=sz*0.10;
+                ctx.moveTo(-a,-t);ctx.lineTo(-t,-t);ctx.lineTo(-t,-a);ctx.lineTo(t,-a);ctx.lineTo(t,-t);ctx.lineTo(a,-t);
+                ctx.lineTo(a,t);ctx.lineTo(t,t);ctx.lineTo(t,a);ctx.lineTo(-t,a);ctx.lineTo(-t,t);ctx.lineTo(-a,t);
+                ctx.closePath(); break;
+            }
+        }
+        ctx.stroke(); ctx.restore();
+        s.nx+=s.vx; s.ny+=s.vy; s.rot+=s.vrot;
+        if(s.nx<-0.06)s.nx=1.06; if(s.nx>1.06)s.nx=-0.06;
+        if(s.ny<-0.06)s.ny=1.06; if(s.ny>1.06)s.ny=-0.06;
+    }
+
+    function frame() {
+        lerpMouse();
+        ctx.clearRect(0,0,W,H);
+        drawGrid();
+        shapes.forEach(s=>strokeShape(s));
+        requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    // ── Nav
+    document.querySelectorAll('.nav-item').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.section).classList.add('active');
+            window.scrollTo({top
